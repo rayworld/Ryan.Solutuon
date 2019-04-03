@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ryan.Solution.Properties
+namespace Ryan.WindowsPlatform.Properties
 {
 
 

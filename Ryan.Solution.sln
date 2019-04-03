@@ -3,7 +3,49 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ryan.WindowsPlatform", "Ryan.WindowsPlatform\Ryan.WindowsPlatform.csproj", "{4ABFAFDB-A7EA-4820-85FD-3BD84C6EE1AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ryan.Framework.DBUtility", "Ryan.Framework.DBUtility\Ryan.Framework.DBUtility.csproj", "{F06EB8BF-C60E-4C29-834A-238AFEB70F3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ryan.Framework.Config", "Ryan.Framework.Config\Ryan.Framework.Config.csproj", "{87A3A7AF-C820-4063-95C0-5FEDC4DEE228}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ryan.Framework.Common", "Ryan.Framework.Common\Ryan.Framework.Common.csproj", "{46D98007-DE2E-4C89-AA01-030741C85A5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ryan.Framework.AutoUpdate", "Ryan.Framework.AutoUpdate\Ryan.Framework.AutoUpdate.csproj", "{E12A1E8E-C46C-41C6-A624-B4F474A65683}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ryan.Framework.Encrypt", "Ryan.Framework.Encrypt\Ryan.Framework.Encrypt.csproj", "{B89488A3-8231-48CF-8416-4F46D9D156C0}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4ABFAFDB-A7EA-4820-85FD-3BD84C6EE1AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ABFAFDB-A7EA-4820-85FD-3BD84C6EE1AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ABFAFDB-A7EA-4820-85FD-3BD84C6EE1AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ABFAFDB-A7EA-4820-85FD-3BD84C6EE1AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F06EB8BF-C60E-4C29-834A-238AFEB70F3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F06EB8BF-C60E-4C29-834A-238AFEB70F3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F06EB8BF-C60E-4C29-834A-238AFEB70F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F06EB8BF-C60E-4C29-834A-238AFEB70F3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87A3A7AF-C820-4063-95C0-5FEDC4DEE228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87A3A7AF-C820-4063-95C0-5FEDC4DEE228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87A3A7AF-C820-4063-95C0-5FEDC4DEE228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87A3A7AF-C820-4063-95C0-5FEDC4DEE228}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46D98007-DE2E-4C89-AA01-030741C85A5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46D98007-DE2E-4C89-AA01-030741C85A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46D98007-DE2E-4C89-AA01-030741C85A5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46D98007-DE2E-4C89-AA01-030741C85A5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E12A1E8E-C46C-41C6-A624-B4F474A65683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E12A1E8E-C46C-41C6-A624-B4F474A65683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E12A1E8E-C46C-41C6-A624-B4F474A65683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E12A1E8E-C46C-41C6-A624-B4F474A65683}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B89488A3-8231-48CF-8416-4F46D9D156C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B89488A3-8231-48CF-8416-4F46D9D156C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B89488A3-8231-48CF-8416-4F46D9D156C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B89488A3-8231-48CF-8416-4F46D9D156C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
