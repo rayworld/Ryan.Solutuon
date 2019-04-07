@@ -1,6 +1,6 @@
 ﻿using Huali.EDI.Model;
-using Ray.Framework.DBUtility;
-using Ray.Framework.Encrypt;
+using Ryan.Framework.DBUtility;
+using Ryan.Framework.Encrypt;
 using System;
 using System.Data;
 using System.Data.SqlClient;

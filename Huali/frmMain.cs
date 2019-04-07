@@ -185,6 +185,105 @@ namespace Huali
 
         #endregion
 
+        #region EDI2
+        /// <summary>
+        /// 日立订单导入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonItem14_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("日立订单导入", typeof(Huali.EDI2.FrmSEOutStock));
+        }
+        /// <summary>
+        /// 其它订单导入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonItem15_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("其它订单导入", typeof(Huali.EDI2.FrmSEOutStock));
+        }
+        #endregion
+
+        #region EDI
+
+        private void ButtonItem18_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("导入收货通知单", typeof(Huali.EDI.FrmImport));
+        }
+
+        private void ButtonItem19_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("导出EDI数据", typeof(Huali.EDI.FrmExport));
+        }
+
+        private void ButtonItem20_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("确认到货通知", typeof(Huali.EDI.FrmPOAcception));
+        }
+        #endregion
+
+        #region DS9208
+
+
+        private void ButtonItem25_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("所有扫过码的单", typeof(Huali.DS9208.FrmQueryFinishedBill));
+        }
+
+        private void ButtonItem26_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("单据完成情况", typeof(Huali.DS9208.FrmQueryBill3));
+        }
+
+        private void ButtonItem29_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("删除二维码", typeof(Huali.DS9208.FrmDeleteByQRCode));
+        }
+
+        private void ButtonItem28_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("删除单据", typeof(Huali.DS9208.FrmDeleteByBill));
+        }
+
+        private void ButtonItem27_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("导入单据", typeof(Huali.DS9208.FrmImportBill));
+        }
+
+        private void ButtonItem24_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("按二维码查询", typeof(Huali.DS9208.FrmQueryByQRCode));
+        }
+
+        private void ButtonItem23_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("按订单查询", typeof(Huali.DS9208.FrmQueryByBill));
+        }
+
+        private void ButtonItem21_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("生成二维码", typeof(Huali.DS9208.FrmBuildQRCode));
+        }
+
+        private void ButtonItem22_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("扫描二维码", typeof(Huali.DS9208.FrmQRCodeScan));
+        }
+
+        private void ButtonItem30_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("二维码统计", typeof(Huali.DS9208.FrmStatistics));
+        }
+
+        private void ButtonItem31_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("查询核销状态", typeof(Huali.DS9208.FrmQueryCheckState));
+        }
+
+        #endregion
+
 
         #endregion
 
@@ -292,6 +391,8 @@ namespace Huali
             }
 
         }
+
+
 
 
 
