@@ -1,9 +1,9 @@
 ﻿using DevComponents.DotNetBar;
 using DevComponents.Editors;
 using Huali.Common;
-using Ray.Framework.CustomDotNetBar;
-using Ray.Framework.DBUtility;
-using Ray.Framework.Encrypt;
+using Ryan.Framework.Common;
+using Ryan.Framework.DBUtility;
+using Ryan.Framework.Encrypt;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -20,8 +20,7 @@ namespace Huali.DS9208
 
         DataTable dt = new DataTable();
         string sql = "";
-        private static readonly string conn = CommonProcess.GetAppSettingConString();
-
+        private static readonly string conn = SqlHelper.GetConnectionString("ALiClouds");
         #region 事件
         /// <summary>
         /// 用户输入新的出库单并确认

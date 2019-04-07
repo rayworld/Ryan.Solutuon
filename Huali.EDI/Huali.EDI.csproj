@@ -37,6 +37,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -81,6 +82,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ryan.Framework.Common\Ryan.Framework.Common.csproj">
+      <Project>{46d98007-de2e-4c89-aa01-030741c85a5f}</Project>
+      <Name>Ryan.Framework.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ryan.Framework.DBUtility\Ryan.Framework.DBUtility.csproj">
       <Project>{f06eb8bf-c60e-4c29-834a-238afeb70f3d}</Project>
       <Name>Ryan.Framework.DBUtility</Name>

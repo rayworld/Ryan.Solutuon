@@ -20,8 +20,7 @@ namespace Huali.DS9209
         }
         string sql = "";
         DataTable dt = new DataTable();
-        private static readonly string conn = CommonProcess.GetAppSettingConString();
-
+        private static readonly string conn = SqlHelper.GetConnectionString("DS9209");
 
         private void ButtonX1_Click(object sender, EventArgs e)
         {

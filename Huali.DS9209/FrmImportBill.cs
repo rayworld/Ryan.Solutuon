@@ -29,9 +29,9 @@ namespace Huali.DS9209
         string FCustomId = "FCustomId";
         string FStoreId = "FStoreId";
         string FProductId = "FProductId";
-        string ExcelSheetName = CommonProcess.ModuleIsExist("9209") ? "Sheet1" : "Sheet3";//汉口北仓库Excel文件名"Sheet3",东西湖为“Sheet1”
-        private static readonly string conn = CommonProcess.GetAppSettingConString();
- 
+        string ExcelSheetName = "Sheet3";//汉口北仓库Excel文件名"Sheet3",东西湖为“Sheet1”
+        private static readonly string conn = SqlHelper.GetConnectionString("DS9209");
+
         #region 事件
 
         /// <summary>

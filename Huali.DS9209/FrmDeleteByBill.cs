@@ -22,7 +22,7 @@ namespace Huali.DS9209
         {
             InitializeComponent();
         }
-        private static readonly string conn = CommonProcess.GetAppSettingConString();
+        private static readonly string conn = SqlHelper.GetConnectionString("DS9209");
         string sql = "";
         
         private void Form8_Load(object sender, EventArgs e)

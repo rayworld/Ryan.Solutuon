@@ -1,7 +1,7 @@
 using DevComponents.DotNetBar;
-using Ray.Framework.CustomDotNetBar;
 using Huali.EDI2.Models;
-using Ray.Framework.Converter;
+using Ryan.Framework.Common;
+using Ryan.Framework.Converter;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -895,10 +895,6 @@ namespace Huali.EDI2
 
         #endregion
 
-        private void FrmSEOutStock_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 
     public enum TemplateType 

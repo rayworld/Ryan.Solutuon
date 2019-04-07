@@ -31,8 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=12.8.0.6, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Huali\bin\Debug\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL.cs" />
-    <Compile Include="FrmSEOutStock.cs" />
+    <Compile Include="FrmSEOutStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmSEOutStock.designer.cs">
       <DependentUpon>FrmSEOutStock.cs</DependentUpon>
     </Compile>
@@ -55,6 +63,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ryan.Framework.Common\Ryan.Framework.Common.csproj">
+      <Project>{46d98007-de2e-4c89-aa01-030741c85a5f}</Project>
+      <Name>Ryan.Framework.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.Converter\Ryan.Framework.Converter.csproj">
+      <Project>{d8c29016-b835-4eed-beb0-0144be57c494}</Project>
+      <Name>Ryan.Framework.Converter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ryan.Framework.DBUtility\Ryan.Framework.DBUtility.csproj">
       <Project>{f06eb8bf-c60e-4c29-834a-238afeb70f3d}</Project>
       <Name>Ryan.Framework.DBUtility</Name>

@@ -1,8 +1,8 @@
 ﻿using DevComponents.DotNetBar;
 using Huali.Common;
-using Ray.Framework.CustomDotNetBar;
-using Ray.Framework.DBUtility;
-using Ray.Framework.Encrypt;
+using Ryan.Framework.Common;
+using Ryan.Framework.DBUtility;
+using Ryan.Framework.Encrypt;
 using System;
 using System.Data;
 
@@ -18,8 +18,7 @@ namespace Huali.DS9208
         DataTable dt = new DataTable();
         string mingQRCode = "";
         string sql = "";
-        private static readonly string conn = CommonProcess.GetAppSettingConString();
-
+        private static readonly string conn = SqlHelper.GetConnectionString("ALiClouds");
         /// <summary>
         /// 查询
         /// </summary>

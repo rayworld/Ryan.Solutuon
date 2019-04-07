@@ -1,10 +1,9 @@
 ﻿using DevComponents.DotNetBar;
-using Ray.Framework.CustomDotNetBar;
 using Huali.EDI.DAL;
+using Ryan.Framework.Common;
 using System;
 using System.Data;
 using System.Data.OleDb;
-using System.Windows.Forms;
 
 namespace Huali.EDI
 {

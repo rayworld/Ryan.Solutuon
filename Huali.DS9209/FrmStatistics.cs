@@ -17,8 +17,7 @@ namespace Huali.DS9209
 
         private string sql = "";
         string Procedure_Name = "CreateOrUpdateQrcodeCounter";
-        private static readonly string conn = CommonProcess.GetAppSettingConString();
-
+        private static readonly string conn = SqlHelper.GetConnectionString("DS9209");
 
         /// <summary>
         /// 查询QRCode的计数

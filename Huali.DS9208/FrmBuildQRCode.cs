@@ -1,8 +1,9 @@
 ﻿using DevComponents.DotNetBar;
-using Ray.Framework.Config;
-using Ray.Framework.Converter;
-using Ray.Framework.CustomDotNetBar;
-using Ray.Framework.Encrypt;
+using Ryan.Framework.Config;
+using Ryan.Framework.Converter;
+using Ryan.Framework.Common;
+using Ryan.Framework.Encrypt;
+using Ryan.Framework.DBUtility;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -21,7 +22,7 @@ namespace Huali.DS9208
         }
 
         DataTable dt = new DataTable();
-        //private static readonly string conn = SqlHelper.GetConnectionString("ALiClouds");
+        private static readonly string conn = SqlHelper.GetConnectionString("ALiClouds");
 
 
         #region 事件

@@ -15,8 +15,7 @@ namespace Huali.DS9209
             InitializeComponent();
         }
 
-        private static readonly string conn = CommonProcess.GetAppSettingConString();
-
+        private static readonly string conn = SqlHelper.GetConnectionString("DS9209");
 
         private void TextBoxX2_KeyDown(object sender, KeyEventArgs e)
         {

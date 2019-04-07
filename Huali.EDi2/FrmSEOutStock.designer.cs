@@ -115,7 +115,6 @@ namespace Huali.EDI2
             this.DoubleBuffered = true;
             this.Name = "FrmSEOutStock";
             this.Text = "EDI_Order";
-            this.Load += new System.EventHandler(this.FrmSEOutStock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.panelEx1.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -18,8 +18,7 @@ namespace Huali.DS9209
         DataTable dt = new DataTable();
         string mingQRCode = "";
         string sql = "";
-        private static readonly string conn = CommonProcess.GetAppSettingConString();
-
+        private static readonly string conn = SqlHelper.GetConnectionString("DS9209");
         /// <summary>
         /// 查询
         /// </summary>

@@ -1,9 +1,9 @@
 ﻿using DevComponents.DotNetBar;
 using DevComponents.Editors;
 using Huali.Common;
-using Ray.Framework.Config;
-using Ray.Framework.CustomDotNetBar;
-using Ray.Framework.DBUtility;
+using Ryan.Framework.Config;
+using Ryan.Framework.Common;
+using Ryan.Framework.DBUtility;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -22,7 +22,8 @@ namespace Huali.DS9208
         {
             InitializeComponent();
         }
-        private static readonly string conn = CommonProcess.GetAppSettingConString();
+
+        private static readonly string conn = SqlHelper.GetConnectionString("ALiClouds");
         string sql = "";
         
         private void Form8_Load(object sender, EventArgs e)

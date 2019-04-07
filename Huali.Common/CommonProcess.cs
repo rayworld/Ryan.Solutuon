@@ -65,13 +65,13 @@ namespace Huali.Common
         /// 统一管理应用的数据库连接
         /// </summary>
         /// <returns>数据库连接字符串</returns>
-        public static string GetAppSettingConString()
-        {
-            //string Modules = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "Modules");
-            //string ConnectionName = Modules.IndexOf("9208") > 0 ? "ALiCloud" : "DS9209";
-            string ConnectionName = ModuleIsExist("9208") ? "ALiCloud" : "DS9209";
-            return SqlHelper.GetConnectionString(ConnectionName);   
-        }
+        //public static string GetAppSettingConString()
+        //{
+        //    //string Modules = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "Modules");
+        //    //string ConnectionName = Modules.IndexOf("9208") > 0 ? "ALiCloud" : "DS9209";
+        //    string ConnectionName = ModuleIsExist("9208") ? "ALiCloud" : "DS9209";
+        //    return SqlHelper.GetConnectionString(ConnectionName);   
+        //}
 
         /// <summary>
         /// 检查模块是否存在，从配置文件中读取设置，检查是否是加载的模块

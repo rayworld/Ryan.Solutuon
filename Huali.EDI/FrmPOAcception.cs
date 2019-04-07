@@ -1,6 +1,6 @@
 ﻿using DevComponents.DotNetBar;
-using Ray.Framework.CustomDotNetBar;
-using Ray.Framework.DBUtility;
+using Ryan.Framework.Common;
+using Ryan.Framework.DBUtility;
 using System;
 using System.Data;
 using System.Text;
