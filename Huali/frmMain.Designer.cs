@@ -1,4 +1,4 @@
-﻿namespace Ryan.WindowsPlatform
+﻿namespace Huali
 {
     partial class FrmMain
     {
