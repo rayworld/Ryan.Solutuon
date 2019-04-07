@@ -30,8 +30,8 @@ namespace Huali.DS9208
             if (startDate != "0001-01-01" && endDate != "0001-01-01")
             {
                 string sqlDS9208 = string.Format("SELECT [日期],[购货单位],[单据编号],sum([实发数量]) as 应扫数量, sum([FActQty]) as 实扫数量  FROM [dbo].[icstock]  where [日期] >= '{0} 00:00:00' and [日期] <= '{1} 23:59:59' and [实发数量] > 0 and [产品编号] Like '02%' group by [日期],[购货单位],[单据编号] order by [日期],[购货单位],[单据编号]", startDate, endDate);
-                string sqlDS9209 = string.Format("SELECT [日期],[购货单位], [单据编号], [产品名称], [实发数量] as 应扫数量, [FActQty] as 实扫数量  FROM [dbo].[icstock]  where [日期] >= '{0} 00:00:00' and [日期] <= '{1} 23:59:59' and [实发数量] > 0 order by [日期], [购货单位], [单据编号], [产品名称]", startDate, endDate);
-                sql = CommonProcess.ModuleIsExist("9209") ? sqlDS9209:sqlDS9208;
+                //string sqlDS9209 = string.Format("SELECT [日期],[购货单位], [单据编号], [产品名称], [实发数量] as 应扫数量, [FActQty] as 实扫数量  FROM [dbo].[icstock]  where [日期] >= '{0} 00:00:00' and [日期] <= '{1} 23:59:59' and [实发数量] > 0 order by [日期], [购货单位], [单据编号], [产品名称]", startDate, endDate);
+                sql = sqlDS9208;
                 dt = SqlHelper.ExecuteDataTable(conn,sql);
                 dataGridViewX1.DataSource = dt;
                 dataGridViewX1.Columns["购货单位"].Width = 300;

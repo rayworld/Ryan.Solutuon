@@ -1,7 +1,5 @@
 ﻿using DevComponents.DotNetBar;
 using DevComponents.Editors;
-using Huali.Common;
-using Ryan.Framework.Config;
 using Ryan.Framework.Common;
 using Ryan.Framework.DBUtility;
 using System;
@@ -100,19 +98,19 @@ namespace Huali.DS9209
             string[] prodT = null;
             //string prodType0 = "17";
             //string prodType1 = "16;18";
-            string confProdType = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "Modules");
-            if (confProdType == EnumProductType.DS9209.ToString())
-            {
-                prodT = "17".Split(';');
-            }
-            else if (confProdType == EnumProductType.DS9208.ToString())
-            {
-                prodT = "16;18".Split(';');
-            }
-            else
-            {
-                CustomDesktopAlert.H2("产品类型设置错误！");
-            }
+            //string confProdType = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "Modules");
+            //if (confProdType == EnumProductType.DS9209.ToString())
+            //{
+            prodT = "17".Split(';');
+            //}
+            //else if (confProdType == EnumProductType.DS9208.ToString())
+            //{
+            //    prodT = "16;18".Split(';');
+            //}
+            //else
+            //{
+            //    CustomDesktopAlert.H2("产品类型设置错误！");
+            //}
 
             string baseTableName = "dbo.t_QRCode";
 
@@ -128,5 +126,5 @@ namespace Huali.DS9209
             return retVal;
         }
     }
-    public enum EnumProductType { DS9209, DS9208, }
+    //public enum EnumProductType { DS9209, DS9208, }
 }

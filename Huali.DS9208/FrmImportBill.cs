@@ -1,7 +1,6 @@
 ﻿using DevComponents.DotNetBar;
-using Huali.Common;
-using Ryan.Framework.Config;
 using Ryan.Framework.Common;
+using Ryan.Framework.Config;
 using Ryan.Framework.DBUtility;
 using System;
 using System.Data;
@@ -29,7 +28,7 @@ namespace Huali.DS9208
         string FCustomId = "FCustomId";
         string FStoreId = "FStoreId";
         string FProductId = "FProductId";
-        string ExcelSheetName = "Sheet1";//汉口北仓库Excel文件名"Sheet3",东西湖为“Sheet1”
+        string ExcelSheetName = "Sheet3";//汉口北仓库Excel文件名"Sheet3",东西湖为“Sheet1”
         private static readonly string conn = SqlHelper.GetConnectionString("ALiClouds");
 
         #region 事件

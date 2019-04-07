@@ -40,12 +40,12 @@
             this.comboBoxEx2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
+            this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.controlContainerItem1 = new DevComponents.DotNetBar.ControlContainerItem();
-            this.comboItem3 = new DevComponents.Editors.ComboItem();
-            this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
@@ -56,9 +56,10 @@
             // 
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(43, 319);
+            this.labelX4.Location = new System.Drawing.Point(64, 478);
+            this.labelX4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(133, 23);
+            this.labelX4.Size = new System.Drawing.Size(200, 34);
             this.labelX4.TabIndex = 14;
             this.labelX4.Text = "完成进度：";
             // 
@@ -68,9 +69,10 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(530, 32);
+            this.labelX2.Location = new System.Drawing.Point(795, 48);
+            this.labelX2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(69, 23);
+            this.labelX2.Size = new System.Drawing.Size(104, 34);
             this.labelX2.TabIndex = 11;
             this.labelX2.Text = "明细项目：";
             // 
@@ -81,9 +83,10 @@
             this.comboBoxEx1.ForeColor = System.Drawing.Color.Black;
             this.comboBoxEx1.FormattingEnabled = true;
             this.comboBoxEx1.ItemHeight = 15;
-            this.comboBoxEx1.Location = new System.Drawing.Point(598, 32);
+            this.comboBoxEx1.Location = new System.Drawing.Point(897, 48);
+            this.comboBoxEx1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Size = new System.Drawing.Size(394, 21);
+            this.comboBoxEx1.Size = new System.Drawing.Size(589, 21);
             this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx1.TabIndex = 9;
             this.comboBoxEx1.SelectedIndexChanged += new System.EventHandler(this.ComboBoxEx1_SelectedIndexChanged);
@@ -98,10 +101,11 @@
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX1.DisabledBackColor = System.Drawing.Color.White;
             this.textBoxX1.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX1.Location = new System.Drawing.Point(342, 32);
+            this.textBoxX1.Location = new System.Drawing.Point(513, 48);
+            this.textBoxX1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.Size = new System.Drawing.Size(169, 21);
+            this.textBoxX1.Size = new System.Drawing.Size(254, 28);
             this.textBoxX1.TabIndex = 8;
             this.textBoxX1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxX1_KeyDown);
             // 
@@ -119,8 +123,9 @@
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
+            this.panelEx1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1028, 90);
+            this.panelEx1.Size = new System.Drawing.Size(1897, 135);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -135,9 +140,10 @@
             // 
             // 
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(276, 32);
+            this.labelX5.Location = new System.Drawing.Point(414, 48);
+            this.labelX5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(60, 21);
+            this.labelX5.Size = new System.Drawing.Size(90, 32);
             this.labelX5.TabIndex = 46;
             this.labelX5.Text = "单据编号:";
             // 
@@ -153,9 +159,10 @@
             this.comboItem2,
             this.comboItem3,
             this.comboItem4});
-            this.comboBoxEx2.Location = new System.Drawing.Point(73, 32);
+            this.comboBoxEx2.Location = new System.Drawing.Point(110, 48);
+            this.comboBoxEx2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxEx2.Name = "comboBoxEx2";
-            this.comboBoxEx2.Size = new System.Drawing.Size(185, 21);
+            this.comboBoxEx2.Size = new System.Drawing.Size(276, 21);
             this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxEx2.TabIndex = 45;
             // 
@@ -169,15 +176,26 @@
             this.comboItem2.Text = "其它出库单";
             this.comboItem2.Value = "QOUT";
             // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "销售出库单（19年以前）";
+            this.comboItem3.Value = "XOOO";
+            // 
+            // comboItem4
+            // 
+            this.comboItem4.Text = "其它出库单(19年以前)";
+            this.comboItem4.Value = "QOOO";
+            // 
             // labelX3
             // 
             // 
             // 
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(15, 32);
+            this.labelX3.Location = new System.Drawing.Point(22, 48);
+            this.labelX3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(67, 21);
+            this.labelX3.Size = new System.Drawing.Size(100, 32);
             this.labelX3.TabIndex = 44;
             this.labelX3.Text = "单据类型:";
             // 
@@ -185,9 +203,10 @@
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(1008, 32);
+            this.buttonX1.Location = new System.Drawing.Point(1512, 48);
+            this.buttonX1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(75, 23);
+            this.buttonX1.Size = new System.Drawing.Size(112, 34);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.TabIndex = 12;
             this.buttonX1.Text = "查询";
@@ -217,7 +236,8 @@
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.EnableHeadersVisualStyles = false;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(0, 90);
+            this.dataGridViewX1.Location = new System.Drawing.Point(0, 135);
+            this.dataGridViewX1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewX1.Name = "dataGridViewX1";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -228,7 +248,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1028, 445);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1897, 667);
             this.dataGridViewX1.TabIndex = 23;
             // 
             // controlContainerItem1
@@ -237,25 +257,16 @@
             this.controlContainerItem1.MenuVisibility = DevComponents.DotNetBar.eMenuVisibility.VisibleAlways;
             this.controlContainerItem1.Name = "controlContainerItem1";
             // 
-            // comboItem3
-            // 
-            this.comboItem3.Text = "销售出库单（19年以前）";
-            this.comboItem3.Value = "XOOO";
-            // 
-            // comboItem4
-            // 
-            this.comboItem4.Text = "其它出库单(19年以前)";
-            this.comboItem4.Value = "QOOO";
-            // 
             // FrmQueryByBill
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 535);
+            this.ClientSize = new System.Drawing.Size(1897, 802);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.labelX4);
             this.Controls.Add(this.panelEx1);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmQueryByBill";
             this.Text = "Form5";
             this.Load += new System.EventHandler(this.Form5_Load);

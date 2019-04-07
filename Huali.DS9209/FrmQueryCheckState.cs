@@ -24,7 +24,7 @@ namespace Huali.DS9209
 
                 string QRCode = textBoxX2.Text;
                 string mingQRCode = EncryptHelper.Decrypt(QRCode);
-                if (!string.IsNullOrEmpty(mingQRCode)&&IsNumeric(mingQRCode))
+                if (!string.IsNullOrEmpty(mingQRCode) && CommonProcess.IsNumber(mingQRCode))
                 {
                     string tableName = "t_QRCode" + mingQRCode.Substring(0, 4);
                     string sql = string.Format("SELECT TOP 1 [FSTATE] FROM " + tableName + "  WHERE [FQRCode] = '" + mingQRCode + "' ORDER BY [FCREATEDATE] DESC ");
@@ -54,9 +54,9 @@ namespace Huali.DS9209
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static bool IsNumeric(string value)
-        {
-            return Regex.IsMatch(value, @"^[+-]?\d*[.]?\d*$");
-        }
+        //public static bool IsNumeric(string value)
+        //{
+        //    return Regex.IsMatch(value, @"^[+-]?\d*[.]?\d*$");
+        //}
     }
 }

@@ -21,7 +21,8 @@ namespace Huali.DS9209
 
         string mingQRCodes = "";
         string sql = "";
-        private static readonly string conn = SqlHelper.GetConnectionString("DS9209");        //private static readonly string connTest = SqlHelper.GetConnectionString("AliTest");
+        private static readonly string conn = SqlHelper.GetConnectionString("DS9209");
+        //private static readonly string connTest = SqlHelper.GetConnectionString("AliTest");
         public static string Data_Source = AppDomain.CurrentDomain.BaseDirectory + "QRCode1.accdb";
         private static readonly string connAccess = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source="+ Data_Source + ";Persist Security Info=False;";
         DataTable dt = (DataTable)null;

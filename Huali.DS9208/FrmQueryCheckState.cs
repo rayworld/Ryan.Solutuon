@@ -3,7 +3,6 @@ using Huali.Common;
 using Ryan.Framework.Common;
 using Ryan.Framework.DBUtility;
 using Ryan.Framework.Encrypt;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Huali.DS9208
@@ -24,7 +23,7 @@ namespace Huali.DS9208
 
                 string QRCode = textBoxX2.Text;
                 string mingQRCode = EncryptHelper.Decrypt(QRCode);
-                if (!string.IsNullOrEmpty(mingQRCode)&&IsNumeric(mingQRCode))
+                if (!string.IsNullOrEmpty(mingQRCode)&& CommonProcess.IsNumber(mingQRCode))
                 {
                     string tableName = "t_QRCode" + mingQRCode.Substring(0, 4);
                     string sql = string.Format("SELECT TOP 1 [FSTATE] FROM " + tableName + "  WHERE [FQRCode] = '" + mingQRCode + "' ORDER BY [FCREATEDATE] DESC ");
@@ -54,9 +53,9 @@ namespace Huali.DS9208
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static bool IsNumeric(string value)
-        {
-            return Regex.IsMatch(value, @"^[+-]?\d*[.]?\d*$");
-        }
+        //public static bool IsNumeric(string value)
+        //{
+        //    return Regex.IsMatch(value, @"^[+-]?\d*[.]?\d*$");
+        //}
     }
 }

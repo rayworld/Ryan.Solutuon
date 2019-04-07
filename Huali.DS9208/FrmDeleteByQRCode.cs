@@ -1,6 +1,5 @@
 ﻿using DevComponents.DotNetBar;
 using DevComponents.Editors;
-using Huali.Common;
 using Ryan.Framework.Common;
 using Ryan.Framework.DBUtility;
 using Ryan.Framework.Encrypt;

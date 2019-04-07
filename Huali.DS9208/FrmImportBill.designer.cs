@@ -54,9 +54,10 @@
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(134, 28);
+            this.buttonX1.Location = new System.Drawing.Point(201, 42);
+            this.buttonX1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(94, 32);
+            this.buttonX1.Size = new System.Drawing.Size(141, 48);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.TabIndex = 6;
             this.buttonX1.Text = "导入";
@@ -71,8 +72,9 @@
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
+            this.panelEx1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(839, 90);
+            this.panelEx1.Size = new System.Drawing.Size(1258, 135);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -86,9 +88,10 @@
             // 
             this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(21, 28);
+            this.buttonX2.Location = new System.Drawing.Point(32, 42);
+            this.buttonX2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonX2.Name = "buttonX2";
-            this.buttonX2.Size = new System.Drawing.Size(94, 32);
+            this.buttonX2.Size = new System.Drawing.Size(141, 48);
             this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX2.TabIndex = 7;
             this.buttonX2.Text = "打开";
@@ -109,21 +112,24 @@
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(0, 90);
+            this.dataGridViewX1.Location = new System.Drawing.Point(0, 135);
+            this.dataGridViewX1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(839, 379);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1258, 569);
             this.dataGridViewX1.TabIndex = 8;
             // 
-            // Form2
+            // FrmImportBill
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(839, 469);
+            this.ClientSize = new System.Drawing.Size(1258, 704);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.panelEx1);
-            this.Name = "Form2";
+            this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "FrmImportBill";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.panelEx1.ResumeLayout(false);

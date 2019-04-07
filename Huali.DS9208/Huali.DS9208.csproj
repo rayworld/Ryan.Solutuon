@@ -126,6 +126,9 @@
     <EmbeddedResource Include="FrmDeleteByQRCode.resx">
       <DependentUpon>FrmDeleteByQRCode.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmImportBill.resx">
+      <DependentUpon>FrmImportBill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmQRCodeScan.resx">
       <DependentUpon>FrmQRCodeScan.cs</DependentUpon>
     </EmbeddedResource>

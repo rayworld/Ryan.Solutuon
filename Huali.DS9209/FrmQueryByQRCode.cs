@@ -1,5 +1,4 @@
 ﻿using DevComponents.DotNetBar;
-using Huali.Common;
 using Ryan.Framework.Common;
 using Ryan.Framework.DBUtility;
 using Ryan.Framework.Encrypt;
