@@ -128,6 +128,63 @@ namespace Huali
             ConfigHelper.UpdateOrCreateAppSetting(ConfigHelper.ConfigurationFile.AppConfig, "FormStyle", source.CommandParameter.ToString());
         }
 
+        #region DS9209
+
+
+        private void Bi9209BillImport_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("导入单据", typeof(Huali.DS9209.FrmImportBill));
+        }
+
+        private void Bi9209DelByBill_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("删除单据", typeof(Huali.DS9209.FrmDeleteByBill));
+        }
+
+        private void Bi9209Sate_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("二维码统计", typeof(Huali.DS9209.FrmStatistics));
+        }
+
+        private void Bi9209DelByQRCode_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("删除二维码", typeof(Huali.DS9209.FrmDeleteByQRCode));
+        }
+
+        private void Bi9209QueryBill3_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("单据完成情况", typeof(Huali.DS9209.FrmQueryBill3));
+        }
+
+        private void Bi9209QueryScanedQRCode_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("所有扫过码的单", typeof(Huali.DS9209.FrmQueryFinishedBill));
+        }
+
+        private void Bi9209QueryByQRCode_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("按二维码查询", typeof(Huali.DS9209.FrmQueryByQRCode));
+        }
+
+        private void Bi9209QueryByBill_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("按订单查询", typeof(Huali.DS9209.FrmQueryByBill));
+        }
+
+        private void Bi9209QRCodeScan_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("扫描二维码", typeof(Huali.DS9209.FrmQRCodeScan));
+        }
+
+
+
+
+
+
+
+
+        #endregion
+
 
         #endregion
 
@@ -235,6 +292,7 @@ namespace Huali
             }
 
         }
+
 
 
 

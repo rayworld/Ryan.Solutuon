@@ -103,6 +103,14 @@
       <Project>{43946455-1c59-4e61-b672-122f56ff1275}</Project>
       <Name>Huali.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Huali.DS9208\Huali.DS9208.csproj">
+      <Project>{99756f42-c097-4bf8-ba53-f9f3eda64501}</Project>
+      <Name>Huali.DS9208</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Huali.DS9209\Huali.DS9209.csproj">
+      <Project>{11be42a4-a50c-4ee7-bc71-5c462d333689}</Project>
+      <Name>Huali.DS9209</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ryan.Framework.AutoUpdate\Ryan.Framework.AutoUpdate.csproj">
       <Project>{e12a1e8e-c46c-41c6-a624-b4f474a65683}</Project>
       <Name>Ryan.Framework.AutoUpdate</Name>
