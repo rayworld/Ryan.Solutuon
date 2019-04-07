@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Huali.CheckMailState", "Hua
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Huali.Common", "Huali.Common\Huali.Common.csproj", "{43946455-1C59-4E61-B672-122F56FF1275}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ryan.Framework.Converter", "Ryan.Framework.Converter\Ryan.Framework.Converter.csproj", "{D8C29016-B835-4EED-BEB0-0144BE57C494}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{43946455-1C59-4E61-B672-122F56FF1275}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43946455-1C59-4E61-B672-122F56FF1275}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43946455-1C59-4E61-B672-122F56FF1275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8C29016-B835-4EED-BEB0-0144BE57C494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8C29016-B835-4EED-BEB0-0144BE57C494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8C29016-B835-4EED-BEB0-0144BE57C494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8C29016-B835-4EED-BEB0-0144BE57C494}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{608315F4-6941-472D-BD98-2C33F3DB0D6E}</ProjectGuid>
+    <ProjectGuid>{D8C29016-B835-4EED-BEB0-0144BE57C494}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Huali.EDI</RootNamespace>
-    <AssemblyName>Huali.EDI</AssemblyName>
+    <RootNamespace>Ryan.Framework.Converter</RootNamespace>
+    <AssemblyName>Ryan.Framework.Converter</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,13 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevComponents.DotNetBar2, Version=12.8.0.6, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Huali\bin\Debug\DevComponents.DotNetBar2.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,45 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL.cs" />
-    <Compile Include="Enums.cs" />
-    <Compile Include="FrmExport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmExport.designer.cs">
-      <DependentUpon>FrmExport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmImport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmImport.designer.cs">
-      <DependentUpon>FrmImport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmPOAcception.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmPOAcception.designer.cs">
-      <DependentUpon>FrmPOAcception.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models.cs" />
+    <Compile Include="Convert2DataTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="FrmExport.resx">
-      <DependentUpon>FrmExport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmImport.resx">
-      <DependentUpon>FrmImport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmPOAcception.resx">
-      <DependentUpon>FrmPOAcception.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Ryan.Framework.DBUtility\Ryan.Framework.DBUtility.csproj">
-      <Project>{f06eb8bf-c60e-4c29-834a-238afeb70f3d}</Project>
-      <Name>Ryan.Framework.DBUtility</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

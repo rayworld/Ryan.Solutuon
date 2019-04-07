@@ -41,7 +41,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL.cs" />
+    <Compile Include="FrmSEOutStock.cs" />
+    <Compile Include="FrmSEOutStock.designer.cs">
+      <DependentUpon>FrmSEOutStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmSEOutStock.resx">
+      <DependentUpon>FrmSEOutStock.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ryan.Framework.DBUtility\Ryan.Framework.DBUtility.csproj">
+      <Project>{f06eb8bf-c60e-4c29-834a-238afeb70f3d}</Project>
+      <Name>Ryan.Framework.DBUtility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
