@@ -3,7 +3,6 @@ using Ryan.Framework.Config;
 using Ryan.Framework.Converter;
 using Ryan.Framework.Common;
 using Ryan.Framework.Encrypt;
-using Ryan.Framework.DBUtility;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -22,7 +21,7 @@ namespace Huali.DS9208
         }
 
         DataTable dt = new DataTable();
-        private static readonly string conn = SqlHelper.GetConnectionString("ALiClouds");
+        //private static readonly string conn = SqlHelper.GetConnectionString("ALiClouds");
 
 
         #region 事件
@@ -103,17 +102,17 @@ namespace Huali.DS9208
         /// <param name="year">两位数年份</param>
         /// <param name="startNo">起始编号</param>
         /// <param name="endNo">结束编号</param>
-        private static void QRCodeBuilder(string year, int startNo, int endNo)
-        {
-            string tableIndex = GetTableIndexByQRCode(year.ToString() + startNo.ToString().PadLeft(7, '0'));
-            if (startNo > 0 && endNo > 0)
-            {
-                for (int i = startNo; i < endNo; i++)
-                {
-                    string QRCode = year.ToString() + i.ToString().PadLeft(7, '0');
-                }
-            }
-        }
+        //private static void QRCodeBuilder(string year, int startNo, int endNo)
+        //{
+        //    string tableIndex = GetTableIndexByQRCode(year.ToString() + startNo.ToString().PadLeft(7, '0'));
+        //    if (startNo > 0 && endNo > 0)
+        //    {
+        //        for (int i = startNo; i < endNo; i++)
+        //        {
+        //            string QRCode = year.ToString() + i.ToString().PadLeft(7, '0');
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// 由于数据量太大，系统采用分库处理
@@ -121,17 +120,17 @@ namespace Huali.DS9208
         /// </summary>
         /// <param name="QRCode">二维码明文</param>
         /// <returns></returns>
-        private static string GetTableIndexByQRCode(string QRCode)
-        {
-            string retVal = "";
-            if (!string.IsNullOrEmpty(QRCode))
-            {
-                string QRYear = QRCode.Substring(0, 2);
-                string QRTableIndex = QRCode.Substring(2, 2);
-                retVal = "t_QRCode20" + QRYear + QRTableIndex;
-            }
-            return retVal;
-        }
+        //private static string GetTableIndexByQRCode(string QRCode)
+        //{
+        //    string retVal = "";
+        //    if (!string.IsNullOrEmpty(QRCode))
+        //    {
+        //        string QRYear = QRCode.Substring(0, 2);
+        //        string QRTableIndex = QRCode.Substring(2, 2);
+        //        retVal = "t_QRCode20" + QRYear + QRTableIndex;
+        //    }
+        //    return retVal;
+        //}
 
 
         /// <summary>

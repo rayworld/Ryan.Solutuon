@@ -4,15 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E2AA0934-CEDA-41A3-9C8D-928E535F715F}</ProjectGuid>
+    <ProjectGuid>{9427531A-DEF4-455A-AA1B-8894DE09557D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Huali</RootNamespace>
-    <AssemblyName>Huali</AssemblyName>
+    <RootNamespace>Aohua</RootNamespace>
+    <AssemblyName>Aohua</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -23,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,7 +30,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar2, Version=12.8.0.6, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
@@ -53,6 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmDataCompare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDataCompare.Designer.cs">
+      <DependentUpon>FrmDataCompare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDataExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDataExport.Designer.cs">
+      <DependentUpon>FrmDataExport.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +75,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmDataCompare.resx">
+      <DependentUpon>FrmDataCompare.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,7 +92,6 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -94,35 +104,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Huali.CheckMailState\Huali.CheckMailState.csproj">
-      <Project>{850845e1-cef6-4f4b-9938-494126f361d2}</Project>
-      <Name>Huali.CheckMailState</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Huali.Common\Huali.Common.csproj">
-      <Project>{43946455-1c59-4e61-b672-122f56ff1275}</Project>
-      <Name>Huali.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Huali.DS9208\Huali.DS9208.csproj">
-      <Project>{99756f42-c097-4bf8-ba53-f9f3eda64501}</Project>
-      <Name>Huali.DS9208</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Huali.DS9209\Huali.DS9209.csproj">
-      <Project>{11be42a4-a50c-4ee7-bc71-5c462d333689}</Project>
-      <Name>Huali.DS9209</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Huali.EDi2\Huali.EDi2.csproj">
-      <Project>{66e05230-f104-4de6-b43e-e09166727d28}</Project>
-      <Name>Huali.EDi2</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Huali.EDI\Huali.EDI.csproj">
-      <Project>{608315f4-6941-472d-bd98-2c33f3db0d6e}</Project>
-      <Name>Huali.EDI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Ryan.Framework.AutoUpdate\Ryan.Framework.AutoUpdate.csproj">
       <Project>{e12a1e8e-c46c-41c6-a624-b4f474a65683}</Project>
       <Name>Ryan.Framework.AutoUpdate</Name>
@@ -135,6 +119,10 @@
       <Project>{87a3a7af-c820-4063-95c0-5fedc4dee228}</Project>
       <Name>Ryan.Framework.Config</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.Converter\Ryan.Framework.Converter.csproj">
+      <Project>{d8c29016-b835-4eed-beb0-0144be57c494}</Project>
+      <Name>Ryan.Framework.Converter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ryan.Framework.DBUtility\Ryan.Framework.DBUtility.csproj">
       <Project>{f06eb8bf-c60e-4c29-834a-238afeb70f3d}</Project>
       <Name>Ryan.Framework.DBUtility</Name>
@@ -143,9 +131,6 @@
       <Project>{b89488a3-8231-48cf-8416-4f46d9d156c0}</Project>
       <Name>Ryan.Framework.Encrypt</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Huali.Common", "Huali.Commo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ryan.Framework.Converter", "Ryan.Framework.Converter\Ryan.Framework.Converter.csproj", "{D8C29016-B835-4EED-BEB0-0144BE57C494}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aohua", "Aohua\Aohua.csproj", "{9427531A-DEF4-455A-AA1B-8894DE09557D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{D8C29016-B835-4EED-BEB0-0144BE57C494}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8C29016-B835-4EED-BEB0-0144BE57C494}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8C29016-B835-4EED-BEB0-0144BE57C494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9427531A-DEF4-455A-AA1B-8894DE09557D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9427531A-DEF4-455A-AA1B-8894DE09557D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9427531A-DEF4-455A-AA1B-8894DE09557D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9427531A-DEF4-455A-AA1B-8894DE09557D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

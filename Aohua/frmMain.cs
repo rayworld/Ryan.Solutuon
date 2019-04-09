@@ -6,7 +6,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Huali
+namespace Aohua
 {
     public partial class FrmMain : Office2007Form
     {
@@ -34,7 +34,7 @@ namespace Huali
             this.ribbonControl1.TitleText = EncryptHelper.Decrypt(ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "AppName"));
             ////获取窗口样式
             GetStyleSetting();
-            LoadModule();
+            //LoadModule();
 
             //用户登录
             FrmLogin login = new FrmLogin();
@@ -127,208 +127,50 @@ namespace Huali
             //保存用户设置
             ConfigHelper.UpdateOrCreateAppSetting(ConfigHelper.ConfigurationFile.AppConfig, "FormStyle", source.CommandParameter.ToString());
         }
-
-        #region DS9209
-
-
-        private void Bi9209BillImport_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("导入单据", typeof(Huali.DS9209.FrmImportBill));
-        }
-
-        private void Bi9209DelByBill_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("删除单据", typeof(Huali.DS9209.FrmDeleteByBill));
-        }
-
-        private void Bi9209Sate_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("二维码统计", typeof(Huali.DS9209.FrmStatistics));
-        }
-
-        private void Bi9209DelByQRCode_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("删除二维码", typeof(Huali.DS9209.FrmDeleteByQRCode));
-        }
-
-        private void Bi9209QueryBill3_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("单据完成情况", typeof(Huali.DS9209.FrmQueryBill3));
-        }
-
-        private void Bi9209QueryScanedQRCode_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("所有扫过码的单", typeof(Huali.DS9209.FrmQueryFinishedBill));
-        }
-
-        private void Bi9209QueryByQRCode_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("按二维码查询", typeof(Huali.DS9209.FrmQueryByQRCode));
-        }
-
-        private void Bi9209QueryByBill_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("按订单查询", typeof(Huali.DS9209.FrmQueryByBill));
-        }
-
-        private void Bi9209QRCodeScan_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("扫描二维码", typeof(Huali.DS9209.FrmQRCodeScan));
-        }
-
-
-
-
-
-
-
-
-        #endregion
-
-        #region EDI2
-        /// <summary>
-        /// 日立订单导入
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ButtonItem14_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("日立订单导入", typeof(Huali.EDI2.FrmSEOutStock));
-        }
-        /// <summary>
-        /// 其它订单导入
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ButtonItem15_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("其它订单导入", typeof(Huali.EDI2.FrmSEOutStock));
-        }
-        #endregion
-
-        #region EDI
-
-        private void ButtonItem18_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("导入收货通知单", typeof(Huali.EDI.FrmImport));
-        }
-
-        private void ButtonItem19_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("导出EDI数据", typeof(Huali.EDI.FrmExport));
-        }
-
-        private void ButtonItem20_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("确认到货通知", typeof(Huali.EDI.FrmPOAcception));
-        }
-        #endregion
-
-        #region DS9208
-
-
-        private void ButtonItem25_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("所有扫过码的单", typeof(Huali.DS9208.FrmQueryFinishedBill));
-        }
-
-        private void ButtonItem26_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("单据完成情况", typeof(Huali.DS9208.FrmQueryBill3));
-        }
-
-        private void ButtonItem29_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("删除二维码", typeof(Huali.DS9208.FrmDeleteByQRCode));
-        }
-
-        private void ButtonItem28_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("删除单据", typeof(Huali.DS9208.FrmDeleteByBill));
-        }
-
-        private void ButtonItem27_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("导入单据", typeof(Huali.DS9208.FrmImportBill));
-        }
-
-        private void ButtonItem24_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("按二维码查询", typeof(Huali.DS9208.FrmQueryByQRCode));
-        }
-
-        private void ButtonItem23_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("按订单查询", typeof(Huali.DS9208.FrmQueryByBill));
-        }
-
-        private void ButtonItem21_Click(object sender, EventArgs e)
-        {
-            //SetMdiForm("生成二维码", typeof(Huali.DS9208.FrmBuildQRCode));
-        }
-
-        private void ButtonItem22_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("扫描二维码", typeof(Huali.DS9208.FrmQRCodeScan));
-        }
-
-        private void ButtonItem30_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("二维码统计", typeof(Huali.DS9208.FrmStatistics));
-        }
-
-        private void ButtonItem31_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("查询核销状态", typeof(Huali.DS9208.FrmQueryCheckState));
-        }
-
-        #endregion
-
-
         #endregion
 
         #region 私有过程
 
-        private void LoadModule()
-        {
-            string myModules = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "Modules");
-            if (!string.IsNullOrWhiteSpace(myModules))
-            {
-                string[] myModule = myModules.Split(';');
-                foreach (string module in myModule)
-                {
-                    if (module.ToLower() == ModuleName.EDI.ToString().ToLower())
-                    {
-                        rtiEDI.Visible = true;
-                        rtiEDI.Select();
-                    }
-                    else if (module.ToLower() == ModuleName.EDI2.ToString().ToLower())
-                    {
-                        rtiEDI2.Visible = true;
-                        rtiEDI2.Select();
-                    }
-                    else if (module.ToLower() == ModuleName.DS9208.ToString().ToLower())
-                    {
-                        rti9208.Visible = true;
-                        rti9208.Select();
-                    }
-                    else if (module.ToLower() == ModuleName.DS9209.ToString().ToLower())
-                    {
-                        rti9209.Visible = true;
-                        rti9209.Select();
-                    }
-                    else
-                    {
-                        CustomDesktopAlert.H2(module.ToLower() + "不能识别的应用模块！");
-                    }
-                }
+        //private void LoadModule()
+        //{
+        //    string myModules = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "Modules");
+        //    if (!string.IsNullOrWhiteSpace(myModules))
+        //    {
+        //        string[] myModule = myModules.Split(';');
+        //        foreach (string module in myModule)
+        //        {
+        //            if (module.ToLower() == ModuleName.EDI.ToString().ToLower())
+        //            {
+        //                rtiEDI.Visible = true;
+        //                rtiEDI.Select();
+        //            }
+        //            else if (module.ToLower() == ModuleName.EDI2.ToString().ToLower())
+        //            {
+        //                rtiEDI2.Visible = true;
+        //                rtiEDI2.Select();
+        //            }
+        //            else if (module.ToLower() == ModuleName.DS9208.ToString().ToLower())
+        //            {
+        //                rti9208.Visible = true;
+        //                rti9208.Select();
+        //            }
+        //            else if (module.ToLower() == ModuleName.DS9209.ToString().ToLower())
+        //            {
+        //                rti9209.Visible = true;
+        //                rti9209.Select();
+        //            }
+        //            else
+        //            {
+        //                CustomDesktopAlert.H2(module.ToLower() + "不能识别的应用模块！");
+        //            }
+        //        }
 
-            }
-            else
-            {
-                CustomDesktopAlert.H2("应用程序加载模块出错！");
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        CustomDesktopAlert.H2("应用程序加载模块出错！");
+        //    }
+        //}
 
 
         /// <summary>
@@ -399,13 +241,15 @@ namespace Huali
 
         #endregion
 
+        private void BiDateComp_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("数据对比", typeof(FrmDataCompare));
+        }
+
+        private void ButtonItem14_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("数据迁移", typeof(FrmDataExport));
+        }
     }
-    public enum ModuleName
-    {
-        EDI,
-        EDI2,
-        DS9208,
-        DS9209,
-        checkmailstat,
-    }
+
 }
