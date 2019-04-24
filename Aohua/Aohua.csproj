@@ -49,6 +49,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\ICStockBillEntrys.cs" />
+    <Compile Include="DAL\MeasureUnits.cs" />
+    <Compile Include="DAL\Common.cs" />
+    <Compile Include="DAL\Organization.cs" />
+    <Compile Include="DAL\ICStockBills.cs" />
+    <Compile Include="FrmDataQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDataQuery.Designer.cs">
+      <DependentUpon>FrmDataQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model.cs" />
+    <Compile Include="Models\ICStockBillEntry.cs" />
+    <Compile Include="Models\MeasureUnit.cs" />
+    <Compile Include="Models\ICStockBill.cs" />
+    <Compile Include="Models\Organization.cs" />
+    <Compile Include="Models\ComparedResult.cs" />
     <Compile Include="FrmDataCompare.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +94,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmDataCompare.resx">
       <DependentUpon>FrmDataCompare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDataExport.resx">
+      <DependentUpon>FrmDataExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDataQuery.resx">
+      <DependentUpon>FrmDataQuery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
