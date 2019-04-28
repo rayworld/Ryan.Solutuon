@@ -33,14 +33,44 @@ namespace Aohua
             tbFinId.Text = Finid;
             tbFinName.Text = FinCustName;
             this.styleManager1.ManagerStyle = (eStyle)Enum.Parse(typeof(eStyle), ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "FormStyle"));
+            string CustName = tbFinName.Text;
+            int Position = 0;
+            if(CustName.IndexOf("(") > -1)
+            {
+                Position = CustName.IndexOf("(");
+            }
+            else if(CustName.IndexOf("（") > -1)
+            {
+                Position  = CustName.IndexOf("（");
+            }
+            else
+            {
+                Position = CustName.Length;
+            }
+            CustName = CustName.Substring(0, Position);
+            tbFinName.Text = CustName.Replace("YF","").Replace("A","");
+            DoQuery(CustName);
         }
 
         private void ButtonX1_Click(object sender, EventArgs e)
         {
-            string queryString = tbFinName.Text;
+            //tbFinName.Text = FinCustName;
+            DoQuery(this.FinCustName);
+        }
+
+        private void DataGridViewX1_CellDoubleClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        {
+            K3Id  = dataGridViewX1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            K3CustName = dataGridViewX1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+        }
+
+        private void DoQuery(string queryString)
+        {
             if (!string.IsNullOrEmpty(queryString))
             {
-                sql = string.Format("select FItemID as 客户号, fname as 客户名称 from t_Organization Where fname like '%{0}%'",queryString);
+                dataGridViewX1.DataSource = null;
+                sql = string.Format("select FItemID as 客户号, fname as 客户名称 from t_Organization Where fname like '%{0}%'", queryString);
                 DataTable dtQuery = SqlHelper.ExecuteDataTable(connK3Src, sql, null);
                 if (dtQuery.Rows.Count > 0)
                 {
@@ -59,11 +89,9 @@ namespace Aohua
             }
         }
 
-        private void DataGridViewX1_CellDoubleClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        private void TbFinName_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            K3Id  = dataGridViewX1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            K3CustName = dataGridViewX1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            tbFinName.Text = this.FinCustName;
         }
     }
 }

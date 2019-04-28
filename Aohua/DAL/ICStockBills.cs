@@ -686,5 +686,22 @@ namespace Aohua.DAL
             }
             return iCStockBill;
         }
+
+        /// <summary>
+        /// 记录是否存在
+        /// </summary>
+        /// <param name="ItemId"></param>
+        /// <returns></returns>
+        public static bool Exist(int InterID)
+        {
+            bool retVal = true;
+            string sql = string.Format("Select Count(*) From [ICStockBill] Where FInterID = {0} and FTranType = 21", InterID);
+            object obj = SqlHelper.ExecuteScalar(connK3Desc, sql);
+            if (obj == null || obj.ToString() == "")
+            {
+                retVal = false;
+            }
+            return retVal;
+        }
     }
 }

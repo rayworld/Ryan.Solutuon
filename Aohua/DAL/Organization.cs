@@ -16,7 +16,7 @@ namespace Aohua.DAL
         /// </summary>
         /// <param name="dr"></param>
         /// <returns></returns>
-        public static Organization GetModel_Organization(DataRow dr)
+        public static Organization GetModel(DataRow dr)
         {
             Organization t_Organization = new Organization();
             if (dr["FItemID"].ToString() != "")
@@ -392,7 +392,7 @@ namespace Aohua.DAL
         /// <summary>
         /// 增加一条数据
         /// </summary>
-        public static int Insert_Organization(Organization t_Organization)
+        public static int Insert(Organization t_Organization)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into t_Organization(");
@@ -644,6 +644,23 @@ namespace Aohua.DAL
 
             int ret = SqlHelper.ExecuteNonQuery(connK3Desc, strSql.ToString(), parameters);
             return ret;
+        }
+
+        /// <summary>
+        /// 记录是否存在
+        /// </summary>
+        /// <param name="ItemId"></param>
+        /// <returns></returns>
+        public static bool Exist(int ItemId)
+        {
+            bool retVal = true;
+            string sql = string.Format("Select Count(*) From [t_Organization] Where FItemID = {0}", ItemId);
+            object obj = SqlHelper.ExecuteScalar(connK3Desc, sql);
+            if(obj == null || obj.ToString() == "")
+            {
+                retVal = false;
+            }
+            return retVal;
         }
     }
 }

@@ -3,7 +3,6 @@ using DevComponents.DotNetBar;
 using Ryan.Framework.Common;
 using Ryan.Framework.Config;
 using Ryan.Framework.DBUtility;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -88,15 +87,26 @@ namespace Aohua
                 };
                 string Address = "";
                 string Name = "";
+                int Position = -1;
 
                 if (comparedResult.FinCustName.Contains("（") == true && comparedResult.FinCustName.Contains("）") == true)
                 {
                     Address = SubAddress(comparedResult.FinCustName);
+                    Position = GetNumPosition(Address);
+                    if (Position > -1)
+                    {
+                        Address = Address.Substring(0, Position);
+                    }
                     Name = SubName(comparedResult.FinCustName);
                 }
                 else if (comparedResult.FinCustName.Contains("(") == true && comparedResult.FinCustName.Contains(")") == true)
                 {
                     Address = SubAddress1(comparedResult.FinCustName);
+                    Position = GetNumPosition(Address);
+                    if (Position > -1)
+                    {
+                        Address = Address.Substring(0, Position);
+                    }
                     Name = SubName1(comparedResult.FinCustName);
                 }
                 else
@@ -140,17 +150,11 @@ namespace Aohua
         {
             if (comboBoxEx1.SelectedIndex > 0)
             {
-                if(MessageBoxEx.Show("执行智能比对将会清除现有手工比对成功的数据，要继续吗？","系统警告", System.Windows.Forms.MessageBoxButtons.OKCancel,System.Windows.Forms.MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.OK)
-                {
-                    //清除历史比对及手工比对记录
-                    DeleteHistoryCompareData();
+                //得到业务系统客户信息
+                dtK3 = BindK3Data();
 
-                    //得到业务系统客户信息
-                    dtK3 = BindK3Data();
-
-                    string Year = comboBoxEx1.SelectedItem.ToString();
-                    BindGridView(Year,false);
-                }
+                string Year = comboBoxEx1.SelectedItem.ToString();
+                BindGridView(Year,false);
             }
             else
             {
@@ -175,32 +179,47 @@ namespace Aohua
             }
         }
 
-        private void DataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        /// <summary>
+        /// 显示行号
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGridViewX1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            var dgv = (DataGridView)sender;
-            if (dgv.RowHeadersVisible)
+            if (e.RowIndex >= 0)
             {
-                Rectangle rect = new Rectangle(e.RowBounds.Left, e.RowBounds.Top,
-                               dgv.RowHeadersWidth, e.RowBounds.Height);
-                rect.Inflate(-2, -2);
-                TextRenderer.DrawText(e.Graphics,
-                (e.RowIndex + 1).ToString(),
-                e.InheritedRowStyle.Font,
-                rect, e.InheritedRowStyle.ForeColor,
-                TextFormatFlags.Right | TextFormatFlags.VerticalCenter
-                );
+                string FinId = DataGridViewX1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                string FinName = DataGridViewX1.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+                FrmDataQuery frmDataQuery = new FrmDataQuery(FinId, FinName);
+                if (frmDataQuery.ShowDialog() == DialogResult.OK)
+                {
+                    ComparedResult comparedResult = new ComparedResult
+                    {
+                        FinId = frmDataQuery.Finid,
+                        FinCustName = frmDataQuery.FinCustName,
+                        K3Id = frmDataQuery.K3Id,
+                        K3CustName = frmDataQuery.K3CustName
+                    };
+                    //保存到数据库
+                    InsertData2DB(comparedResult);
+                    //刷新界面
+                    string Year = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "Year");
+                    BindGridView(Year, true);
+                }
             }
         }
+
         #endregion
 
         #region 比对
         public string SubName1(string Key)
         {
-            return Key.Replace("YF", "").Replace("*","").Substring(0, Key.IndexOf("(")).Trim();
+            return Key.Replace("YF", "").Replace("*","").Replace("A", "").Substring(0, Key.IndexOf("(")).Trim();
         }
         public string SubName(string Key)
         {
-            return Key.Replace("YF", "").Replace("*", "").Substring(0, Key.IndexOf("（")).Trim();
+            return Key.Replace("YF", "").Replace("*", "").Replace("A", "").Substring(0, Key.IndexOf("（")).Trim();
         }
 
         public string SubAddress(string Key)
@@ -232,37 +251,6 @@ namespace Aohua
             }
         }
 
-        private void DataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                string FinId = dataGridViewX1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                string FinName = dataGridViewX1.Rows[e.RowIndex].Cells[1].Value.ToString();
-
-                FrmDataQuery frmDataQuery = new FrmDataQuery(FinId, FinName);
-                if(frmDataQuery.ShowDialog() == DialogResult.OK)
-                {
-                    ComparedResult comparedResult = new ComparedResult
-                    {
-                        FinId = frmDataQuery.Finid,
-                        FinCustName = frmDataQuery.FinCustName,
-                        K3Id = frmDataQuery.K3Id,
-                        K3CustName = frmDataQuery.K3CustName
-                    };
-                    //保存到数据库
-                    InsertData2DB(comparedResult);
-                    //刷新界面
-                    string Year = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "Year");
-                    BindGridView(Year, true);
-                }
-            }
-        }
-
-        private void InsertData2DB()
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
         /// <summary>
@@ -278,8 +266,8 @@ namespace Aohua
         {
             if(MessageBoxEx.Show("确定删除这个数据？","系统警告",MessageBoxButtons.YesNo,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button2) == DialogResult.Yes )
             {
-                string finid = dataGridViewX2.Rows[e.RowIndex].Cells[1].Value.ToString();
-                string k3id = dataGridViewX2.Rows[e.RowIndex].Cells[3].Value.ToString();
+                string finid = DataGridViewX2.Rows[e.RowIndex].Cells[1].Value.ToString();
+                string k3id = DataGridViewX2.Rows[e.RowIndex].Cells[3].Value.ToString();
                 sql = string.Format("Delete From Ryan_CustCompare where ffinid='{0}' And fK3id = '{1}'",finid,k3id);
                 int res = SqlHelper.ExecuteNonQuery(conn, sql);
                 if(res ==1 )
@@ -309,33 +297,57 @@ namespace Aohua
             if (RunAtStartup)
             {
                 dtSuccessData = BindSuccessData();
-                int TotalCount = dtFailData.Rows.Count + dtSuccessData.Rows.Count;
-                CustomDesktopAlert.H2("查询到相关数据" + TotalCount.ToString() + "条");
+                int TotalCount = dtFailData.Rows.Count;
+                //CustomDesktopAlert.H2("查询到相关数据" + TotalCount.ToString() + "条");
+                pFailData.Text = "未匹配成功(" + TotalCount.ToString() + ")";
                 int successCount = dtSuccessData.Rows.Count;
-                CustomDesktopAlert.H2("比对成功的有" + successCount.ToString() + "条");
+                //CustomDesktopAlert.H2("比对成功的有" + successCount.ToString() + "条");
+                pSuccessData.Text = "已匹配成功(" + successCount.ToString() + ")";
             }
             else
             {
                 int TotalCount = dtFailData.Rows.Count;
-                CustomDesktopAlert.H2("查询到相关数据" + TotalCount.ToString() + "条");
+                pFailData.Text = "未匹配成功(" + TotalCount.ToString() + ")";
                 int successCount = CompareDataByNameAddress(dtFailData, dtK3);
                 CustomDesktopAlert.H2("比对成功的有" + successCount.ToString() + "条");
                 dtSuccessData = BindSuccessData();
+                int totalSuccessCount = dtSuccessData.Rows.Count;
+                pSuccessData.Text = "已匹配成功(" + totalSuccessCount.ToString() + ")";
                 //生成财务客户数据
                 dtFailData = BindFailData(Year);
             }
-            dataGridViewX1.DataSource = dtFailData;
-            dataGridViewX1.Columns[0].Width = 80;
-            dataGridViewX1.Columns[1].Width = 260;
+            DataGridViewX1.DataSource = dtFailData;
+            DataGridViewX1.Columns[0].Width = 80;
+            DataGridViewX1.Columns[1].Width = 260;
 
-            dataGridViewX2.DataSource = dtSuccessData;
-            dataGridViewX2.Columns[0].Visible = false;
-            dataGridViewX2.Columns[1].Width = 80;
-            dataGridViewX2.Columns[2].Width = 260;
-            dataGridViewX2.Columns[3].Width = 80;
-            dataGridViewX2.Columns[4].Width = 260;
+            DataGridViewX2.DataSource = dtSuccessData;
+            DataGridViewX2.Columns[0].Visible = false;
+            DataGridViewX2.Columns[1].Width = 80;
+            DataGridViewX2.Columns[2].Width = 260;
+            DataGridViewX2.Columns[3].Width = 80;
+            DataGridViewX2.Columns[4].Width = 260;
         }
-        
+
+
+
+
+        private void DataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            var dgv = (DataGridView)sender;
+            if (dgv.RowHeadersVisible)
+            {
+                Rectangle rect = new Rectangle(e.RowBounds.Left, e.RowBounds.Top,
+                               dgv.RowHeadersWidth, e.RowBounds.Height);
+                rect.Inflate(-2, -2);
+                TextRenderer.DrawText(e.Graphics,
+                (e.RowIndex + 1).ToString(),
+                e.InheritedRowStyle.Font,
+                rect, e.InheritedRowStyle.ForeColor,
+                TextFormatFlags.Right | TextFormatFlags.VerticalCenter
+                );
+            }
+        }
+
         /// <summary>
         /// 在窗体启动时绑定combo控件
         /// </summary>
@@ -349,6 +361,21 @@ namespace Aohua
                     comboBoxEx1.SelectedItem = comboItem;
                 }
             }
+        }
+
+        /// <summary>
+        /// 得到第一个数字在字符串中的位子
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static int GetNumPosition(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return -1;
+            for (int i = 0; i < input.Length; i++)
+                if (char.IsDigit(input[i]))
+                    return i;
+            return -1;
         }
 
     }

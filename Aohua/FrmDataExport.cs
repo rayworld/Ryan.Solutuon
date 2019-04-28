@@ -1,4 +1,5 @@
 ﻿using Aohua.DAL;
+using Aohua.Models;
 using DevComponents.DotNetBar;
 using Ryan.Framework.Common;
 using Ryan.Framework.DBUtility;
@@ -114,15 +115,19 @@ namespace Aohua
                 int ret = 0;
                 foreach (DataRow dr in dt.Rows)
                 {
-                    //T_Organization t_Organization = ;
-                    ret = Organizations.Insert_Organization(Organizations.GetModel_Organization(dr));
-                    if(ret > 0)
+                    Organization organization = Organizations.GetModel(dr);
+                    //记录不存在
+                    if(Organizations.Exist(organization.FItemID) == false)
                     {
-                        ret++;
-                    }
-                    else
-                    {
-                        //messagebox
+                        ret = Organizations.Insert(organization);
+                        if (ret > 0)
+                        {
+                            ret++;
+                        }
+                        else
+                        {
+                            //messagebox
+                        }
                     }
                 }
                 return ret;
@@ -158,14 +163,19 @@ namespace Aohua
                 int ret = 0;
                 foreach (DataRow dr in dt.Rows)
                 {
-                    ret = ICStockBills.Insert(ICStockBills.GetModel(dr));
-                    if (ret > 0)
+                    ICStockBill iCStockBill = ICStockBills.GetModel(dr);
+                    //记录不存在
+                    if (ICStockBills.Exist(iCStockBill.FInterID) == false)
                     {
-                        ret++;
-                    }
-                    else
-                    {
-                        //messagebox
+                        ret = ICStockBills.Insert(iCStockBill);
+                        if (ret > 0)
+                        {
+                            ret++;
+                        }
+                        else
+                        {
+                            //messagebox
+                        }
                     }
                 }
                 return ret;
@@ -218,14 +228,19 @@ namespace Aohua
                 int ret = 0;
                 foreach (DataRow dr in dt.Rows)
                 {
-                    ret = ICStockBillEntrys.Insert(ICStockBillEntrys.GetModel(dr));
-                    if (ret > 0)
+                    ICStockBillEntry iCStockBillEntry = ICStockBillEntrys.GetModel(dr);
+                    //记录不存在
+                    if (ICStockBillEntrys.Exist(iCStockBillEntry.FInterID) == false)
                     {
-                        ret++;
-                    }
-                    else
-                    {
-                        //messagebox
+                        ret = ICStockBillEntrys.Insert(iCStockBillEntry);
+                        if (ret > 0)
+                        {
+                            ret++;
+                        }
+                        else
+                        {
+                            //messagebox
+                        }
                     }
                 }
                 return ret;
@@ -235,6 +250,7 @@ namespace Aohua
                 //messagebox;
                 return 0;
             }
+
         }
 
     }

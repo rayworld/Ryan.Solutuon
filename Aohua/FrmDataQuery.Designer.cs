@@ -32,12 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.tbFinName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.tbFinId = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +60,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(964, 100);
+            this.panelEx1.Size = new System.Drawing.Size(1418, 100);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -70,16 +70,43 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 3;
             // 
+            // labelX2
+            // 
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX2.Location = new System.Drawing.Point(31, 32);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(115, 33);
+            this.labelX2.TabIndex = 7;
+            this.labelX2.Text = "客户编号";
+            // 
+            // labelX1
+            // 
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX1.Location = new System.Drawing.Point(354, 32);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(119, 33);
+            this.labelX1.TabIndex = 6;
+            this.labelX1.Text = "客户名称";
+            // 
             // buttonX1
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(733, 46);
+            this.buttonX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonX1.Location = new System.Drawing.Point(1218, 24);
             this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(99, 28);
+            this.buttonX1.Size = new System.Drawing.Size(132, 48);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.TabIndex = 5;
-            this.buttonX1.Text = "搜索";
+            this.buttonX1.Text = "模糊搜索";
             this.buttonX1.Click += new System.EventHandler(this.ButtonX1_Click);
             // 
             // tbFinName
@@ -90,11 +117,13 @@
             this.tbFinName.Border.Class = "TextBoxBorder";
             this.tbFinName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbFinName.DisabledBackColor = System.Drawing.Color.White;
-            this.tbFinName.Location = new System.Drawing.Point(115, 12);
+            this.tbFinName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbFinName.Location = new System.Drawing.Point(479, 30);
             this.tbFinName.Name = "tbFinName";
             this.tbFinName.PreventEnterBeep = true;
-            this.tbFinName.Size = new System.Drawing.Size(717, 28);
+            this.tbFinName.Size = new System.Drawing.Size(717, 35);
             this.tbFinName.TabIndex = 4;
+            this.tbFinName.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TbFinName_MouseDoubleClick);
             // 
             // tbFinId
             // 
@@ -105,10 +134,11 @@
             this.tbFinId.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.tbFinId.DisabledBackColor = System.Drawing.Color.White;
             this.tbFinId.Enabled = false;
-            this.tbFinId.Location = new System.Drawing.Point(115, 46);
+            this.tbFinId.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tbFinId.Location = new System.Drawing.Point(152, 30);
             this.tbFinId.Name = "tbFinId";
             this.tbFinId.PreventEnterBeep = true;
-            this.tbFinId.Size = new System.Drawing.Size(612, 28);
+            this.tbFinId.Size = new System.Drawing.Size(182, 35);
             this.tbFinId.TabIndex = 3;
             // 
             // dataGridViewX1
@@ -130,39 +160,15 @@
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(964, 442);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1418, 442);
             this.dataGridViewX1.TabIndex = 7;
             this.dataGridViewX1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewX1_CellDoubleClick);
-            // 
-            // labelX1
-            // 
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(13, 12);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(96, 23);
-            this.labelX1.TabIndex = 6;
-            this.labelX1.Text = "客户名称";
-            // 
-            // labelX2
-            // 
-            // 
-            // 
-            // 
-            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(13, 51);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(96, 23);
-            this.labelX2.TabIndex = 7;
-            this.labelX2.Text = "客户编号";
             // 
             // FrmDataQuery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 542);
+            this.ClientSize = new System.Drawing.Size(1418, 542);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.panelEx1);
             this.DoubleBuffered = true;
