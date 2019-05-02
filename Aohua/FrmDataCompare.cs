@@ -68,11 +68,10 @@ namespace Aohua
             return SqlHelper.ExecuteDataTable(connK3Src, sql, null);
         }
 
-
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="dtFin"></param>
+        /// <param name="dtFailData"></param>
         /// <param name="dtK3"></param>
         /// <returns></returns>
         public int CompareDataByNameAddress(DataTable dtFailData, DataTable dtK3)
@@ -87,27 +86,10 @@ namespace Aohua
                 };
                 string Address = "";
                 string Name = "";
-                int Position = -1;
-
-                if (comparedResult.FinCustName.Contains("（") == true && comparedResult.FinCustName.Contains("）") == true)
+                if (comparedResult.FinCustName.Contains("（") == true || comparedResult.FinCustName.Contains("(") == true)
                 {
-                    Address = SubAddress(comparedResult.FinCustName);
-                    Position = GetNumPosition(Address);
-                    if (Position > -1)
-                    {
-                        Address = Address.Substring(0, Position);
-                    }
-                    Name = SubName(comparedResult.FinCustName);
-                }
-                else if (comparedResult.FinCustName.Contains("(") == true && comparedResult.FinCustName.Contains(")") == true)
-                {
-                    Address = SubAddress1(comparedResult.FinCustName);
-                    Position = GetNumPosition(Address);
-                    if (Position > -1)
-                    {
-                        Address = Address.Substring(0, Position);
-                    }
-                    Name = SubName1(comparedResult.FinCustName);
+                    Address = SubAddress2(comparedResult.FinCustName);
+                    Name = SubName2(comparedResult.FinCustName);
                 }
                 else
                 {
@@ -122,7 +104,7 @@ namespace Aohua
                     if (comparedResult.K3CustName.IndexOf(Address) > -1 && comparedResult.K3CustName.IndexOf(Name) > -1)
                     {
                         int RetVal = InsertData2DB(comparedResult);
-                        
+
                         //计数
                         if (RetVal > 0) res++;
 
@@ -213,24 +195,56 @@ namespace Aohua
         #endregion
 
         #region 比对
-        public string SubName1(string Key)
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Key"></param>
+        /// <returns></returns>
+        public string SubAddress2(string Key)
         {
-            return Key.Replace("YF", "").Replace("*","").Replace("A", "").Substring(0, Key.IndexOf("(")).Trim();
-        }
-        public string SubName(string Key)
-        {
-            return Key.Replace("YF", "").Replace("*", "").Replace("A", "").Substring(0, Key.IndexOf("（")).Trim();
+            int BeginPosition = 0, EndPosition = 0, NumPosition = 0;
+            //开始位置定义，如果字符串包含中文版大括号，起始位置为中文版大括号位置加1，否则为英文版大括号位置加1
+            BeginPosition = Key.Contains("（") ? Key.IndexOf("（") + 1 : Key.IndexOf("(") + 1;
+
+            if (Key.Contains("）"))
+            {
+                EndPosition = Key.LastIndexOf("）");
+            }
+            else if (Key.Contains(")"))
+            {
+                EndPosition = Key.LastIndexOf(")");
+            }
+            else
+            {
+                EndPosition = Key.Length;
+            }
+
+            Key = EndPosition == Key.Length ? Key.Substring(BeginPosition).Trim() : Key.Substring(BeginPosition, EndPosition - BeginPosition).Trim();
+
+            NumPosition = GetNumPosition(Key);
+
+            if (GetNumPosition(Key) > -1)
+            {
+                Key = Key.Substring(0, NumPosition);
+            }
+
+            return Key.Trim();
         }
 
-        public string SubAddress(string Key)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Key"></param>
+        /// <returns></returns>
+        public string SubName2(string Key)
         {
-            return Key.Substring(Key.IndexOf("（") + 1, Key.Length - 2 - Key.IndexOf("（")).Trim();
+            Key = Key.Contains("(") ? Key.Substring(0, Key.IndexOf("(")).Trim(): Key.Substring(0, Key.IndexOf("（")).Trim();
+            return Key.Replace("YF", "").Replace("*", "").Replace("A", "");
         }
-
-        public string SubAddress1(string Key)
-        {
-            return Key.Substring(Key.IndexOf("(") + 1, Key.Length - 2 - Key.IndexOf("(")).Trim();
-        }
+        
+        #endregion
 
         /// <summary>
         /// 改年限
@@ -249,17 +263,6 @@ namespace Aohua
             {
                 CustomDesktopAlert.H2("年份输入错误！");
             }
-        }
-
-        #endregion
-
-        /// <summary>
-        /// 删除已经对比成功的历史数据
-        /// </summary>
-        private void DeleteHistoryCompareData()
-        {
-            sql = "Delete From Ryan_CustCompare";
-            int res = SqlHelper.ExecuteNonQuery(conn, sql);
         }
 
         private void DataGridViewX2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -328,9 +331,11 @@ namespace Aohua
             DataGridViewX2.Columns[4].Width = 260;
         }
 
-
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DataGridViewX1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             var dgv = (DataGridView)sender;
