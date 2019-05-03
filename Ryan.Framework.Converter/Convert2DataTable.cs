@@ -2,12 +2,15 @@
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
+using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Ryan.Framework.Converter
 {
-    public sealed class Convert2DataTable
+    public sealed class ToDataTable
     {
-        #region toDataTable
+        #region Text2DataTable
         /// <summary>
         /// 将TXT文件转成DataTable
         /// </summary>
@@ -44,7 +47,9 @@ namespace Ryan.Framework.Converter
             }
             return dtData;
         }
+        #endregion
 
+        #region Excel2DataTable
         /// <summary>
         /// 将Excel文件转成DataTable
         /// </summary>
@@ -99,6 +104,9 @@ namespace Ryan.Framework.Converter
             }
         }
 
+        #endregion
+
+        #region CSV2DataTable
         /// <summary>
         /// 将CSV文件的数据读取到DataTable中
         /// </summary>
@@ -147,10 +155,29 @@ namespace Ryan.Framework.Converter
             fs.Close();
             return retDT;
         }
+
+
+        #endregion
+
+        #region Xml2DataTable
+
+        /// <summary> 
+        /// 反序列化DataTable 
+        /// </summary> 
+        /// <param name="pXml">序列化的DataTable</param> 
+        /// <returns>DataTable</returns> 
+        public static DataTable Xml2DataTable(string pXml)
+        {
+            StringReader strReader = new StringReader(pXml);
+            XmlReader xmlReader = XmlReader.Create(strReader);
+            XmlSerializer serializer = new XmlSerializer(typeof(DataTable));
+            DataTable dt = serializer.Deserialize(xmlReader) as DataTable;
+            return dt;
+        }
         #endregion
     }
 
-    public sealed class DataTable2Excel
+    public sealed class DataTableTo
     {
         #region DataTable2Excel
         /// <summary>
@@ -169,7 +196,7 @@ namespace Ryan.Framework.Converter
         /// </summary>
         /// <param name="m_DataTable">要导出的数据表</param>
         /// <param name="m_ExcelFileName">导出的Excel文件名</param>
-        public static void Data2Excel(DataTable m_DataTable, string m_ExcelFileName)
+        public static void DataTable2Excel(DataTable m_DataTable, string m_ExcelFileName)
         {
             if (File.Exists(m_ExcelFileName))
                 File.Delete(m_ExcelFileName);
@@ -207,6 +234,24 @@ namespace Ryan.Framework.Converter
             }
             objStreamWriter.Close();
             objFileStream.Close();
+        }
+        #endregion
+
+        #region DataTable2Xml
+
+        /// <summary> 
+        /// 序列化DataTable 
+        /// </summary> 
+        /// <param name="pDt">包含数据的DataTable</param> 
+        /// <returns>序列化的DataTable</returns> 
+        private static string DataTable2Xml(DataTable pDt)
+        {
+            StringBuilder sb = new StringBuilder();
+            XmlWriter writer = XmlWriter.Create(sb);
+            XmlSerializer serializer = new XmlSerializer(typeof(DataTable));
+            serializer.Serialize(writer, pDt);
+            writer.Close();
+            return sb.ToString();
         }
         #endregion
     }

@@ -89,7 +89,7 @@ namespace Huali.DS9208
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string strSaveFileLocation = saveFileDialog.FileName;//文件路径
-                DataTable2Excel.Data2Excel(dt, strSaveFileLocation);
+                DataTableTo.DataTable2Excel(dt, strSaveFileLocation);
             }
         }
 
