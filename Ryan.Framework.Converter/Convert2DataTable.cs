@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
@@ -175,6 +176,13 @@ namespace Ryan.Framework.Converter
             return dt;
         }
         #endregion
+
+        #region Json2DataTable
+        public static DataTable Json2DataTable(string json)
+        {
+            return JsonConvert.DeserializeObject<DataTable>(json);
+        }
+        #endregion
     }
 
     public sealed class DataTableTo
@@ -252,6 +260,13 @@ namespace Ryan.Framework.Converter
             serializer.Serialize(writer, pDt);
             writer.Close();
             return sb.ToString();
+        }
+        #endregion
+
+        # region DataTable2Json
+        public static string DataTable2Json(DataTable dt)
+        {
+            return JsonConvert.SerializeObject(dt);
         }
         #endregion
     }
