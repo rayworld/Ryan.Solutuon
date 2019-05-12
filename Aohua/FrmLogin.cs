@@ -48,7 +48,7 @@ namespace Aohua
             //else
             //{
             //    this.DialogResult = System.Windows.Forms.DialogResult.None;
-            //    CustomDesktopAlert.H2("账号或密码错误，请重新输入!");
+            //    CustomDesktopAlert.H4("账号或密码错误，请重新输入!");
             //}
         }
 

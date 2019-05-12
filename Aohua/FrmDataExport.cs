@@ -34,15 +34,15 @@ namespace Aohua
 
             //写入客户信息表
             int ret1 = InsertCustInfo(K3IDList);
-            CustomDesktopAlert.H2("写入客户信息表成功！");
+            CustomDesktopAlert.H4("写入客户信息表成功！");
 
             //写入ICStockbill表
             int ret2 = InsertBillInfo(K3IDList);
-            CustomDesktopAlert.H2("写入出库单成功！");
+            CustomDesktopAlert.H4("写入出库单成功！");
 
             //写入ICStockBillEntry表
             int ret3 = InsertBillEntryInfo(K3IDList);
-            CustomDesktopAlert.H2("写入出库单明细成功！");
+            CustomDesktopAlert.H4("写入出库单明细成功！");
 
             //写入ICItem表
 
@@ -250,8 +250,6 @@ namespace Aohua
                 //messagebox;
                 return 0;
             }
-
         }
-
     }
 }

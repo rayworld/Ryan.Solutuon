@@ -161,14 +161,14 @@ namespace Aohua
         //            }
         //            else
         //            {
-        //                CustomDesktopAlert.H2(module.ToLower() + "不能识别的应用模块！");
+        //                CustomDesktopAlert.H4(module.ToLower() + "不能识别的应用模块！");
         //            }
         //        }
 
         //    }
         //    else
         //    {
-        //        CustomDesktopAlert.H2("应用程序加载模块出错！");
+        //        CustomDesktopAlert.H4("应用程序加载模块出错！");
         //    }
         //}
 

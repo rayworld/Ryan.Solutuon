@@ -92,7 +92,6 @@
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
             this.ribbonControl1.Name = "ribbonControl1";
-            this.ribbonControl1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.ribbonControl1.Size = new System.Drawing.Size(1783, 231);
             this.ribbonControl1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonControl1.SystemText.MaximizeRibbonText = "&Maximize the Ribbon";
@@ -123,8 +122,8 @@
             this.ribbonPanel4.Location = new System.Drawing.Point(0, 60);
             this.ribbonPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.ribbonPanel4.Name = "ribbonPanel4";
-            this.ribbonPanel4.Padding = new System.Windows.Forms.Padding(4, 0, 4, 3);
-            this.ribbonPanel4.Size = new System.Drawing.Size(1783, 168);
+            this.ribbonPanel4.Padding = new System.Windows.Forms.Padding(4, 0, 4, 2);
+            this.ribbonPanel4.Size = new System.Drawing.Size(1783, 171);
             // 
             // 
             // 
@@ -159,7 +158,7 @@
             this.ribbonBar1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
             this.ribbonBar1.Location = new System.Drawing.Point(4, 0);
             this.ribbonBar1.Name = "ribbonBar1";
-            this.ribbonBar1.Size = new System.Drawing.Size(182, 165);
+            this.ribbonBar1.Size = new System.Drawing.Size(182, 169);
             this.ribbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar1.TabIndex = 0;
             this.ribbonBar1.Text = "客户信息迁移";
@@ -326,6 +325,7 @@
             // 
             // textBoxX1
             // 
+            this.textBoxX1.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -333,6 +333,7 @@
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX1.DisabledBackColor = System.Drawing.Color.White;
             this.textBoxX1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.textBoxX1.ForeColor = System.Drawing.Color.Black;
             this.textBoxX1.Location = new System.Drawing.Point(4, 30);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.PreventEnterBeep = true;
@@ -341,8 +342,8 @@
             // 
             // styleManager1
             // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Blue;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48))))), System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204))))));
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2016;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
             // 
             // buttonChangeStyle
             // 

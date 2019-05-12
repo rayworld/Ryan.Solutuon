@@ -70,7 +70,7 @@ namespace Aohua
             if (!string.IsNullOrEmpty(queryString))
             {
                 dataGridViewX1.DataSource = null;
-                sql = string.Format("select FItemID as 客户号, fname as 客户名称 from t_Organization Where fname like '%{0}%'", queryString);
+                sql = string.Format("select FItemID as 客户号, fname as 物流客户名称 from t_Organization Where fname like '%{0}%'", queryString);
                 DataTable dtQuery = SqlHelper.ExecuteDataTable(connK3Src, sql, null);
                 if (dtQuery.Rows.Count > 0)
                 {
@@ -80,12 +80,12 @@ namespace Aohua
                 }
                 else
                 {
-                    CustomDesktopAlert.H2("没有查到任何数据！");
+                    CustomDesktopAlert.H4("没有查到任何数据！");
                 }
             }
             else
             {
-                CustomDesktopAlert.H2("请设置查询条件！");
+                CustomDesktopAlert.H4("请设置查询条件！");
             }
         }
 

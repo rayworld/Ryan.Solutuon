@@ -25,23 +25,23 @@ namespace Aohua
             }
             catch (WebException exp)
             {
-                CustomDesktopAlert.H2(String.Format("无法找到指定资源\n\n{0}", exp.Message));
+                CustomDesktopAlert.H4(String.Format("无法找到指定资源\n\n{0}", exp.Message));
             }
             catch (XmlException exp)
             {
-                CustomDesktopAlert.H2(String.Format("下载的升级文件有错误\n\n{0}", exp.Message));
+                CustomDesktopAlert.H4(String.Format("下载的升级文件有错误\n\n{0}", exp.Message));
             }
             catch (NotSupportedException exp)
             {
-                CustomDesktopAlert.H2(String.Format("升级地址配置错误\n\n{0}", exp.Message));
+                CustomDesktopAlert.H4(String.Format("升级地址配置错误\n\n{0}", exp.Message));
             }
             catch (ArgumentException exp)
             {
-                CustomDesktopAlert.H2(String.Format("下载的升级文件有错误\n\n{0}", exp.Message));
+                CustomDesktopAlert.H4(String.Format("下载的升级文件有错误\n\n{0}", exp.Message));
             }
             catch (Exception exp)
             {
-                CustomDesktopAlert.H2(String.Format("升级过程中发生错误\n\n{0}", exp.Message));
+                CustomDesktopAlert.H4(String.Format("升级过程中发生错误\n\n{0}", exp.Message));
             }
 
             Application.Run(new FrmMain());

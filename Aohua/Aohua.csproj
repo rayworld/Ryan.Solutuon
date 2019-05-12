@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\BaseDAL.cs" />
     <Compile Include="DAL\ICStockBillEntrys.cs" />
     <Compile Include="DAL\MeasureUnits.cs" />
     <Compile Include="DAL\Common.cs" />
@@ -60,7 +61,6 @@
     <Compile Include="FrmDataQuery.Designer.cs">
       <DependentUpon>FrmDataQuery.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model.cs" />
     <Compile Include="Models\ICStockBillEntry.cs" />
     <Compile Include="Models\MeasureUnit.cs" />
     <Compile Include="Models\ICStockBill.cs" />
@@ -127,7 +127,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ryan.Framework.AutoUpdate\Ryan.Framework.AutoUpdate.csproj">
@@ -154,6 +156,9 @@
       <Project>{b89488a3-8231-48cf-8416-4f46d9d156c0}</Project>
       <Name>Ryan.Framework.Encrypt</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BLL\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

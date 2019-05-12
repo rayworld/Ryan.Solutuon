@@ -42,20 +42,20 @@ namespace Aohua
         {
             if (Year == "2017" || Year == "2018" || Year == "2019" || Year == "2020")
             {
-                sql = string.Format("select FItemID as 客户编号,fname as 财务系统客户名称 from t_Item where FItemClassID in (select fitemclassid from t_ItemClass where (fname like '{0}%' and fname not like '%内%')) and FItemID NOT IN(SELECT FFinID FROM Ryan_CustCompare)",Year);
+                sql = string.Format("select FItemID as 客户编号,fname as 财务系统客户名称 from t_Item where FItemClassID in (select fitemclassid from t_ItemClass where (fname like '{0}%' and fname not like '%内%')) and FItemID NOT IN(SELECT FFinID FROM Ryan_CustCompare) AND fname NOT LIKE 'YF%' ", Year);
                 //ConfigHelper.UpdateOrCreateAppSetting(ConfigHelper.ConfigurationFile.AppConfig, "Year", "2030");
                 return  SqlHelper.ExecuteDataTable(conn, sql, null);
             }
             else
             {
-                CustomDesktopAlert.H2("年份输入错误！");
+                CustomDesktopAlert.H4("年份输入错误！");
             }
             return (DataTable)null;
         }
 
         public DataTable BindSuccessData()
         {
-            sql = string.Format("select finterid as 序号, ffinid  as 客户编号, ffinCustName as 财务系统客户名称, fK3id as 客户号, fk3CustName as 业务系统客户名称 from Ryan_CustCompare");
+            sql = string.Format("select finterid as 序号, ffinid  as 客户编号, ffinCustName as 财务系统客户名称, fK3id as 客户号, fk3CustName as 物流系统客户名称 from Ryan_CustCompare");
             return SqlHelper.ExecuteDataTable(conn, sql, null);
         }
 
@@ -140,7 +140,7 @@ namespace Aohua
             }
             else
             {
-                CustomDesktopAlert.H2("请先选择年份！");
+                CustomDesktopAlert.H4("请先选择年份！");
             }                
         }
         #region 显示表格行号
@@ -261,7 +261,7 @@ namespace Aohua
             }
             else
             {
-                CustomDesktopAlert.H2("年份输入错误！");
+                CustomDesktopAlert.H4("年份输入错误！");
             }
         }
 
@@ -275,11 +275,11 @@ namespace Aohua
                 int res = SqlHelper.ExecuteNonQuery(conn, sql);
                 if(res ==1 )
                 {
-                    CustomDesktopAlert.H2("数据删除成功！");
+                    CustomDesktopAlert.H4("数据删除成功！");
                 }
                 else
                 {
-                    CustomDesktopAlert.H2("数据删除失败！");
+                    CustomDesktopAlert.H4("数据删除失败！");
                 }
                 string Year = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "Year");
                 BindGridView(Year, true);
@@ -301,10 +301,10 @@ namespace Aohua
             {
                 dtSuccessData = BindSuccessData();
                 int TotalCount = dtFailData.Rows.Count;
-                //CustomDesktopAlert.H2("查询到相关数据" + TotalCount.ToString() + "条");
+                //CustomDesktopAlert.H4("查询到相关数据" + TotalCount.ToString() + "条");
                 pFailData.Text = "未匹配成功(" + TotalCount.ToString() + ")";
                 int successCount = dtSuccessData.Rows.Count;
-                //CustomDesktopAlert.H2("比对成功的有" + successCount.ToString() + "条");
+                //CustomDesktopAlert.H4("比对成功的有" + successCount.ToString() + "条");
                 pSuccessData.Text = "已匹配成功(" + successCount.ToString() + ")";
             }
             else
@@ -312,7 +312,7 @@ namespace Aohua
                 int TotalCount = dtFailData.Rows.Count;
                 pFailData.Text = "未匹配成功(" + TotalCount.ToString() + ")";
                 int successCount = CompareDataByNameAddress(dtFailData, dtK3);
-                CustomDesktopAlert.H2("比对成功的有" + successCount.ToString() + "条");
+                CustomDesktopAlert.H4("比对成功的有" + successCount.ToString() + "条");
                 dtSuccessData = BindSuccessData();
                 int totalSuccessCount = dtSuccessData.Rows.Count;
                 pSuccessData.Text = "已匹配成功(" + totalSuccessCount.ToString() + ")";
