@@ -1,7 +1,6 @@
 ﻿using Aohua.DAL;
 using Aohua.Models;
 using DevComponents.DotNetBar;
-using Ryan.Framework.Common;
 using Ryan.Framework.DBUtility;
 using System.Data;
 using System.Text;
@@ -34,49 +33,21 @@ namespace Aohua
 
             //写入客户信息表
             int ret1 = InsertCustInfo(K3IDList);
-            CustomDesktopAlert.H4("写入客户信息表成功！");
+            MessageBoxEx.Show("写入客户信息表完成！" + ret1 +"条！");
 
             //写入ICStockbill表
             int ret2 = InsertBillInfo(K3IDList);
-            CustomDesktopAlert.H4("写入出库单成功！");
+            MessageBoxEx.Show("写入出库单完成！" + ret2 + "条！"); 
 
             //写入ICStockBillEntry表
-            int ret3 = InsertBillEntryInfo(K3IDList);
-            CustomDesktopAlert.H4("写入出库单明细成功！");
+            //int ret3 = InsertBillEntryInfo(K3IDList);
+            //MessageBoxEx.Show("写入出库单明细完成！" + ret3 + "条！");
 
             //写入ICItem表
 
             //写入单位表
             //int ret5 = InsertUnitInfo(K3IDList);
-        }
-
-        private int InsertUnitInfo(string ids)
-        {
-            sql = string.Format("Select * FROM [t_MeasureUnit]");
-            dt = SqlHelper.ExecuteDataTable(connK3Src, sql);
-            if (dt.Rows.Count > 0)
-            {
-                int ret = 0;
-                foreach (DataRow dr in dt.Rows)
-                {
-                    ret = MeasureUnits.Insert(MeasureUnits.GetModel(dr));
-                    if (ret > 0)
-                    {
-                        ret++;
-                    }
-                    else
-                    {
-                        //messagebox
-                    }
-                }
-                return ret;
-            }
-            else
-            {
-                //messagebox;
-                return 0;
-            }
-        }
+        }   
 
         /// <summary>
         /// 
@@ -117,17 +88,9 @@ namespace Aohua
                 {
                     Organization organization = Organizations.GetModel(dr);
                     //记录不存在
-                    if(Organizations.Exist(organization.FItemID) == false)
+                    if (Organizations.Exist(organization.FName,organization.FItemID) == false)
                     {
-                        ret = Organizations.Insert(organization);
-                        if (ret > 0)
-                        {
-                            ret++;
-                        }
-                        else
-                        {
-                            //messagebox
-                        }
+                        ret += Organizations.Insert(organization);
                     }
                 }
                 return ret;
@@ -154,31 +117,27 @@ namespace Aohua
             sb.Append("   FCOMHFreeItem9, FCOMHFreeItem10, FCOMHFreeItem11, FCOMHFreeItem12, FCOMHFreeItem13, FCOMHFreeItem15, FCOMHFreeItem18,");
             sb.Append("   FCOMHFreeItem19, FCOMHFreeItem20, FPOOrdBillNo, FLSSrcInterID, FSettleDate, FManageType, FOrderAffirm, FAutoCreType, FConsignee,");
             sb.Append("   FDrpRelateTranType, FPrintCount, FCOMHFreeItem17, FHeadSelfB0154");
-            sb.Append("   FROM     ICStockBill");
+            sb.Append("   FROM ICStockBill");
             sb.Append("   WHERE(FTranType = 21) AND(FSupplyID IN({0}))");
             sql = string.Format(sb.ToString(), ids);
             dt = SqlHelper.ExecuteDataTable(connK3Src, sql);
             if (dt.Rows.Count > 0)
             {
-                int ret = 0;
+                int retBill = 0;
                 foreach (DataRow dr in dt.Rows)
                 {
                     ICStockBill iCStockBill = ICStockBills.GetModel(dr);
                     //记录不存在
-                    if (ICStockBills.Exist(iCStockBill.FInterID) == false)
+                    if (ICStockBills.Exist(iCStockBill.FBillNo) == false)
                     {
-                        ret = ICStockBills.Insert(iCStockBill);
-                        if (ret > 0)
-                        {
-                            ret++;
-                        }
-                        else
-                        {
-                            //messagebox
-                        }
+                        //取种子函数
+                        int InterID = int.Parse(GetMaxFInterID());
+                        //反写种子函数
+                        retBill += ICStockBills.Insert(iCStockBill,InterID);
+                        InsertBillEntryInfo(iCStockBill.FInterID, InterID);
                     }
                 }
-                return ret;
+                return retBill;
             }
             else
             {
@@ -187,7 +146,7 @@ namespace Aohua
             }
         }
 
-        private int InsertBillEntryInfo(string ids)
+        private int InsertBillEntryInfo(int OrginInterID,int NewInterID)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("   SELECT  ICStockBillEntry.FBrNo, ICStockBillEntry.FInterID, ICStockBillEntry.FEntryID, ICStockBillEntry.FItemID, ICStockBillEntry.FQtyMust, ICStockBillEntry.FQty, ");
@@ -218,37 +177,41 @@ namespace Aohua
             sb.Append("   ICStockBillEntry.FMTONo, ICStockBillEntry.FSecQtyActual, ICStockBillEntry.FSecQtyMust, ICStockBillEntry.FClientOrderNo,");
             sb.Append("   ICStockBillEntry.FClientEntryID, ICStockBillEntry.FRowClosed, ICStockBillEntry.FCostPercentage, ICStockBillEntry.FEntrySelfB0168,");
             sb.Append("   ICStockBillEntry.FEntrySelfB0169, ICStockBillEntry.FEntrySelfD0148, ICStockBillEntry.FCOMBFreeItem9");
-            sb.Append("   FROM     ICStockBillEntry INNER JOIN");
-            sb.Append("   ICStockBill ON ICStockBillEntry.FInterID = ICStockBill.FInterID");
-            sb.Append("   WHERE(ICStockBill.FTranType = 21) AND(ICStockBill.FSupplyID IN({0}))");
-            sql = string.Format(sb.ToString(),ids);
+            sb.Append("   FROM ICStockBillEntry ");
+            sb.Append("   Where ICStockBillEntry.FInterID = {0}");
+            sql = string.Format(sb.ToString(),OrginInterID);
             dt = SqlHelper.ExecuteDataTable(connK3Src, sql);
             if (dt.Rows.Count > 0)
             {
-                int ret = 0;
+                int retEntry = 0;
                 foreach (DataRow dr in dt.Rows)
                 {
                     ICStockBillEntry iCStockBillEntry = ICStockBillEntrys.GetModel(dr);
-                    //记录不存在
-                    if (ICStockBillEntrys.Exist(iCStockBillEntry.FInterID) == false)
-                    {
-                        ret = ICStockBillEntrys.Insert(iCStockBillEntry);
-                        if (ret > 0)
-                        {
-                            ret++;
-                        }
-                        else
-                        {
-                            //messagebox
-                        }
-                    }
+                    retEntry += ICStockBillEntrys.Insert(iCStockBillEntry,NewInterID);
                 }
-                return ret;
+                return retEntry;
             }
             else
             {
                 //messagebox;
                 return 0;
+            }
+        }
+
+        public string GetMaxFInterID()
+        {
+            sql = "UPDATE ICMaxNum SET FMaxNum = FMaxNum + 1 WHERE FTableName = 'ICStockBill'";
+            int retVal = SqlHelper.ExecuteNonQuery(connK3Desc, sql);
+            if (retVal > 0)
+            {
+                sql = "SELECT FMaxNum FROM ICMaxNum WHERE FTableName = 'ICStockBill'";
+                object obj = SqlHelper.ExecuteScalar(connK3Desc, sql);
+
+                return obj != null ? obj.ToString() : "";
+            }
+            else
+            {
+                return "";
             }
         }
     }

@@ -14,7 +14,7 @@ namespace Aohua.DAL
         /// <summary>
         /// 增加一条数据
         /// </summary>
-        public static int Insert(ICStockBillEntry iCStockBillEntry)
+        public static int Insert(ICStockBillEntry iCStockBillEntry,int InterID)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into iCStockBillEntry(");
@@ -143,7 +143,7 @@ namespace Aohua.DAL
                     new SqlParameter("@FEntrySelfD0148", SqlDbType.Decimal,13),
                     new SqlParameter("@FCOMBFreeItem9", SqlDbType.Decimal,13)};
             parameters[0].Value = iCStockBillEntry.FBrNo;
-            parameters[1].Value = iCStockBillEntry.FInterID;
+            parameters[1].Value = InterID;
             parameters[2].Value = iCStockBillEntry.FEntryID;
             parameters[3].Value = iCStockBillEntry.FItemID;
             parameters[4].Value = iCStockBillEntry.FQtyMust;
@@ -759,14 +759,14 @@ namespace Aohua.DAL
         /// </summary>
         /// <param name="ItemId"></param>
         /// <returns></returns>
-        public static bool Exist(int InterID)
+        public static bool Exist(int InterID,int entryID)
         {
-            bool retVal = true;
-            string sql = string.Format("Select Count(*) From [ICStockBillEntry] Where FInterID = {0}", InterID);
+            bool retVal = false;
+            string sql = string.Format("Select Count(*) From [ICStockBillEntry] Where FInterID = {0} and FEntryID ={1}", InterID,entryID);
             object obj = SqlHelper.ExecuteScalar(connK3Desc, sql);
-            if (obj == null || obj.ToString() == "")
+            if (obj != null && int.Parse(obj.ToString())>0)
             {
-                retVal = false;
+                retVal = true;
             }
             return retVal;
         }

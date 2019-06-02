@@ -13,7 +13,7 @@ namespace Aohua.DAL
         /// <summary>
         /// 增加一条数据
         /// </summary>
-        public static int Insert(ICStockBill iCStockBill)
+        public static int Insert(ICStockBill iCStockBill,int FInterID)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into ICStockBill(");
@@ -134,7 +134,6 @@ namespace Aohua.DAL
                         new SqlParameter("@FCOMHFreeItem11", SqlDbType.VarChar,255) ,
                         new SqlParameter("@FCOMHFreeItem12", SqlDbType.VarChar,255) ,
                         new SqlParameter("@FCOMHFreeItem13", SqlDbType.Int,4)
-
             };
 
             parameters[0].Value = iCStockBill.FBrNo;
@@ -163,7 +162,7 @@ namespace Aohua.DAL
             parameters[23].Value = Common.SqlNull(iCStockBill.FBillerID);
             parameters[24].Value = Common.SqlNull(iCStockBill.FReturnBillInterID);
             parameters[25].Value = Common.SqlNull(iCStockBill.FSCBillNo);
-            parameters[26].Value = iCStockBill.FInterID;
+            parameters[26].Value = FInterID;
             parameters[27].Value = iCStockBill.FHookInterID;
             parameters[28].Value = iCStockBill.FVchInterID;
             parameters[29].Value = iCStockBill.FPosted;
@@ -692,14 +691,14 @@ namespace Aohua.DAL
         /// </summary>
         /// <param name="ItemId"></param>
         /// <returns></returns>
-        public static bool Exist(int InterID)
+        public static bool Exist(string billNo)
         {
-            bool retVal = true;
-            string sql = string.Format("Select Count(*) From [ICStockBill] Where FInterID = {0} and FTranType = 21", InterID);
+            bool retVal = false;
+            string sql = string.Format("Select Count(*) From [ICStockBill] Where FBillNo = '{0}' and FTranType = 21", billNo);
             object obj = SqlHelper.ExecuteScalar(connK3Desc, sql);
-            if (obj == null || obj.ToString() == "")
+            if (obj != null && int.Parse(obj.ToString()) > 0)
             {
-                retVal = false;
+                retVal = true;
             }
             return retVal;
         }

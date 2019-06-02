@@ -83,10 +83,10 @@ namespace Aohua.DAL
             {
                 t_Organization.FShareStatus = int.Parse(dr["FShareStatus"].ToString());
             }
-            if (dr["F_102"].ToString() != "")
-            {
-                t_Organization.F_102 = int.Parse(dr["F_102"].ToString());
-            }
+            //if (dr["F_102"].ToString() != "")
+            //{
+            //    t_Organization.F_102 = int.Parse(dr["F_102"].ToString());
+            //}
             t_Organization.FTaxID = dr["FTaxID"].ToString();
             t_Organization.FBank = dr["FBank"].ToString();
             t_Organization.FAccount = dr["FAccount"].ToString();
@@ -396,9 +396,9 @@ namespace Aohua.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into t_Organization(");
-            strSql.Append("FItemID,FHomePage,FPreAPAcctID,FHelpCode,FNameEN,FAddrEn,FCIQCode,FRegion,FMobilePhone,FPayCondition,FManageType,FClass,FCreditLimit,FValue,FRegUserID,FLastModifyDate,FRecentContactDate,FRegDate,FFlat,FClassTypeID,FCoSupplierID,FShareStatus,F_102,FTaxID,FBank,FAccount,FBankNumber,FBrNo,FBoundAttr,FErpClsID,FShortName,FAddress,FPriorityID,FPOGroupID,FStatus,FLanguageID,FRegionID,FTrade,FMinPOValue,FMaxDebitDate,FLegalPerson,FContact,FCity,FContactAcct,FPhoneAcct,FFaxAcct,FZipAcct,FEmailAcct,FAddrAcct,FTax,FCyID,FSetID,FSetDLineID,FProvince,FTaxNum,FPriceClsID,FOperID,FCIQNumber,FDeleted,FSaleMode,FName,FNumber,FParentID,FShortNumber,FCountry,FARAccountID,FAPAccountID,FpreAcctID,FlastTradeAmount,FlastRPAmount,FfavorPolicy,Fdepartment,Femployee,Fcorperate,FbeginTradeDate,FPostalCode,FendTradeDate,FlastTradeDate,FlastReceiveDate,FcashDiscount,FcurrencyID,FmaxDealAmount,FminForeReceiveRate,FminReserverate,FdebtLevel,FCarryingAOS,FPhone,FIsCreditMgr,FCreditPeriod,FCreditLevel,FPayTaxAcctID,FValueAddRate,FTypeID,FCreditDays,FCreditAmount,FStockIDAssign,FFax,FStockIDInst,FStockIDKeep,FPaperPeriod,FAlarmPeriod,FLicence,FPermit,FCertify,FLicAndPermit,FGSortMem,FGEng,FEmail,FGAbove,FGProp,FGManageMode,FGCharterVal,FGPermissVal,FGCertifiVal,FGInitialApproveFlag,FSaleID,FOtherARAcctID,FOtherAPAcctID");
+            strSql.Append("FItemID,FHomePage,FPreAPAcctID,FHelpCode,FNameEN,FAddrEn,FCIQCode,FRegion,FMobilePhone,FPayCondition,FManageType,FClass,FCreditLimit,FValue,FRegUserID,FLastModifyDate,FRecentContactDate,FRegDate,FFlat,FClassTypeID,FCoSupplierID,FShareStatus,FTaxID,FBank,FAccount,FBankNumber,FBrNo,FBoundAttr,FErpClsID,FShortName,FAddress,FPriorityID,FPOGroupID,FStatus,FLanguageID,FRegionID,FTrade,FMinPOValue,FMaxDebitDate,FLegalPerson,FContact,FCity,FContactAcct,FPhoneAcct,FFaxAcct,FZipAcct,FEmailAcct,FAddrAcct,FTax,FCyID,FSetID,FSetDLineID,FProvince,FTaxNum,FPriceClsID,FOperID,FCIQNumber,FDeleted,FSaleMode,FName,FNumber,FParentID,FShortNumber,FCountry,FARAccountID,FAPAccountID,FpreAcctID,FlastTradeAmount,FlastRPAmount,FfavorPolicy,Fdepartment,Femployee,Fcorperate,FbeginTradeDate,FPostalCode,FendTradeDate,FlastTradeDate,FlastReceiveDate,FcashDiscount,FcurrencyID,FmaxDealAmount,FminForeReceiveRate,FminReserverate,FdebtLevel,FCarryingAOS,FPhone,FIsCreditMgr,FCreditPeriod,FCreditLevel,FPayTaxAcctID,FValueAddRate,FTypeID,FCreditDays,FCreditAmount,FStockIDAssign,FFax,FStockIDInst,FStockIDKeep,FPaperPeriod,FAlarmPeriod,FLicence,FPermit,FCertify,FLicAndPermit,FGSortMem,FGEng,FEmail,FGAbove,FGProp,FGManageMode,FGCharterVal,FGPermissVal,FGCertifiVal,FGInitialApproveFlag,FSaleID,FOtherARAcctID,FOtherAPAcctID");
             strSql.Append(") values (");
-            strSql.Append("@FItemID,@FHomePage,@FPreAPAcctID,@FHelpCode,@FNameEN,@FAddrEn,@FCIQCode,@FRegion,@FMobilePhone,@FPayCondition,@FManageType,@FClass,@FCreditLimit,@FValue,@FRegUserID,@FLastModifyDate,@FRecentContactDate,@FRegDate,@FFlat,@FClassTypeID,@FCoSupplierID,@FShareStatus,@F_102,@FTaxID,@FBank,@FAccount,@FBankNumber,@FBrNo,@FBoundAttr,@FErpClsID,@FShortName,@FAddress,@FPriorityID,@FPOGroupID,@FStatus,@FLanguageID,@FRegionID,@FTrade,@FMinPOValue,@FMaxDebitDate,@FLegalPerson,@FContact,@FCity,@FContactAcct,@FPhoneAcct,@FFaxAcct,@FZipAcct,@FEmailAcct,@FAddrAcct,@FTax,@FCyID,@FSetID,@FSetDLineID,@FProvince,@FTaxNum,@FPriceClsID,@FOperID,@FCIQNumber,@FDeleted,@FSaleMode,@FName,@FNumber,@FParentID,@FShortNumber,@FCountry,@FARAccountID,@FAPAccountID,@FpreAcctID,@FlastTradeAmount,@FlastRPAmount,@FfavorPolicy,@Fdepartment,@Femployee,@Fcorperate,@FbeginTradeDate,@FPostalCode,@FendTradeDate,@FlastTradeDate,@FlastReceiveDate,@FcashDiscount,@FcurrencyID,@FmaxDealAmount,@FminForeReceiveRate,@FminReserverate,@FdebtLevel,@FCarryingAOS,@FPhone,@FIsCreditMgr,@FCreditPeriod,@FCreditLevel,@FPayTaxAcctID,@FValueAddRate,@FTypeID,@FCreditDays,@FCreditAmount,@FStockIDAssign,@FFax,@FStockIDInst,@FStockIDKeep,@FPaperPeriod,@FAlarmPeriod,@FLicence,@FPermit,@FCertify,@FLicAndPermit,@FGSortMem,@FGEng,@FEmail,@FGAbove,@FGProp,@FGManageMode,@FGCharterVal,@FGPermissVal,@FGCertifiVal,@FGInitialApproveFlag,@FSaleID,@FOtherARAcctID,@FOtherAPAcctID");
+            strSql.Append("@FItemID,@FHomePage,@FPreAPAcctID,@FHelpCode,@FNameEN,@FAddrEn,@FCIQCode,@FRegion,@FMobilePhone,@FPayCondition,@FManageType,@FClass,@FCreditLimit,@FValue,@FRegUserID,@FLastModifyDate,@FRecentContactDate,@FRegDate,@FFlat,@FClassTypeID,@FCoSupplierID,@FShareStatus,@FTaxID,@FBank,@FAccount,@FBankNumber,@FBrNo,@FBoundAttr,@FErpClsID,@FShortName,@FAddress,@FPriorityID,@FPOGroupID,@FStatus,@FLanguageID,@FRegionID,@FTrade,@FMinPOValue,@FMaxDebitDate,@FLegalPerson,@FContact,@FCity,@FContactAcct,@FPhoneAcct,@FFaxAcct,@FZipAcct,@FEmailAcct,@FAddrAcct,@FTax,@FCyID,@FSetID,@FSetDLineID,@FProvince,@FTaxNum,@FPriceClsID,@FOperID,@FCIQNumber,@FDeleted,@FSaleMode,@FName,@FNumber,@FParentID,@FShortNumber,@FCountry,@FARAccountID,@FAPAccountID,@FpreAcctID,@FlastTradeAmount,@FlastRPAmount,@FfavorPolicy,@Fdepartment,@Femployee,@Fcorperate,@FbeginTradeDate,@FPostalCode,@FendTradeDate,@FlastTradeDate,@FlastReceiveDate,@FcashDiscount,@FcurrencyID,@FmaxDealAmount,@FminForeReceiveRate,@FminReserverate,@FdebtLevel,@FCarryingAOS,@FPhone,@FIsCreditMgr,@FCreditPeriod,@FCreditLevel,@FPayTaxAcctID,@FValueAddRate,@FTypeID,@FCreditDays,@FCreditAmount,@FStockIDAssign,@FFax,@FStockIDInst,@FStockIDKeep,@FPaperPeriod,@FAlarmPeriod,@FLicence,@FPermit,@FCertify,@FLicAndPermit,@FGSortMem,@FGEng,@FEmail,@FGAbove,@FGProp,@FGManageMode,@FGCharterVal,@FGPermissVal,@FGCertifiVal,@FGInitialApproveFlag,@FSaleID,@FOtherARAcctID,@FOtherAPAcctID");
             strSql.Append(") ");
 
             SqlParameter[] parameters = {
@@ -424,7 +424,6 @@ namespace Aohua.DAL
                         new SqlParameter("@FClassTypeID", SqlDbType.Int,4) ,
                         new SqlParameter("@FCoSupplierID", SqlDbType.Int,4) ,
                         new SqlParameter("@FShareStatus", SqlDbType.Int,4) ,
-                        new SqlParameter("@F_102", SqlDbType.Int,4) ,
                         new SqlParameter("@FTaxID", SqlDbType.VarChar,40) ,
                         new SqlParameter("@FBank", SqlDbType.VarChar,255) ,
                         new SqlParameter("@FAccount", SqlDbType.VarChar,80) ,
@@ -545,102 +544,102 @@ namespace Aohua.DAL
             parameters[19].Value = t_Organization.FClassTypeID;
             parameters[20].Value = Common.SqlNull(t_Organization.FCoSupplierID);
             parameters[21].Value = t_Organization.FShareStatus;
-            parameters[22].Value = Common.SqlNull(t_Organization.F_102);
-            parameters[23].Value = Common.SqlNull(t_Organization.FTaxID);
-            parameters[24].Value = Common.SqlNull(t_Organization.FBank);
-            parameters[25].Value = Common.SqlNull(t_Organization.FAccount);
-            parameters[26].Value = Common.SqlNull(t_Organization.FBankNumber);
-            parameters[27].Value = Common.SqlNull(t_Organization.FBrNo);
-            parameters[28].Value = Common.SqlNull(t_Organization.FBoundAttr);
-            parameters[29].Value = Common.SqlNull(t_Organization.FErpClsID);
-            parameters[30].Value = Common.SqlNull(t_Organization.FShortName);
-            parameters[31].Value = Common.SqlNull(t_Organization.FAddress);
-            parameters[32].Value = Common.SqlNull(t_Organization.FPriorityID);
-            parameters[33].Value = Common.SqlNull(t_Organization.FPOGroupID);
-            parameters[34].Value = Common.SqlNull(t_Organization.FStatus);
-            parameters[35].Value = Common.SqlNull(t_Organization.FLanguageID);
-            parameters[36].Value = Common.SqlNull(t_Organization.FRegionID);
-            parameters[37].Value = Common.SqlNull(t_Organization.FTrade);
-            parameters[38].Value = Common.SqlNull(t_Organization.FMinPOValue);
-            parameters[39].Value = Common.SqlNull(t_Organization.FMaxDebitDate);
-            parameters[40].Value = Common.SqlNull(t_Organization.FLegalPerson);
-            parameters[41].Value = Common.SqlNull(t_Organization.FContact);
-            parameters[42].Value = Common.SqlNull(t_Organization.FCity);
-            parameters[43].Value = Common.SqlNull(t_Organization.FContactAcct);
-            parameters[44].Value = Common.SqlNull(t_Organization.FPhoneAcct);
-            parameters[45].Value = Common.SqlNull(t_Organization.FFaxAcct);
-            parameters[46].Value = Common.SqlNull(t_Organization.FZipAcct);
-            parameters[47].Value = Common.SqlNull(t_Organization.FEmailAcct);
-            parameters[48].Value = Common.SqlNull(t_Organization.FAddrAcct);
-            parameters[49].Value = Common.SqlNull(t_Organization.FTax);
-            parameters[50].Value = Common.SqlNull(t_Organization.FCyID);
-            parameters[51].Value = Common.SqlNull(t_Organization.FSetID);
-            parameters[52].Value = Common.SqlNull(t_Organization.FSetDLineID);
-            parameters[53].Value = Common.SqlNull(t_Organization.FProvince);
-            parameters[54].Value = Common.SqlNull(t_Organization.FTaxNum);
-            parameters[55].Value = Common.SqlNull(t_Organization.FPriceClsID);
-            parameters[56].Value = Common.SqlNull(t_Organization.FOperID);
-            parameters[57].Value = Common.SqlNull(t_Organization.FCIQNumber);
-            parameters[58].Value = t_Organization.FDeleted;
-            parameters[59].Value = t_Organization.FSaleMode;
-            parameters[60].Value = Common.SqlNull(t_Organization.FName);
-            parameters[61].Value = Common.SqlNull(t_Organization.FNumber);
-            parameters[62].Value = t_Organization.FParentID;
-            parameters[63].Value = Common.SqlNull(t_Organization.FShortNumber);
-            parameters[64].Value = Common.SqlNull(t_Organization.FCountry);
-            parameters[65].Value = t_Organization.FARAccountID;
-            parameters[66].Value = t_Organization.FAPAccountID;
-            parameters[67].Value = t_Organization.FpreAcctID;
-            parameters[68].Value = t_Organization.FlastTradeAmount;
-            parameters[69].Value = t_Organization.FlastRPAmount;
-            parameters[70].Value = Common.SqlNull(t_Organization.FfavorPolicy);
-            parameters[71].Value = t_Organization.Fdepartment;
-            parameters[72].Value = t_Organization.Femployee;
-            parameters[73].Value = Common.SqlNull(t_Organization.Fcorperate);
-            parameters[74].Value = Common.SqlNull(t_Organization.FbeginTradeDate);
-            parameters[75].Value = Common.SqlNull(t_Organization.FPostalCode);
-            parameters[76].Value = Common.SqlNull(t_Organization.FendTradeDate);
-            parameters[77].Value = Common.SqlNull(t_Organization.FlastTradeDate);
-            parameters[78].Value = Common.SqlNull(t_Organization.FlastReceiveDate);
-            parameters[79].Value = t_Organization.FcashDiscount;
-            parameters[80].Value = t_Organization.FcurrencyID;
-            parameters[81].Value = t_Organization.FmaxDealAmount;
-            parameters[82].Value = t_Organization.FminForeReceiveRate;
-            parameters[83].Value = t_Organization.FminReserverate;
-            parameters[84].Value = t_Organization.FdebtLevel;
-            parameters[85].Value = t_Organization.FCarryingAOS;
-            parameters[86].Value = Common.SqlNull(t_Organization.FPhone);
-            parameters[87].Value = t_Organization.FIsCreditMgr;
-            parameters[88].Value = t_Organization.FCreditPeriod;
-            parameters[89].Value = t_Organization.FCreditLevel;
-            parameters[90].Value = t_Organization.FPayTaxAcctID;
-            parameters[91].Value = Common.SqlNull(t_Organization.FValueAddRate);
-            parameters[92].Value = t_Organization.FTypeID;
-            parameters[93].Value = Common.SqlNull(t_Organization.FCreditDays);
-            parameters[94].Value = Common.SqlNull(t_Organization.FCreditAmount);
-            parameters[95].Value = t_Organization.FStockIDAssign;
-            parameters[96].Value = Common.SqlNull(t_Organization.FFax);
-            parameters[97].Value = t_Organization.FStockIDInst;
-            parameters[98].Value = Common.SqlNull(t_Organization.FStockIDKeep);
-            parameters[99].Value = Common.SqlNull(t_Organization.FPaperPeriod);
-            parameters[100].Value = Common.SqlNull(t_Organization.FAlarmPeriod);
-            parameters[101].Value = Common.SqlNull(t_Organization.FLicence);
-            parameters[102].Value = Common.SqlNull(t_Organization.FPermit);
-            parameters[103].Value = Common.SqlNull(t_Organization.FCertify);
-            parameters[104].Value = t_Organization.FLicAndPermit;
-            parameters[105].Value = Common.SqlNull(t_Organization.FGSortMem);
-            parameters[106].Value = Common.SqlNull(t_Organization.FGEng);
-            parameters[107].Value = Common.SqlNull(t_Organization.FEmail);
-            parameters[108].Value = Common.SqlNull(t_Organization.FGAbove);
-            parameters[109].Value = Common.SqlNull(t_Organization.FGProp);
-            parameters[110].Value = Common.SqlNull(t_Organization.FGManageMode);
-            parameters[111].Value = Common.SqlNull(t_Organization.FGCharterVal);
-            parameters[112].Value = Common.SqlNull(t_Organization.FGPermissVal);
-            parameters[113].Value = Common.SqlNull(t_Organization.FGCertifiVal);
-            parameters[114].Value = t_Organization.FGInitialApproveFlag;
-            parameters[115].Value = Common.SqlNull(t_Organization.FSaleID);
-            parameters[116].Value = t_Organization.FOtherARAcctID;
-            parameters[117].Value = t_Organization.FOtherAPAcctID;
+            //parameters[22].Value = Common.SqlNull(t_Organization.F_102);
+            parameters[22].Value = Common.SqlNull(t_Organization.FTaxID);
+            parameters[23].Value = Common.SqlNull(t_Organization.FBank);
+            parameters[24].Value = Common.SqlNull(t_Organization.FAccount);
+            parameters[25].Value = Common.SqlNull(t_Organization.FBankNumber);
+            parameters[26].Value = Common.SqlNull(t_Organization.FBrNo);
+            parameters[27].Value = Common.SqlNull(t_Organization.FBoundAttr);
+            parameters[28].Value = Common.SqlNull(t_Organization.FErpClsID);
+            parameters[29].Value = Common.SqlNull(t_Organization.FShortName);
+            parameters[30].Value = Common.SqlNull(t_Organization.FAddress);
+            parameters[31].Value = Common.SqlNull(t_Organization.FPriorityID);
+            parameters[32].Value = Common.SqlNull(t_Organization.FPOGroupID);
+            parameters[33].Value = Common.SqlNull(t_Organization.FStatus);
+            parameters[34].Value = Common.SqlNull(t_Organization.FLanguageID);
+            parameters[35].Value = Common.SqlNull(t_Organization.FRegionID);
+            parameters[36].Value = Common.SqlNull(t_Organization.FTrade);
+            parameters[37].Value = Common.SqlNull(t_Organization.FMinPOValue);
+            parameters[38].Value = Common.SqlNull(t_Organization.FMaxDebitDate);
+            parameters[39].Value = Common.SqlNull(t_Organization.FLegalPerson);
+            parameters[40].Value = Common.SqlNull(t_Organization.FContact);
+            parameters[41].Value = Common.SqlNull(t_Organization.FCity);
+            parameters[42].Value = Common.SqlNull(t_Organization.FContactAcct);
+            parameters[43].Value = Common.SqlNull(t_Organization.FPhoneAcct);
+            parameters[44].Value = Common.SqlNull(t_Organization.FFaxAcct);
+            parameters[45].Value = Common.SqlNull(t_Organization.FZipAcct);
+            parameters[46].Value = Common.SqlNull(t_Organization.FEmailAcct);
+            parameters[47].Value = Common.SqlNull(t_Organization.FAddrAcct);
+            parameters[48].Value = Common.SqlNull(t_Organization.FTax);
+            parameters[49].Value = Common.SqlNull(t_Organization.FCyID);
+            parameters[50].Value = Common.SqlNull(t_Organization.FSetID);
+            parameters[51].Value = Common.SqlNull(t_Organization.FSetDLineID);
+            parameters[52].Value = Common.SqlNull(t_Organization.FProvince);
+            parameters[53].Value = Common.SqlNull(t_Organization.FTaxNum);
+            parameters[54].Value = Common.SqlNull(t_Organization.FPriceClsID);
+            parameters[55].Value = Common.SqlNull(t_Organization.FOperID);
+            parameters[56].Value = Common.SqlNull(t_Organization.FCIQNumber);
+            parameters[57].Value = t_Organization.FDeleted;
+            parameters[58].Value = t_Organization.FSaleMode;
+            parameters[59].Value = Common.SqlNull(t_Organization.FName);
+            parameters[60].Value = Common.SqlNull(t_Organization.FNumber);
+            parameters[61].Value = t_Organization.FParentID;
+            parameters[62].Value = Common.SqlNull(t_Organization.FShortNumber);
+            parameters[63].Value = Common.SqlNull(t_Organization.FCountry);
+            parameters[64].Value = t_Organization.FARAccountID;
+            parameters[65].Value = t_Organization.FAPAccountID;
+            parameters[66].Value = t_Organization.FpreAcctID;
+            parameters[67].Value = t_Organization.FlastTradeAmount;
+            parameters[68].Value = t_Organization.FlastRPAmount;
+            parameters[69].Value = Common.SqlNull(t_Organization.FfavorPolicy);
+            parameters[70].Value = t_Organization.Fdepartment;
+            parameters[71].Value = t_Organization.Femployee;
+            parameters[72].Value = Common.SqlNull(t_Organization.Fcorperate);
+            parameters[73].Value = Common.SqlNull(t_Organization.FbeginTradeDate);
+            parameters[74].Value = Common.SqlNull(t_Organization.FPostalCode);
+            parameters[75].Value = Common.SqlNull(t_Organization.FendTradeDate);
+            parameters[76].Value = Common.SqlNull(t_Organization.FlastTradeDate);
+            parameters[77].Value = Common.SqlNull(t_Organization.FlastReceiveDate);
+            parameters[78].Value = t_Organization.FcashDiscount;
+            parameters[79].Value = t_Organization.FcurrencyID;
+            parameters[80].Value = t_Organization.FmaxDealAmount;
+            parameters[81].Value = t_Organization.FminForeReceiveRate;
+            parameters[82].Value = t_Organization.FminReserverate;
+            parameters[83].Value = t_Organization.FdebtLevel;
+            parameters[84].Value = t_Organization.FCarryingAOS;
+            parameters[85].Value = Common.SqlNull(t_Organization.FPhone);
+            parameters[86].Value = t_Organization.FIsCreditMgr;
+            parameters[87].Value = t_Organization.FCreditPeriod;
+            parameters[88].Value = t_Organization.FCreditLevel;
+            parameters[89].Value = t_Organization.FPayTaxAcctID;
+            parameters[90].Value = Common.SqlNull(t_Organization.FValueAddRate);
+            parameters[91].Value = t_Organization.FTypeID;
+            parameters[92].Value = Common.SqlNull(t_Organization.FCreditDays);
+            parameters[93].Value = Common.SqlNull(t_Organization.FCreditAmount);
+            parameters[94].Value = t_Organization.FStockIDAssign;
+            parameters[95].Value = Common.SqlNull(t_Organization.FFax);
+            parameters[96].Value = t_Organization.FStockIDInst;
+            parameters[97].Value = Common.SqlNull(t_Organization.FStockIDKeep);
+            parameters[98].Value = Common.SqlNull(t_Organization.FPaperPeriod);
+            parameters[99].Value = Common.SqlNull(t_Organization.FAlarmPeriod);
+            parameters[100].Value = Common.SqlNull(t_Organization.FLicence);
+            parameters[101].Value = Common.SqlNull(t_Organization.FPermit);
+            parameters[102].Value = Common.SqlNull(t_Organization.FCertify);
+            parameters[103].Value = t_Organization.FLicAndPermit;
+            parameters[104].Value = Common.SqlNull(t_Organization.FGSortMem);
+            parameters[105].Value = Common.SqlNull(t_Organization.FGEng);
+            parameters[106].Value = Common.SqlNull(t_Organization.FEmail);
+            parameters[107].Value = Common.SqlNull(t_Organization.FGAbove);
+            parameters[108].Value = Common.SqlNull(t_Organization.FGProp);
+            parameters[109].Value = Common.SqlNull(t_Organization.FGManageMode);
+            parameters[110].Value = Common.SqlNull(t_Organization.FGCharterVal);
+            parameters[111].Value = Common.SqlNull(t_Organization.FGPermissVal);
+            parameters[112].Value = Common.SqlNull(t_Organization.FGCertifiVal);
+            parameters[113].Value = t_Organization.FGInitialApproveFlag;
+            parameters[114].Value = Common.SqlNull(t_Organization.FSaleID);
+            parameters[115].Value = t_Organization.FOtherARAcctID;
+            parameters[116].Value = t_Organization.FOtherAPAcctID;
 
             int ret = SqlHelper.ExecuteNonQuery(connK3Desc, strSql.ToString(), parameters);
             return ret;
@@ -651,14 +650,14 @@ namespace Aohua.DAL
         /// </summary>
         /// <param name="ItemId"></param>
         /// <returns></returns>
-        public static bool Exist(int ItemId)
+        public static bool Exist(string fName,int fItemID)
         {
-            bool retVal = true;
-            string sql = string.Format("Select Count(*) From [t_Organization] Where FItemID = {0}", ItemId);
+            bool retVal = false;
+            string sql = string.Format("Select Count(*) From [t_Organization] Where fName = '{0}' OR fItemID ={1}",fName, fItemID);
             object obj = SqlHelper.ExecuteScalar(connK3Desc, sql);
-            if(obj == null || obj.ToString() == "")
+            if(obj != null && int.Parse(obj.ToString()) > 0)
             {
-                retVal = false;
+                retVal = true;
             }
             return retVal;
         }

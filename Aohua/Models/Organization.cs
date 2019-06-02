@@ -597,7 +597,7 @@ namespace Aohua.Models
         /// <summary>
         /// 
         /// </summary>
-        public int? F_102 { get; set; }
+        //public int? F_102 { get; set; }
 
 
     }
