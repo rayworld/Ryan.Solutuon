@@ -67,7 +67,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 119);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1604, 852);
+            this.panelEx1.Size = new System.Drawing.Size(1404, 852);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -116,7 +116,7 @@
             this.DataGridViewX2.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.DataGridViewX2.RowTemplate.Height = 30;
             this.DataGridViewX2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewX2.Size = new System.Drawing.Size(968, 796);
+            this.DataGridViewX2.Size = new System.Drawing.Size(768, 796);
             this.DataGridViewX2.TabIndex = 7;
             this.DataGridViewX2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewX2_CellDoubleClick);
             this.DataGridViewX2.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DataGridViewX2_RowPostPaint);
@@ -130,7 +130,7 @@
             this.pSuccessData.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.pSuccessData.Location = new System.Drawing.Point(636, 0);
             this.pSuccessData.Name = "pSuccessData";
-            this.pSuccessData.Size = new System.Drawing.Size(968, 56);
+            this.pSuccessData.Size = new System.Drawing.Size(768, 56);
             this.pSuccessData.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.pSuccessData.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
             this.pSuccessData.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -235,7 +235,7 @@
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(1604, 119);
+            this.panelEx2.Size = new System.Drawing.Size(1404, 119);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -321,7 +321,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1604, 971);
+            this.ClientSize = new System.Drawing.Size(1404, 971);
             this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.panelEx2);
             this.DoubleBuffered = true;

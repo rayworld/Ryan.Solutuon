@@ -75,6 +75,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ryan.Framework.Common\Ryan.Framework.Common.csproj">
+      <Project>{46d98007-de2e-4c89-aa01-030741c85a5f}</Project>
+      <Name>Ryan.Framework.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ryan.Framework.Config\Ryan.Framework.Config.csproj">
       <Project>{87A3A7AF-C820-4063-95C0-5FEDC4DEE228}</Project>
       <Name>Ryan.Framework.Config</Name>

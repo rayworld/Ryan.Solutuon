@@ -30,7 +30,8 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
-            this.bExportData = new DevComponents.DotNetBar.ButtonX();
+            this.BtnUnMark = new DevComponents.DotNetBar.ButtonX();
+            this.BtnMark = new DevComponents.DotNetBar.ButtonX();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
@@ -40,7 +41,8 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.Controls.Add(this.bExportData);
+            this.panelEx1.Controls.Add(this.BtnUnMark);
+            this.panelEx1.Controls.Add(this.BtnMark);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
@@ -54,17 +56,29 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 0;
             // 
-            // bExportData
+            // BtnUnMark
             // 
-            this.bExportData.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.bExportData.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.bExportData.Location = new System.Drawing.Point(29, 24);
-            this.bExportData.Name = "bExportData";
-            this.bExportData.Size = new System.Drawing.Size(169, 52);
-            this.bExportData.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.bExportData.TabIndex = 0;
-            this.bExportData.Text = "迁移";
-            this.bExportData.Click += new System.EventHandler(this.BExportData_Click);
+            this.BtnUnMark.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnUnMark.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.BtnUnMark.Location = new System.Drawing.Point(252, 24);
+            this.BtnUnMark.Name = "BtnUnMark";
+            this.BtnUnMark.Size = new System.Drawing.Size(169, 52);
+            this.BtnUnMark.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnUnMark.TabIndex = 2;
+            this.BtnUnMark.Text = "取消标记";
+            this.BtnUnMark.Click += new System.EventHandler(this.BtnUnMark_Click);
+            // 
+            // BtnMark
+            // 
+            this.BtnMark.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnMark.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.BtnMark.Location = new System.Drawing.Point(40, 24);
+            this.BtnMark.Name = "BtnMark";
+            this.BtnMark.Size = new System.Drawing.Size(169, 52);
+            this.BtnMark.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnMark.TabIndex = 1;
+            this.BtnMark.Text = "标记升迁数据";
+            this.BtnMark.Click += new System.EventHandler(this.BtnMark_Click);
             // 
             // dataGridViewX1
             // 
@@ -80,7 +94,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 100);
             this.dataGridViewX1.Name = "dataGridViewX1";
             this.dataGridViewX1.ReadOnly = true;
@@ -108,6 +122,7 @@
 
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
-        private DevComponents.DotNetBar.ButtonX bExportData;
+        private DevComponents.DotNetBar.ButtonX BtnUnMark;
+        private DevComponents.DotNetBar.ButtonX BtnMark;
     }
 }

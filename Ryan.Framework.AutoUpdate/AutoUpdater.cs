@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ryan.Framework.Common;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -7,7 +8,6 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
-using DevComponents.DotNetBar.Controls;
 
 namespace Ryan.Framework.AutoUpdate
 {
@@ -37,7 +37,8 @@ namespace Ryan.Framework.AutoUpdate
                 return;
             }
             /*
-            * 请求Web服务器，得到当前最新版本的文件列表，格式同本地的FileList.xml。
+            * 请求Web服务器，得到
+            * 最新版本的文件列表，格式同本地的FileList.xml。
             * 与本地的FileList.xml比较，找到不同版本的文件
             * 生成一个更新文件列表，开始DownloadProgress
             * <UpdateFile>
@@ -109,7 +110,8 @@ namespace Ryan.Framework.AutoUpdate
             }
             else
             {
-                DesktopAlert.Show("<h2>当前已是最新版本。</h2>");
+                CustomDesktopAlert.H2("当前已是最新版本。");
+                //CustomDesktopAlert.H2("系统应用已更新，<br/>请点击确定重新<br/>启动程序。");
             }
         }
 
@@ -123,7 +125,7 @@ namespace Ryan.Framework.AutoUpdate
 
                 if (bNeedRestart)
                 {
-                    DesktopAlert.Show("<h2>系统应用已更新，请点击确定重新启动程序。</h2>");
+                    CustomDesktopAlert.H2("系统应用已更新，请点击确定重新启动程序。");
 
                     //DOUAC();
                     Process.Start(Application.ExecutablePath);
