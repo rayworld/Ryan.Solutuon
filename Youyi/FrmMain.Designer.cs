@@ -1,16 +1,16 @@
-﻿namespace Aohua
+﻿namespace Youyi
 {
     partial class FrmMain
     {
         /// <summary>
-        /// 必需的设计器变量。
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// 清理所有正在使用的资源。
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +20,11 @@
             base.Dispose(disposing);
         }
 
-        #region Windows 窗体设计器生成的代码
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// 设计器支持所需的方法 - 不要
-        /// 使用代码编辑器修改此方法的内容。
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -32,8 +32,7 @@
             this.ribbonControl1 = new DevComponents.DotNetBar.RibbonControl();
             this.ribbonPanel4 = new DevComponents.DotNetBar.RibbonPanel();
             this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
-            this.biDateComp = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem15 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItem14 = new DevComponents.DotNetBar.ButtonItem();
             this.rti9209 = new DevComponents.DotNetBar.RibbonTabItem();
             this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem2 = new DevComponents.DotNetBar.ButtonItem();
@@ -50,29 +49,13 @@
             this.buttonItem12 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem13 = new DevComponents.DotNetBar.ButtonItem();
             this.colorPickerDropDown1 = new DevComponents.DotNetBar.ColorPickerDropDown();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.buttonChangeStyle = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem17 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleMetro = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleOffice2010Blue = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleOffice2010Silver = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleOffice2010Black = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleVS2010 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem62 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleOffice2007Blue = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleOffice2007Black = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleOffice2007Silver = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem60 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem16 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleCustom = new DevComponents.DotNetBar.ColorPickerDropDown();
-            this.bar1 = new DevComponents.DotNetBar.Bar();
             this.NavTabControl = new DevComponents.DotNetBar.SuperTabControl();
-            this.buttonItem14 = new DevComponents.DotNetBar.ButtonItem();
+            this.bar1 = new DevComponents.DotNetBar.Bar();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.ribbonControl1.SuspendLayout();
             this.ribbonPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavTabControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bar1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -93,7 +76,8 @@
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
             this.ribbonControl1.Name = "ribbonControl1";
-            this.ribbonControl1.Size = new System.Drawing.Size(1783, 231);
+            this.ribbonControl1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.ribbonControl1.Size = new System.Drawing.Size(1834, 231);
             this.ribbonControl1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonControl1.SystemText.MaximizeRibbonText = "&Maximize the Ribbon";
             this.ribbonControl1.SystemText.MinimizeRibbonText = "Mi&nimize the Ribbon";
@@ -111,7 +95,7 @@
             this.ribbonControl1.SystemText.QatPlaceBelowRibbonText = "&Place Quick Access Toolbar below the Ribbon";
             this.ribbonControl1.SystemText.QatRemoveItemText = "&Remove from Quick Access Toolbar";
             this.ribbonControl1.TabGroupHeight = 14;
-            this.ribbonControl1.TabIndex = 0;
+            this.ribbonControl1.TabIndex = 1;
             this.ribbonControl1.Text = "ribbonControl1";
             this.ribbonControl1.TitleText = "风格与恢复规划规划";
             // 
@@ -123,8 +107,8 @@
             this.ribbonPanel4.Location = new System.Drawing.Point(0, 60);
             this.ribbonPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.ribbonPanel4.Name = "ribbonPanel4";
-            this.ribbonPanel4.Padding = new System.Windows.Forms.Padding(4, 0, 4, 2);
-            this.ribbonPanel4.Size = new System.Drawing.Size(1783, 171);
+            this.ribbonPanel4.Padding = new System.Windows.Forms.Padding(4, 0, 4, 3);
+            this.ribbonPanel4.Size = new System.Drawing.Size(1834, 168);
             // 
             // 
             // 
@@ -154,15 +138,14 @@
             this.ribbonBar1.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar1.DragDropSupport = true;
             this.ribbonBar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.biDateComp,
-            this.buttonItem15});
+            this.buttonItem14});
             this.ribbonBar1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
             this.ribbonBar1.Location = new System.Drawing.Point(4, 0);
             this.ribbonBar1.Name = "ribbonBar1";
-            this.ribbonBar1.Size = new System.Drawing.Size(218, 169);
+            this.ribbonBar1.Size = new System.Drawing.Size(94, 165);
             this.ribbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar1.TabIndex = 0;
-            this.ribbonBar1.Text = "客户信息迁移";
+            this.ribbonBar1.Text = "汇总";
             // 
             // 
             // 
@@ -172,26 +155,19 @@
             // 
             this.ribbonBar1.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // biDateComp
+            // buttonItem14
             // 
-            this.biDateComp.Name = "biDateComp";
-            this.biDateComp.SubItemsExpandWidth = 14;
-            this.biDateComp.Text = "信息对比";
-            this.biDateComp.Click += new System.EventHandler(this.BiDateComp_Click);
-            // 
-            // buttonItem15
-            // 
-            this.buttonItem15.Name = "buttonItem15";
-            this.buttonItem15.SubItemsExpandWidth = 14;
-            this.buttonItem15.Text = "数据迁移";
-            this.buttonItem15.Click += new System.EventHandler(this.ButtonItem15_Click);
+            this.buttonItem14.Name = "buttonItem14";
+            this.buttonItem14.SubItemsExpandWidth = 14;
+            this.buttonItem14.Text = "分类汇总";
+            this.buttonItem14.Click += new System.EventHandler(this.ButtonItem14_Click);
             // 
             // rti9209
             // 
             this.rti9209.Checked = true;
             this.rti9209.Name = "rti9209";
             this.rti9209.Panel = this.ribbonPanel4;
-            this.rti9209.Text = "客户信息迁移";
+            this.rti9209.Text = "汇总分析";
             // 
             // buttonItem1
             // 
@@ -324,166 +300,6 @@
             this.colorPickerDropDown1.Tooltip = "Custom color scheme is created based on currently selected color table. Try selec" +
     "ting Silver or Blue color table and then creating custom color scheme.";
             // 
-            // textBoxX1
-            // 
-            this.textBoxX1.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.textBoxX1.ForeColor = System.Drawing.Color.Black;
-            this.textBoxX1.Location = new System.Drawing.Point(4, 30);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.Size = new System.Drawing.Size(93, 21);
-            this.textBoxX1.TabIndex = 0;
-            // 
-            // styleManager1
-            // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2016;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
-            // 
-            // buttonChangeStyle
-            // 
-            this.buttonChangeStyle.AutoExpandOnClick = true;
-            this.buttonChangeStyle.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
-            this.buttonChangeStyle.Name = "buttonChangeStyle";
-            this.buttonChangeStyle.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem17,
-            this.buttonStyleMetro,
-            this.buttonStyleOffice2010Blue,
-            this.buttonStyleOffice2010Silver,
-            this.buttonStyleOffice2010Black,
-            this.buttonStyleVS2010,
-            this.buttonItem62,
-            this.buttonStyleOffice2007Blue,
-            this.buttonStyleOffice2007Black,
-            this.buttonStyleOffice2007Silver,
-            this.buttonItem60,
-            this.buttonItem16,
-            this.buttonStyleCustom});
-            this.buttonChangeStyle.Text = "Style";
-            // 
-            // buttonItem17
-            // 
-            this.buttonItem17.Checked = true;
-            this.buttonItem17.CommandParameter = "Office2016";
-            this.buttonItem17.Name = "buttonItem17";
-            this.buttonItem17.OptionGroup = "style";
-            this.buttonItem17.Text = "Office 2016";
-            // 
-            // buttonStyleMetro
-            // 
-            this.buttonStyleMetro.CommandParameter = "Metro";
-            this.buttonStyleMetro.Name = "buttonStyleMetro";
-            this.buttonStyleMetro.OptionGroup = "style";
-            this.buttonStyleMetro.Text = "Metro/Office 2013";
-            // 
-            // buttonStyleOffice2010Blue
-            // 
-            this.buttonStyleOffice2010Blue.CommandParameter = "Office2010Blue";
-            this.buttonStyleOffice2010Blue.Name = "buttonStyleOffice2010Blue";
-            this.buttonStyleOffice2010Blue.OptionGroup = "style";
-            this.buttonStyleOffice2010Blue.Text = "Office 2010 Blue";
-            // 
-            // buttonStyleOffice2010Silver
-            // 
-            this.buttonStyleOffice2010Silver.CommandParameter = "Office2010Silver";
-            this.buttonStyleOffice2010Silver.Name = "buttonStyleOffice2010Silver";
-            this.buttonStyleOffice2010Silver.OptionGroup = "style";
-            this.buttonStyleOffice2010Silver.Text = "Office 2010 <font color=\"Silver\"><b>Silver</b></font>";
-            // 
-            // buttonStyleOffice2010Black
-            // 
-            this.buttonStyleOffice2010Black.CommandParameter = "Office2010Black";
-            this.buttonStyleOffice2010Black.Name = "buttonStyleOffice2010Black";
-            this.buttonStyleOffice2010Black.OptionGroup = "style";
-            this.buttonStyleOffice2010Black.Text = "Office 2010 Black";
-            // 
-            // buttonStyleVS2010
-            // 
-            this.buttonStyleVS2010.CommandParameter = "VisualStudio2010Blue";
-            this.buttonStyleVS2010.Name = "buttonStyleVS2010";
-            this.buttonStyleVS2010.OptionGroup = "style";
-            this.buttonStyleVS2010.Text = "Visual Studio 2010";
-            // 
-            // buttonItem62
-            // 
-            this.buttonItem62.CommandParameter = "Windows7Blue";
-            this.buttonItem62.Name = "buttonItem62";
-            this.buttonItem62.OptionGroup = "style";
-            this.buttonItem62.Text = "Windows 7";
-            // 
-            // buttonStyleOffice2007Blue
-            // 
-            this.buttonStyleOffice2007Blue.CommandParameter = "Office2007Blue";
-            this.buttonStyleOffice2007Blue.Name = "buttonStyleOffice2007Blue";
-            this.buttonStyleOffice2007Blue.OptionGroup = "style";
-            this.buttonStyleOffice2007Blue.Text = "Office 2007 <font color=\"Blue\"><b>Blue</b></font>";
-            // 
-            // buttonStyleOffice2007Black
-            // 
-            this.buttonStyleOffice2007Black.CommandParameter = "Office2007Black";
-            this.buttonStyleOffice2007Black.Name = "buttonStyleOffice2007Black";
-            this.buttonStyleOffice2007Black.OptionGroup = "style";
-            this.buttonStyleOffice2007Black.Text = "Office 2007 <font color=\"black\"><b>Black</b></font>";
-            // 
-            // buttonStyleOffice2007Silver
-            // 
-            this.buttonStyleOffice2007Silver.CommandParameter = "Office2007Silver";
-            this.buttonStyleOffice2007Silver.Name = "buttonStyleOffice2007Silver";
-            this.buttonStyleOffice2007Silver.OptionGroup = "style";
-            this.buttonStyleOffice2007Silver.Text = "Office 2007 <font color=\"Silver\"><b>Silver</b></font>";
-            // 
-            // buttonItem60
-            // 
-            this.buttonItem60.CommandParameter = "Office2007VistaGlass";
-            this.buttonItem60.Name = "buttonItem60";
-            this.buttonItem60.OptionGroup = "style";
-            this.buttonItem60.Text = "Vista Glass";
-            // 
-            // buttonItem16
-            // 
-            this.buttonItem16.CommandParameter = "VisualStudio2012Light";
-            this.buttonItem16.Name = "buttonItem16";
-            this.buttonItem16.OptionGroup = "style";
-            this.buttonItem16.Text = "Visual Studio 2012 Light";
-            // 
-            // buttonStyleCustom
-            // 
-            this.buttonStyleCustom.BeginGroup = true;
-            this.buttonStyleCustom.Name = "buttonStyleCustom";
-            this.buttonStyleCustom.Text = "Custom scheme";
-            this.buttonStyleCustom.Tooltip = "Custom color scheme is created based on currently selected color table. Try selec" +
-    "ting Silver or Blue color table and then creating custom color scheme.";
-            // 
-            // bar1
-            // 
-            this.bar1.AccessibleDescription = "DotNetBar Bar (bar1)";
-            this.bar1.AccessibleName = "DotNetBar Bar";
-            this.bar1.AccessibleRole = System.Windows.Forms.AccessibleRole.StatusBar;
-            this.bar1.AntiAlias = true;
-            this.bar1.BarType = DevComponents.DotNetBar.eBarType.StatusBar;
-            this.bar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bar1.GrabHandleStyle = DevComponents.DotNetBar.eGrabHandleStyle.ResizeHandle;
-            this.bar1.IsMaximized = false;
-            this.bar1.ItemSpacing = 2;
-            this.bar1.Location = new System.Drawing.Point(0, 1134);
-            this.bar1.Margin = new System.Windows.Forms.Padding(4);
-            this.bar1.Name = "bar1";
-            this.bar1.PaddingBottom = 0;
-            this.bar1.PaddingTop = 0;
-            this.bar1.Size = new System.Drawing.Size(1783, 26);
-            this.bar1.Stretch = true;
-            this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.bar1.TabIndex = 8;
-            this.bar1.TabStop = false;
-            this.bar1.Text = "barStatus";
-            // 
             // NavTabControl
             // 
             this.NavTabControl.BackColor = System.Drawing.Color.White;
@@ -511,22 +327,45 @@
             this.NavTabControl.ReorderTabsEnabled = true;
             this.NavTabControl.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.NavTabControl.SelectedTabIndex = -1;
-            this.NavTabControl.Size = new System.Drawing.Size(1783, 903);
+            this.NavTabControl.Size = new System.Drawing.Size(1834, 916);
             this.NavTabControl.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.NavTabControl.TabIndex = 11;
+            this.NavTabControl.TabIndex = 13;
             this.NavTabControl.Text = "superTabControl1";
             // 
-            // buttonItem14
+            // bar1
             // 
-            this.buttonItem14.Name = "buttonItem14";
-            this.buttonItem14.SubItemsExpandWidth = 14;
-            this.buttonItem14.Text = "数据迁移";
+            this.bar1.AccessibleDescription = "DotNetBar Bar (bar1)";
+            this.bar1.AccessibleName = "DotNetBar Bar";
+            this.bar1.AccessibleRole = System.Windows.Forms.AccessibleRole.StatusBar;
+            this.bar1.AntiAlias = true;
+            this.bar1.BarType = DevComponents.DotNetBar.eBarType.StatusBar;
+            this.bar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bar1.GrabHandleStyle = DevComponents.DotNetBar.eGrabHandleStyle.ResizeHandle;
+            this.bar1.IsMaximized = false;
+            this.bar1.ItemSpacing = 2;
+            this.bar1.Location = new System.Drawing.Point(0, 1147);
+            this.bar1.Margin = new System.Windows.Forms.Padding(4);
+            this.bar1.Name = "bar1";
+            this.bar1.PaddingBottom = 0;
+            this.bar1.PaddingTop = 0;
+            this.bar1.Size = new System.Drawing.Size(1834, 26);
+            this.bar1.Stretch = true;
+            this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.bar1.TabIndex = 12;
+            this.bar1.TabStop = false;
+            this.bar1.Text = "barStatus";
+            // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.VisualStudio2010Blue;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1783, 1160);
+            this.ClientSize = new System.Drawing.Size(1834, 1173);
             this.Controls.Add(this.NavTabControl);
             this.Controls.Add(this.bar1);
             this.Controls.Add(this.ribbonControl1);
@@ -534,38 +373,28 @@
             this.EnableGlass = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "FrmMain";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Form_Main_Load);
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.ribbonControl1.ResumeLayout(false);
             this.ribbonControl1.PerformLayout();
             this.ribbonPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NavTabControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bar1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
         private DevComponents.DotNetBar.RibbonControl ribbonControl1;
+        private DevComponents.DotNetBar.RibbonPanel ribbonPanel4;
+        private DevComponents.DotNetBar.RibbonBar ribbonBar1;
+        private DevComponents.DotNetBar.RibbonTabItem rti9209;
+        private DevComponents.DotNetBar.SuperTabControl NavTabControl;
+        private DevComponents.DotNetBar.Bar bar1;
         private DevComponents.DotNetBar.StyleManager styleManager1;
-        private DevComponents.DotNetBar.ButtonItem buttonChangeStyle;
-        private DevComponents.DotNetBar.ButtonItem buttonItem17;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleMetro;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleOffice2010Blue;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleOffice2010Silver;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleOffice2010Black;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleVS2010;
-        private DevComponents.DotNetBar.ButtonItem buttonItem62;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleOffice2007Blue;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleOffice2007Black;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleOffice2007Silver;
-        private DevComponents.DotNetBar.ButtonItem buttonItem60;
-        private DevComponents.DotNetBar.ButtonItem buttonItem16;
-        private DevComponents.DotNetBar.ColorPickerDropDown buttonStyleCustom;
+        private DevComponents.DotNetBar.Command AppCommandTheme;
         private DevComponents.DotNetBar.ButtonItem buttonItem1;
         private DevComponents.DotNetBar.ButtonItem buttonItem2;
         private DevComponents.DotNetBar.ButtonItem buttonItem3;
@@ -580,15 +409,6 @@
         private DevComponents.DotNetBar.ButtonItem buttonItem12;
         private DevComponents.DotNetBar.ButtonItem buttonItem13;
         private DevComponents.DotNetBar.ColorPickerDropDown colorPickerDropDown1;
-        private DevComponents.DotNetBar.Command AppCommandTheme;
-        private DevComponents.DotNetBar.Bar bar1;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
-        private DevComponents.DotNetBar.SuperTabControl NavTabControl;
-        private DevComponents.DotNetBar.RibbonPanel ribbonPanel4;
-        private DevComponents.DotNetBar.RibbonTabItem rti9209;
-        private DevComponents.DotNetBar.RibbonBar ribbonBar1;
-        private DevComponents.DotNetBar.ButtonItem biDateComp;
-        private DevComponents.DotNetBar.ButtonItem buttonItem15;
         private DevComponents.DotNetBar.ButtonItem buttonItem14;
     }
 }

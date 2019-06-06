@@ -6,9 +6,9 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Aohua
+namespace Youyi
 {
-    public partial class FrmMain : Office2007Form
+    public partial class FrmMain :Office2007Form
     {
         public FrmMain()
         {
@@ -21,14 +21,7 @@ namespace Aohua
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
 
-        #region 事件
-
-        /// <summary>
-        /// 启动程序时执行
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Form_Main_Load(object sender, EventArgs e)
+        private void FrmMain_Load(object sender, System.EventArgs e)
         {
             //得到应用标题
             this.ribbonControl1.TitleText = EncryptHelper.Decrypt(ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "AppName"));
@@ -37,22 +30,17 @@ namespace Aohua
             //LoadModule();
 
             //用户登录
-            FrmLogin login = new FrmLogin();
-            if (login.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-            }
-            else
-            {
-                this.Close();
-            }
+            //FrmLogin login = new FrmLogin();
+            //if (login.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //{
+            //}
+            //else
+            //{
+            //    this.Close();
+            //}
         }
 
-        /// <summary>
-        /// 改变样式命令
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void AppCommandTheme_Executed(object sender, EventArgs e)
+        private void AppCommandTheme_Executed(object sender, System.EventArgs e)
         {
             ICommandSource source = sender as ICommandSource;
             if (source.CommandParameter is string)
@@ -127,51 +115,6 @@ namespace Aohua
             //保存用户设置
             ConfigHelper.UpdateOrCreateAppSetting(ConfigHelper.ConfigurationFile.AppConfig, "FormStyle", source.CommandParameter.ToString());
         }
-        #endregion
-
-        #region 私有过程
-
-        //private void LoadModule()
-        //{
-        //    string myModules = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "Modules");
-        //    if (!string.IsNullOrWhiteSpace(myModules))
-        //    {
-        //        string[] myModule = myModules.Split(';');
-        //        foreach (string module in myModule)
-        //        {
-        //            if (module.ToLower() == ModuleName.EDI.ToString().ToLower())
-        //            {
-        //                rtiEDI.Visible = true;
-        //                rtiEDI.Select();
-        //            }
-        //            else if (module.ToLower() == ModuleName.EDI2.ToString().ToLower())
-        //            {
-        //                rtiEDI2.Visible = true;
-        //                rtiEDI2.Select();
-        //            }
-        //            else if (module.ToLower() == ModuleName.DS9208.ToString().ToLower())
-        //            {
-        //                rti9208.Visible = true;
-        //                rti9208.Select();
-        //            }
-        //            else if (module.ToLower() == ModuleName.DS9209.ToString().ToLower())
-        //            {
-        //                rti9209.Visible = true;
-        //                rti9209.Select();
-        //            }
-        //            else
-        //            {
-        //                CustomDesktopAlert.H4(module.ToLower() + "不能识别的应用模块！");
-        //            }
-        //        }
-
-        //    }
-        //    else
-        //    {
-        //        CustomDesktopAlert.H4("应用程序加载模块出错！");
-        //    }
-        //}
-
 
         /// <summary>
         /// 创建或者显示一个多文档界面页面
@@ -231,25 +174,11 @@ namespace Aohua
                     bi.Checked = true;
                 }
             }
-
         }
 
-
-
-
-
-
-        #endregion
-
-        private void BiDateComp_Click(object sender, EventArgs e)
+        private void ButtonItem14_Click(object sender, EventArgs e)
         {
-            SetMdiForm("数据对比", typeof(FrmDataCompare));
-        }
-
-        private void ButtonItem15_Click(object sender, EventArgs e)
-        {
-            SetMdiForm("数据迁移", typeof(FrmDataExport));
+            SetMdiForm("分类汇总",typeof(FrmCollect));
         }
     }
-
 }
