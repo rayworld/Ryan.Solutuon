@@ -8,5 +8,10 @@ namespace Youyi
         {
             InitializeComponent();
         }
+
+        private void FrmCollect_Load(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Aohua.Models;
-using Ryan.Framework.DBUtility;
+using Ryan.Framework.DotNetFx40.DBUtility;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;

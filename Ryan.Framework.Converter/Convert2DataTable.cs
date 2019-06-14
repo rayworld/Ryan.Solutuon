@@ -1,10 +1,8 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
-using System.Reflection;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
@@ -180,10 +178,10 @@ namespace Ryan.Framework.Converter
         #endregion
 
         #region Json2DataTable
-        public static DataTable Json2DataTable(string json)
-        {
-            return JsonConvert.DeserializeObject<DataTable>(json);
-        }
+        //public static DataTable JSon2DataTable(string json)
+        //{
+        //    return JsonConvert.DeserializeObject<DataTable>(json);
+        //}
         #endregion
 
         #region List2DataTable
@@ -239,11 +237,11 @@ namespace Ryan.Framework.Converter
         private static DataRow CreateRow<T>(DataTable dt, T entity)
         {
             DataRow row = dt.NewRow();
-            var type = typeof(T);
-            foreach (var property in type.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance))
-            {
-                row[property.Name] = property.GetValue(entity) ?? DBNull.Value;
-            }
+            //var type = typeof(T);
+            //foreach (var property in type.GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance))
+            //{
+            //    row[property.Name] = property.SetValue(entity) ?? DBNull.Value;
+            //}
             return row;
         }        
     }
@@ -329,106 +327,106 @@ namespace Ryan.Framework.Converter
         #endregion
 
         # region DataTable2Json
-        public static string DataTable2Json(DataTable dt)
-        {
-            return JsonConvert.SerializeObject(dt);
-        }
+        //public static string DataTable2Json(DataTable dt)
+        //{
+        //    return JsonConvert.SerializeObject(dt);
+        //}
         #endregion
 
         #region DataTable2List
         /// <summary>
         /// DataTable转成List
         /// </summary>
-        public static List<T> DataTable2List<T>(DataTable dt)
-        {
-            var list = new List<T>();
-            var plist = new List<PropertyInfo>(typeof(T).GetProperties());
+        //public static List<T> DataTable2List<T>(DataTable dt)
+        //{
+        //    var list = new List<T>();
+        //    var plist = new List<PropertyInfo>(typeof(T).GetProperties());
 
-            if (dt == null || dt.Rows.Count == 0)
-            {
-                return null;
-            }
+        //    if (dt == null || dt.Rows.Count == 0)
+        //    {
+        //        return null;
+        //    }
 
-            foreach (DataRow item in dt.Rows)
-            {
-                T s = Activator.CreateInstance<T>();
-                for (int i = 0; i < dt.Columns.Count; i++)
-                {
-                    PropertyInfo info = plist.Find(p => p.Name == dt.Columns[i].ColumnName);
-                    if (info != null)
-                    {
-                        try
-                        {
-                            if (!Convert.IsDBNull(item[i]))
-                            {
-                                object v = null;
-                                if (info.PropertyType.ToString().Contains("System.Nullable"))
-                                {
-                                    v = Convert.ChangeType(item[i], Nullable.GetUnderlyingType(info.PropertyType));
-                                }
-                                else
-                                {
-                                    v = Convert.ChangeType(item[i], info.PropertyType);
-                                }
-                                info.SetValue(s, v, null);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            throw new Exception("字段[" + info.Name + "]转换出错," + ex.Message);
-                        }
-                    }
-                }
-                list.Add(s);
-            }
-            return list;
-        }
+        //    foreach (DataRow item in dt.Rows)
+        //    {
+        //        T s = Activator.CreateInstance<T>();
+        //        for (int i = 0; i < dt.Columns.Count; i++)
+        //        {
+        //            PropertyInfo info = plist.Find(p => p.Name == dt.Columns[i].ColumnName);
+        //            if (info != null)
+        //            {
+        //                try
+        //                {
+        //                    if (!Convert.IsDBNull(item[i]))
+        //                    {
+        //                        object v = null;
+        //                        if (info.PropertyType.ToString().Contains("System.Nullable"))
+        //                        {
+        //                            v = Convert.ChangeType(item[i], Nullable.GetUnderlyingType(info.PropertyType));
+        //                        }
+        //                        else
+        //                        {
+        //                            v = Convert.ChangeType(item[i], info.PropertyType);
+        //                        }
+        //                        info.SetValue(s, v, null);
+        //                    }
+        //                }
+        //                catch (Exception ex)
+        //                {
+        //                    throw new Exception("字段[" + info.Name + "]转换出错," + ex.Message);
+        //                }
+        //            }
+        //        }
+        //        list.Add(s);
+        //    }
+        //    return list;
+        //}
         #endregion
 
         #region DataTable2实体对象
-        /// <summary>
-        /// DataTable转成实体对象
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="dt"></param>
-        /// <returns></returns>
-        public static T DataTable2Entity<T>(DataTable dt)
-        {
-            T s = Activator.CreateInstance<T>();
-            if (dt == null || dt.Rows.Count == 0)
-            {
-                return default(T);
-            }
-            var plist = new List<PropertyInfo>(typeof(T).GetProperties());
-            for (int i = 0; i < dt.Columns.Count; i++)
-            {
-                PropertyInfo info = plist.Find(p => p.Name == dt.Columns[i].ColumnName);
-                if (info != null)
-                {
-                    try
-                    {
-                        if (!Convert.IsDBNull(dt.Rows[0][i]))
-                        {
-                            object v = null;
-                            if (info.PropertyType.ToString().Contains("System.Nullable"))
-                            {
-                                v = Convert.ChangeType(dt.Rows[0][i], Nullable.GetUnderlyingType(info.PropertyType));
-                            }
-                            else
-                            {
-                                v = Convert.ChangeType(dt.Rows[0][i], info.PropertyType);
-                            }
-                            info.SetValue(s, v, null);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new Exception("字段[" + info.Name + "]转换出错," + ex.Message);
-                    }
-                }
-            }
-            return s;
-        }
+        ///// <summary>
+        ///// DataTable转成实体对象
+        ///// </summary>
+        ///// <typeparam name="T"></typeparam>
+        ///// <param name="dt"></param>
+        ///// <returns></returns>
+        //public static T DataTable2Entity<T>(DataTable dt)
+        //{
+        //    T s = Activator.CreateInstance<T>();
+        //    if (dt == null || dt.Rows.Count == 0)
+        //    {
+        //        return default(T);
+        //    }
+        //    var plist = new List<PropertyInfo>(typeof(T).GetProperties());
+        //    for (int i = 0; i < dt.Columns.Count; i++)
+        //    {
+        //        PropertyInfo info = plist.Find(p => p.Name == dt.Columns[i].ColumnName);
+        //        if (info != null)
+        //        {
+        //            try
+        //            {
+        //                if (!Convert.IsDBNull(dt.Rows[0][i]))
+        //                {
+        //                    object v = null;
+        //                    if (info.PropertyType.ToString().Contains("System.Nullable"))
+        //                    {
+        //                        v = Convert.ChangeType(dt.Rows[0][i], Nullable.GetUnderlyingType(info.PropertyType));
+        //                    }
+        //                    else
+        //                    {
+        //                        v = Convert.ChangeType(dt.Rows[0][i], info.PropertyType);
+        //                    }
+        //                    info.SetValue(s, v, null);
+        //                }
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                throw new Exception("字段[" + info.Name + "]转换出错," + ex.Message);
+        //            }
+        //        }
+        //    }
+        //    return s;
+        //}
         #endregion
 
     }

@@ -1,5 +1,5 @@
-﻿using Ryan.Framework.AutoUpdate;
-using Ryan.Framework.Common;
+﻿using Ryan.Framework.DotNetFx20.AutoUpdate;
+using Ryan.Framework.DotNetFx20.Common;
 using System;
 using System.Net;
 using System.Windows.Forms;

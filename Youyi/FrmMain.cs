@@ -1,7 +1,7 @@
 ﻿using DevComponents.DotNetBar;
-using Ryan.Framework.Common;
-using Ryan.Framework.Config;
-using Ryan.Framework.Encrypt;
+using Ryan.Framework.DotNetFx20.Common;
+using Ryan.Framework.DotNetFx20.Config;
+using Ryan.Framework.DotNetFx20.Encrypt;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -28,7 +28,8 @@ namespace Youyi
             ////获取窗口样式
             GetStyleSetting();
             //LoadModule();
-
+            SetMdiForm("分类汇总", typeof(FrmCollect));
+            //ribbonControl1.Expanded = false;
             //用户登录
             //FrmLogin login = new FrmLogin();
             //if (login.ShowDialog() == System.Windows.Forms.DialogResult.OK)

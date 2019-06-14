@@ -1,7 +1,7 @@
 ﻿using DevComponents.DotNetBar;
-using Ryan.Framework.Common;
-using Ryan.Framework.Config;
-using Ryan.Framework.DBUtility;
+using Ryan.Framework.DotNetFx40.Common;
+using Ryan.Framework.DotNetFx40.Config;
+using Ryan.Framework.DotNetFx40.DBUtility;
 using System;
 using System.Data;
 
