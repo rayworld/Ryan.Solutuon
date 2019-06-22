@@ -250,6 +250,18 @@ namespace Aohua
         {
             SetMdiForm("数据迁移", typeof(FrmDataExport));
         }
+
+
+        /// <summary>
+        /// 控制是否显示RibbonControl
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CmdRibbonState_Executed(object sender, EventArgs e)
+        {
+            ribbonControl1.Expanded = cmdRibbonState.Checked;
+            cmdRibbonState.Checked = !cmdRibbonState.Checked;
+        }
     }
 
 }

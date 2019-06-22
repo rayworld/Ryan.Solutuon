@@ -1,7 +1,7 @@
 ﻿using DevComponents.DotNetBar;
-using Ryan.Framework.Common;
-using Ryan.Framework.Config;
-using Ryan.Framework.Encrypt;
+using Ryan.Framework.DotNetFx40.Common;
+using Ryan.Framework.DotNetFx40.Config;
+using Ryan.Framework.DotNetFx40.Encrypt;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -158,8 +158,8 @@ namespace Ryan.WindowsPlatform
                     }
                     else if (module.ToLower() == ModuleName.DS9209.ToString().ToLower())
                     {
-                        rti9209.Visible = true;
-                        rti9209.Select();
+                        //rti9209.Visible = true;
+                        //rti9209.Select();
                     }
                     else
                     {
@@ -240,6 +240,11 @@ namespace Ryan.WindowsPlatform
 
         #endregion
 
+        private void CmdRibbonState_Executed(object sender, EventArgs e)
+        {
+            ribbonControl1.Expanded = CmdRibbonState.Checked;
+            CmdRibbonState.Checked = !CmdRibbonState.Checked;
+        }
     }
     public enum ModuleName
     {

@@ -50,6 +50,8 @@
             this.buttonItem12 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem13 = new DevComponents.DotNetBar.ButtonItem();
             this.colorPickerDropDown1 = new DevComponents.DotNetBar.ColorPickerDropDown();
+            this.SwitchRibbonState = new DevComponents.DotNetBar.SwitchButtonItem();
+            this.cmdRibbonState = new DevComponents.DotNetBar.Command(this.components);
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.buttonChangeStyle = new DevComponents.DotNetBar.ButtonItem();
@@ -88,12 +90,13 @@
             this.ribbonControl1.ForeColor = System.Drawing.Color.Black;
             this.ribbonControl1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.rti9209,
-            this.buttonItem1});
-            this.ribbonControl1.KeyTipsFont = new System.Drawing.Font("Tahoma", 7F);
+            this.buttonItem1,
+            this.SwitchRibbonState});
+            this.ribbonControl1.KeyTipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
             this.ribbonControl1.Name = "ribbonControl1";
-            this.ribbonControl1.Size = new System.Drawing.Size(1783, 231);
+            this.ribbonControl1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
+            this.ribbonControl1.Size = new System.Drawing.Size(973, 154);
             this.ribbonControl1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonControl1.SystemText.MaximizeRibbonText = "&Maximize the Ribbon";
             this.ribbonControl1.SystemText.MinimizeRibbonText = "Mi&nimize the Ribbon";
@@ -120,11 +123,10 @@
             this.ribbonPanel4.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonPanel4.Controls.Add(this.ribbonBar1);
             this.ribbonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ribbonPanel4.Location = new System.Drawing.Point(0, 60);
-            this.ribbonPanel4.Margin = new System.Windows.Forms.Padding(4);
+            this.ribbonPanel4.Location = new System.Drawing.Point(0, 53);
             this.ribbonPanel4.Name = "ribbonPanel4";
-            this.ribbonPanel4.Padding = new System.Windows.Forms.Padding(4, 0, 4, 2);
-            this.ribbonPanel4.Size = new System.Drawing.Size(1783, 171);
+            this.ribbonPanel4.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.ribbonPanel4.Size = new System.Drawing.Size(973, 98);
             // 
             // 
             // 
@@ -157,9 +159,10 @@
             this.biDateComp,
             this.buttonItem15});
             this.ribbonBar1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
-            this.ribbonBar1.Location = new System.Drawing.Point(4, 0);
+            this.ribbonBar1.Location = new System.Drawing.Point(3, 0);
+            this.ribbonBar1.Margin = new System.Windows.Forms.Padding(2);
             this.ribbonBar1.Name = "ribbonBar1";
-            this.ribbonBar1.Size = new System.Drawing.Size(218, 169);
+            this.ribbonBar1.Size = new System.Drawing.Size(145, 95);
             this.ribbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar1.TabIndex = 0;
             this.ribbonBar1.Text = "客户信息迁移";
@@ -324,9 +327,27 @@
             this.colorPickerDropDown1.Tooltip = "Custom color scheme is created based on currently selected color table. Try selec" +
     "ting Silver or Blue color table and then creating custom color scheme.";
             // 
+            // SwitchRibbonState
+            // 
+            this.SwitchRibbonState.ButtonHeight = 20;
+            this.SwitchRibbonState.ButtonWidth = 62;
+            this.SwitchRibbonState.Command = this.cmdRibbonState;
+            this.SwitchRibbonState.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
+            this.SwitchRibbonState.Margin.Bottom = 2;
+            this.SwitchRibbonState.Margin.Left = 4;
+            this.SwitchRibbonState.Name = "SwitchRibbonState";
+            this.SwitchRibbonState.OffText = "隐藏";
+            this.SwitchRibbonState.OnText = "显示";
+            this.SwitchRibbonState.SwitchBackColor = System.Drawing.Color.Aqua;
+            this.SwitchRibbonState.Tooltip = "展开/隐藏功能面板";
+            // 
+            // cmdRibbonState
+            // 
+            this.cmdRibbonState.Name = "cmdRibbonState";
+            this.cmdRibbonState.Executed += new System.EventHandler(this.CmdRibbonState_Executed);
+            // 
             // textBoxX1
             // 
-            this.textBoxX1.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
@@ -334,7 +355,6 @@
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX1.DisabledBackColor = System.Drawing.Color.White;
             this.textBoxX1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.textBoxX1.ForeColor = System.Drawing.Color.Black;
             this.textBoxX1.Location = new System.Drawing.Point(4, 30);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.PreventEnterBeep = true;
@@ -472,12 +492,11 @@
             this.bar1.GrabHandleStyle = DevComponents.DotNetBar.eGrabHandleStyle.ResizeHandle;
             this.bar1.IsMaximized = false;
             this.bar1.ItemSpacing = 2;
-            this.bar1.Location = new System.Drawing.Point(0, 1134);
-            this.bar1.Margin = new System.Windows.Forms.Padding(4);
+            this.bar1.Location = new System.Drawing.Point(0, 587);
             this.bar1.Name = "bar1";
             this.bar1.PaddingBottom = 0;
             this.bar1.PaddingTop = 0;
-            this.bar1.Size = new System.Drawing.Size(1783, 26);
+            this.bar1.Size = new System.Drawing.Size(973, 26);
             this.bar1.Stretch = true;
             this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bar1.TabIndex = 8;
@@ -505,13 +524,12 @@
             this.NavTabControl.ControlBox.CloseBox});
             this.NavTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.NavTabControl.ForeColor = System.Drawing.Color.Black;
-            this.NavTabControl.Location = new System.Drawing.Point(0, 231);
-            this.NavTabControl.Margin = new System.Windows.Forms.Padding(4);
+            this.NavTabControl.Location = new System.Drawing.Point(0, 154);
             this.NavTabControl.Name = "NavTabControl";
             this.NavTabControl.ReorderTabsEnabled = true;
             this.NavTabControl.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.NavTabControl.SelectedTabIndex = -1;
-            this.NavTabControl.Size = new System.Drawing.Size(1783, 903);
+            this.NavTabControl.Size = new System.Drawing.Size(973, 433);
             this.NavTabControl.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.NavTabControl.TabIndex = 11;
             this.NavTabControl.Text = "superTabControl1";
@@ -524,9 +542,9 @@
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1783, 1160);
+            this.ClientSize = new System.Drawing.Size(973, 613);
             this.Controls.Add(this.NavTabControl);
             this.Controls.Add(this.bar1);
             this.Controls.Add(this.ribbonControl1);
@@ -534,7 +552,6 @@
             this.EnableGlass = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -590,5 +607,7 @@
         private DevComponents.DotNetBar.ButtonItem biDateComp;
         private DevComponents.DotNetBar.ButtonItem buttonItem15;
         private DevComponents.DotNetBar.ButtonItem buttonItem14;
+        private DevComponents.DotNetBar.SwitchButtonItem SwitchRibbonState;
+        private DevComponents.DotNetBar.Command cmdRibbonState;
     }
 }

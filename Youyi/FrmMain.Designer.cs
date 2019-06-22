@@ -49,6 +49,8 @@
             this.buttonItem12 = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem13 = new DevComponents.DotNetBar.ButtonItem();
             this.colorPickerDropDown1 = new DevComponents.DotNetBar.ColorPickerDropDown();
+            this.SwitchRibbonState = new DevComponents.DotNetBar.SwitchButtonItem();
+            this.CmdRibbonState = new DevComponents.DotNetBar.Command(this.components);
             this.NavTabControl = new DevComponents.DotNetBar.SuperTabControl();
             this.bar1 = new DevComponents.DotNetBar.Bar();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
@@ -71,7 +73,8 @@
             this.ribbonControl1.ForeColor = System.Drawing.Color.Black;
             this.ribbonControl1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.rti9209,
-            this.buttonItem1});
+            this.buttonItem1,
+            this.SwitchRibbonState});
             this.ribbonControl1.KeyTipsFont = new System.Drawing.Font("Tahoma", 7F);
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Name = "ribbonControl1";
@@ -299,6 +302,25 @@
             this.colorPickerDropDown1.Tooltip = "Custom color scheme is created based on currently selected color table. Try selec" +
     "ting Silver or Blue color table and then creating custom color scheme.";
             // 
+            // SwitchRibbonState
+            // 
+            this.SwitchRibbonState.ButtonHeight = 20;
+            this.SwitchRibbonState.ButtonWidth = 62;
+            this.SwitchRibbonState.Command = this.CmdRibbonState;
+            this.SwitchRibbonState.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
+            this.SwitchRibbonState.Margin.Bottom = 2;
+            this.SwitchRibbonState.Margin.Left = 4;
+            this.SwitchRibbonState.Name = "SwitchRibbonState";
+            this.SwitchRibbonState.OffText = "隐藏";
+            this.SwitchRibbonState.OnText = "显示";
+            this.SwitchRibbonState.SwitchBackColor = System.Drawing.Color.Aqua;
+            this.SwitchRibbonState.Tooltip = "展开/隐藏功能面板";
+            // 
+            // CmdRibbonState
+            // 
+            this.CmdRibbonState.Name = "CmdRibbonState";
+            this.CmdRibbonState.Executed += new System.EventHandler(this.CmdRibbonState_Executed);
+            // 
             // NavTabControl
             // 
             this.NavTabControl.BackColor = System.Drawing.Color.White;
@@ -325,7 +347,7 @@
             this.NavTabControl.ReorderTabsEnabled = true;
             this.NavTabControl.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.NavTabControl.SelectedTabIndex = -1;
-            this.NavTabControl.Size = new System.Drawing.Size(973, 433);
+            this.NavTabControl.Size = new System.Drawing.Size(973, 434);
             this.NavTabControl.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.NavTabControl.TabIndex = 13;
             this.NavTabControl.Text = "superTabControl1";
@@ -342,11 +364,11 @@
             this.bar1.GrabHandleStyle = DevComponents.DotNetBar.eGrabHandleStyle.ResizeHandle;
             this.bar1.IsMaximized = false;
             this.bar1.ItemSpacing = 2;
-            this.bar1.Location = new System.Drawing.Point(0, 587);
+            this.bar1.Location = new System.Drawing.Point(0, 588);
             this.bar1.Name = "bar1";
             this.bar1.PaddingBottom = 0;
             this.bar1.PaddingTop = 0;
-            this.bar1.Size = new System.Drawing.Size(973, 26);
+            this.bar1.Size = new System.Drawing.Size(973, 25);
             this.bar1.Stretch = true;
             this.bar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.bar1.TabIndex = 12;
@@ -355,8 +377,8 @@
             // 
             // styleManager1
             // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.VisualStudio2010Blue;
-            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48))))), System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204))))));
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2016;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
             // 
             // FrmMain
             // 
@@ -408,5 +430,7 @@
         private DevComponents.DotNetBar.ButtonItem buttonItem13;
         private DevComponents.DotNetBar.ColorPickerDropDown colorPickerDropDown1;
         private DevComponents.DotNetBar.ButtonItem buttonItem14;
+        private DevComponents.DotNetBar.Command CmdRibbonState;
+        private DevComponents.DotNetBar.SwitchButtonItem SwitchRibbonState;
     }
 }

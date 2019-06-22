@@ -33,21 +33,23 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
+            this.txtBillNoEnd = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
-            this.dateTimeInput2 = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.dateTimeInput1 = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.dtiEndDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.dtiBeginDate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtCustName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtBillNoBegin = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.panelEx1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtiEndDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtiBeginDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,13 +57,15 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.labelX5);
+            this.panelEx1.Controls.Add(this.txtBillNoEnd);
             this.panelEx1.Controls.Add(this.buttonX2);
-            this.panelEx1.Controls.Add(this.dateTimeInput2);
-            this.panelEx1.Controls.Add(this.dateTimeInput1);
+            this.panelEx1.Controls.Add(this.dtiEndDate);
+            this.panelEx1.Controls.Add(this.dtiBeginDate);
             this.panelEx1.Controls.Add(this.labelX3);
             this.panelEx1.Controls.Add(this.labelX4);
-            this.panelEx1.Controls.Add(this.textBoxX1);
-            this.panelEx1.Controls.Add(this.textBoxX2);
+            this.panelEx1.Controls.Add(this.txtCustName);
+            this.panelEx1.Controls.Add(this.txtBillNoBegin);
             this.panelEx1.Controls.Add(this.labelX2);
             this.panelEx1.Controls.Add(this.labelX1);
             this.panelEx1.Controls.Add(this.buttonX1);
@@ -70,7 +74,7 @@
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Margin = new System.Windows.Forms.Padding(2);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1276, 69);
+            this.panelEx1.Size = new System.Drawing.Size(1402, 69);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -80,114 +84,149 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 8;
             // 
+            // labelX5
+            // 
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX5.Location = new System.Drawing.Point(702, 21);
+            this.labelX5.Margin = new System.Windows.Forms.Padding(2);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(43, 22);
+            this.labelX5.TabIndex = 16;
+            this.labelX5.Text = "到：";
+            // 
+            // txtBillNoEnd
+            // 
+            // 
+            // 
+            // 
+            this.txtBillNoEnd.Border.Class = "TextBoxBorder";
+            this.txtBillNoEnd.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBillNoEnd.DisabledBackColor = System.Drawing.Color.White;
+            this.txtBillNoEnd.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtBillNoEnd.Location = new System.Drawing.Point(745, 21);
+            this.txtBillNoEnd.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBillNoEnd.Name = "txtBillNoEnd";
+            this.txtBillNoEnd.PreventEnterBeep = true;
+            this.txtBillNoEnd.Size = new System.Drawing.Size(140, 26);
+            this.txtBillNoEnd.TabIndex = 15;
+            // 
             // buttonX2
             // 
             this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonX2.Location = new System.Drawing.Point(957, 21);
+            this.buttonX2.Location = new System.Drawing.Point(1154, 21);
             this.buttonX2.Margin = new System.Windows.Forms.Padding(2);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(88, 26);
             this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX2.TabIndex = 14;
-            this.buttonX2.Text = "汇总";
+            this.buttonX2.Text = "统计";
+            this.buttonX2.Click += new System.EventHandler(this.ButtonX2_Click);
             // 
-            // dateTimeInput2
-            // 
-            // 
-            // 
-            // 
-            this.dateTimeInput2.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.dateTimeInput2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput2.BackgroundStyle.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dateTimeInput2.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.dateTimeInput2.ButtonDropDown.Visible = true;
-            this.dateTimeInput2.Font = new System.Drawing.Font("宋体", 12F);
-            this.dateTimeInput2.IsPopupCalendarOpen = false;
-            this.dateTimeInput2.Location = new System.Drawing.Point(314, 21);
-            this.dateTimeInput2.Margin = new System.Windows.Forms.Padding(2);
+            // dtiEndDate
             // 
             // 
             // 
             // 
-            // 
-            // 
-            this.dateTimeInput2.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput2.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            this.dateTimeInput2.MonthCalendar.ClearButtonVisible = true;
-            // 
-            // 
-            // 
-            this.dateTimeInput2.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.dateTimeInput2.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateTimeInput2.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.dateTimeInput2.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.dateTimeInput2.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.dateTimeInput2.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.dateTimeInput2.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput2.MonthCalendar.DisplayMonth = new System.DateTime(2019, 6, 1, 0, 0, 0, 0);
-            this.dateTimeInput2.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
-            // 
-            // 
-            // 
-            this.dateTimeInput2.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.dateTimeInput2.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateTimeInput2.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.dateTimeInput2.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput2.MonthCalendar.TodayButtonVisible = true;
-            this.dateTimeInput2.Name = "dateTimeInput2";
-            this.dateTimeInput2.Size = new System.Drawing.Size(140, 26);
-            this.dateTimeInput2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateTimeInput2.TabIndex = 13;
-            // 
-            // dateTimeInput1
-            // 
-            // 
-            // 
-            // 
-            this.dateTimeInput1.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.dateTimeInput1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput1.BackgroundStyle.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dateTimeInput1.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.dateTimeInput1.ButtonDropDown.Visible = true;
-            this.dateTimeInput1.Font = new System.Drawing.Font("宋体", 12F);
-            this.dateTimeInput1.IsPopupCalendarOpen = false;
-            this.dateTimeInput1.Location = new System.Drawing.Point(106, 21);
-            this.dateTimeInput1.Margin = new System.Windows.Forms.Padding(2);
+            this.dtiEndDate.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dtiEndDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiEndDate.BackgroundStyle.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dtiEndDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dtiEndDate.ButtonDropDown.Visible = true;
+            this.dtiEndDate.CustomFormat = "yyyy-MM-dd";
+            this.dtiEndDate.Font = new System.Drawing.Font("宋体", 12F);
+            this.dtiEndDate.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
+            this.dtiEndDate.IsPopupCalendarOpen = false;
+            this.dtiEndDate.Location = new System.Drawing.Point(314, 21);
+            this.dtiEndDate.Margin = new System.Windows.Forms.Padding(2);
             // 
             // 
             // 
             // 
             // 
             // 
-            this.dateTimeInput1.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput1.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            this.dateTimeInput1.MonthCalendar.ClearButtonVisible = true;
+            this.dtiEndDate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiEndDate.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.dtiEndDate.MonthCalendar.ClearButtonVisible = true;
             // 
             // 
             // 
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput1.MonthCalendar.DisplayMonth = new System.DateTime(2019, 6, 1, 0, 0, 0, 0);
-            this.dateTimeInput1.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            this.dtiEndDate.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dtiEndDate.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtiEndDate.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dtiEndDate.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dtiEndDate.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dtiEndDate.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dtiEndDate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiEndDate.MonthCalendar.DisplayMonth = new System.DateTime(2019, 6, 1, 0, 0, 0, 0);
+            this.dtiEndDate.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
             // 
             // 
             // 
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput1.MonthCalendar.TodayButtonVisible = true;
-            this.dateTimeInput1.Name = "dateTimeInput1";
-            this.dateTimeInput1.Size = new System.Drawing.Size(140, 26);
-            this.dateTimeInput1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateTimeInput1.TabIndex = 12;
+            this.dtiEndDate.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dtiEndDate.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtiEndDate.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dtiEndDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiEndDate.MonthCalendar.TodayButtonVisible = true;
+            this.dtiEndDate.Name = "dtiEndDate";
+            this.dtiEndDate.Size = new System.Drawing.Size(140, 26);
+            this.dtiEndDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.dtiEndDate.TabIndex = 13;
+            // 
+            // dtiBeginDate
+            // 
+            // 
+            // 
+            // 
+            this.dtiBeginDate.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dtiBeginDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiBeginDate.BackgroundStyle.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dtiBeginDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dtiBeginDate.ButtonDropDown.Visible = true;
+            this.dtiBeginDate.CustomFormat = "yyyy-MM-dd";
+            this.dtiBeginDate.Font = new System.Drawing.Font("宋体", 12F);
+            this.dtiBeginDate.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
+            this.dtiBeginDate.IsPopupCalendarOpen = false;
+            this.dtiBeginDate.Location = new System.Drawing.Point(106, 21);
+            this.dtiBeginDate.Margin = new System.Windows.Forms.Padding(2);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.dtiBeginDate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiBeginDate.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.dtiBeginDate.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dtiBeginDate.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dtiBeginDate.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtiBeginDate.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dtiBeginDate.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dtiBeginDate.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dtiBeginDate.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dtiBeginDate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiBeginDate.MonthCalendar.DisplayMonth = new System.DateTime(2019, 6, 1, 0, 0, 0, 0);
+            this.dtiBeginDate.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            // 
+            // 
+            // 
+            this.dtiBeginDate.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dtiBeginDate.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtiBeginDate.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dtiBeginDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtiBeginDate.MonthCalendar.TodayButtonVisible = true;
+            this.dtiBeginDate.Name = "dtiBeginDate";
+            this.dtiBeginDate.Size = new System.Drawing.Size(140, 26);
+            this.dtiBeginDate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.dtiBeginDate.TabIndex = 12;
             // 
             // labelX3
             // 
@@ -210,44 +249,44 @@
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX4.Location = new System.Drawing.Point(709, 21);
+            this.labelX4.Location = new System.Drawing.Point(906, 21);
             this.labelX4.Margin = new System.Windows.Forms.Padding(2);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(90, 22);
             this.labelX4.TabIndex = 10;
             this.labelX4.Text = "客户名称：";
             // 
-            // textBoxX1
+            // txtCustName
             // 
             // 
             // 
             // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxX1.Location = new System.Drawing.Point(801, 21);
-            this.textBoxX1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.PreventEnterBeep = true;
-            this.textBoxX1.Size = new System.Drawing.Size(140, 26);
-            this.textBoxX1.TabIndex = 9;
+            this.txtCustName.Border.Class = "TextBoxBorder";
+            this.txtCustName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtCustName.DisabledBackColor = System.Drawing.Color.White;
+            this.txtCustName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtCustName.Location = new System.Drawing.Point(998, 21);
+            this.txtCustName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCustName.Name = "txtCustName";
+            this.txtCustName.PreventEnterBeep = true;
+            this.txtCustName.Size = new System.Drawing.Size(140, 26);
+            this.txtCustName.TabIndex = 9;
             // 
-            // textBoxX2
-            // 
-            // 
+            // txtBillNoBegin
             // 
             // 
-            this.textBoxX2.Border.Class = "TextBoxBorder";
-            this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX2.DisabledBackColor = System.Drawing.Color.White;
-            this.textBoxX2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBoxX2.Location = new System.Drawing.Point(554, 21);
-            this.textBoxX2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxX2.Name = "textBoxX2";
-            this.textBoxX2.PreventEnterBeep = true;
-            this.textBoxX2.Size = new System.Drawing.Size(140, 26);
-            this.textBoxX2.TabIndex = 8;
+            // 
+            // 
+            this.txtBillNoBegin.Border.Class = "TextBoxBorder";
+            this.txtBillNoBegin.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtBillNoBegin.DisabledBackColor = System.Drawing.Color.White;
+            this.txtBillNoBegin.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtBillNoBegin.Location = new System.Drawing.Point(554, 21);
+            this.txtBillNoBegin.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBillNoBegin.Name = "txtBillNoBegin";
+            this.txtBillNoBegin.PreventEnterBeep = true;
+            this.txtBillNoBegin.Size = new System.Drawing.Size(140, 26);
+            this.txtBillNoBegin.TabIndex = 8;
             // 
             // labelX2
             // 
@@ -282,13 +321,14 @@
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.buttonX1.Location = new System.Drawing.Point(1056, 21);
+            this.buttonX1.Location = new System.Drawing.Point(1253, 21);
             this.buttonX1.Margin = new System.Windows.Forms.Padding(2);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Size = new System.Drawing.Size(88, 26);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.TabIndex = 5;
-            this.buttonX1.Text = "导出";
+            this.buttonX1.Text = "导出Excel";
+            this.buttonX1.Click += new System.EventHandler(this.ButtonX1_Click);
             // 
             // styleManager1
             // 
@@ -301,7 +341,7 @@
             this.dataGridViewX1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
@@ -310,10 +350,10 @@
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -332,14 +372,15 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(1276, 518);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1402, 518);
             this.dataGridViewX1.TabIndex = 9;
+            this.dataGridViewX1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DataGridViewX1_RowPostPaint);
             // 
             // FrmCollect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1276, 587);
+            this.ClientSize = new System.Drawing.Size(1402, 587);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.panelEx1);
             this.DoubleBuffered = true;
@@ -348,8 +389,8 @@
             this.Text = "FrmCollect";
             this.Load += new System.EventHandler(this.FrmCollect_Load);
             this.panelEx1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtiEndDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtiBeginDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.ResumeLayout(false);
 
@@ -361,14 +402,16 @@
         private DevComponents.DotNetBar.ButtonX buttonX1;
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput dateTimeInput2;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput dateTimeInput1;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtiEndDate;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtiBeginDate;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX4;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtCustName;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtBillNoBegin;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.ButtonX buttonX2;
+        private DevComponents.DotNetBar.LabelX labelX5;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtBillNoEnd;
     }
 }

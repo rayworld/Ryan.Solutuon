@@ -29,7 +29,8 @@ namespace Youyi
             GetStyleSetting();
             //LoadModule();
             SetMdiForm("分类汇总", typeof(FrmCollect));
-            //ribbonControl1.Expanded = false;
+            //隐藏RibbonControl
+            this.CmdRibbonState_Executed(sender, e);
             //用户登录
             //FrmLogin login = new FrmLogin();
             //if (login.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -180,6 +181,17 @@ namespace Youyi
         private void ButtonItem14_Click(object sender, EventArgs e)
         {
             SetMdiForm("分类汇总",typeof(FrmCollect));
+        }
+
+        /// <summary>
+        /// 是否隐藏RibbonControl
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CmdRibbonState_Executed(object sender, EventArgs e)
+        {
+            ribbonControl1.Expanded = CmdRibbonState.Checked;
+            CmdRibbonState.Checked = !CmdRibbonState.Checked;
         }
     }
 }
