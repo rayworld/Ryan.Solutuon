@@ -53,23 +53,8 @@
             this.SwitchButtonItemRibbonState = new DevComponents.DotNetBar.SwitchButtonItem();
             this.CommandRibbonState = new DevComponents.DotNetBar.Command(this.components);
             this.StyleManagerMain = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.buttonChangeStyle = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem17 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleMetro = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleOffice2010Blue = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleOffice2010Silver = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleOffice2010Black = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleVS2010 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem62 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleOffice2007Blue = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleOffice2007Black = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleOffice2007Silver = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem60 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem16 = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonStyleCustom = new DevComponents.DotNetBar.ColorPickerDropDown();
             this.BarStatus = new DevComponents.DotNetBar.Bar();
             this.SuperTabControlNavi = new DevComponents.DotNetBar.SuperTabControl();
-            this.buttonItem14 = new DevComponents.DotNetBar.ButtonItem();
             this.RibbonControlMain.SuspendLayout();
             this.RibbonPanelDS9209.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BarStatus)).BeginInit();
@@ -320,7 +305,7 @@
             // 
             this.ColorPickerDropDownMoreStyle.BeginGroup = true;
             this.ColorPickerDropDownMoreStyle.Name = "ColorPickerDropDownMoreStyle";
-            this.ColorPickerDropDownMoreStyle.Text = "Custom scheme";
+            this.ColorPickerDropDownMoreStyle.Text = "自定义";
             this.ColorPickerDropDownMoreStyle.Tooltip = "Custom color scheme is created based on currently selected color table. Try selec" +
     "ting Silver or Blue color table and then creating custom color scheme.";
             // 
@@ -348,123 +333,9 @@
             this.StyleManagerMain.ManagerStyle = DevComponents.DotNetBar.eStyle.VisualStudio2012Light;
             this.StyleManagerMain.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242))))), System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204))))));
             // 
-            // buttonChangeStyle
-            // 
-            this.buttonChangeStyle.AutoExpandOnClick = true;
-            this.buttonChangeStyle.ItemAlignment = DevComponents.DotNetBar.eItemAlignment.Far;
-            this.buttonChangeStyle.Name = "buttonChangeStyle";
-            this.buttonChangeStyle.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem17,
-            this.buttonStyleMetro,
-            this.buttonStyleOffice2010Blue,
-            this.buttonStyleOffice2010Silver,
-            this.buttonStyleOffice2010Black,
-            this.buttonStyleVS2010,
-            this.buttonItem62,
-            this.buttonStyleOffice2007Blue,
-            this.buttonStyleOffice2007Black,
-            this.buttonStyleOffice2007Silver,
-            this.buttonItem60,
-            this.buttonItem16,
-            this.buttonStyleCustom});
-            this.buttonChangeStyle.Text = "Style";
-            // 
-            // buttonItem17
-            // 
-            this.buttonItem17.Checked = true;
-            this.buttonItem17.CommandParameter = "Office2016";
-            this.buttonItem17.Name = "buttonItem17";
-            this.buttonItem17.OptionGroup = "style";
-            this.buttonItem17.Text = "Office 2016";
-            // 
-            // buttonStyleMetro
-            // 
-            this.buttonStyleMetro.CommandParameter = "Metro";
-            this.buttonStyleMetro.Name = "buttonStyleMetro";
-            this.buttonStyleMetro.OptionGroup = "style";
-            this.buttonStyleMetro.Text = "Metro/Office 2013";
-            // 
-            // buttonStyleOffice2010Blue
-            // 
-            this.buttonStyleOffice2010Blue.CommandParameter = "Office2010Blue";
-            this.buttonStyleOffice2010Blue.Name = "buttonStyleOffice2010Blue";
-            this.buttonStyleOffice2010Blue.OptionGroup = "style";
-            this.buttonStyleOffice2010Blue.Text = "Office 2010 Blue";
-            // 
-            // buttonStyleOffice2010Silver
-            // 
-            this.buttonStyleOffice2010Silver.CommandParameter = "Office2010Silver";
-            this.buttonStyleOffice2010Silver.Name = "buttonStyleOffice2010Silver";
-            this.buttonStyleOffice2010Silver.OptionGroup = "style";
-            this.buttonStyleOffice2010Silver.Text = "Office 2010 <font color=\"Silver\"><b>Silver</b></font>";
-            // 
-            // buttonStyleOffice2010Black
-            // 
-            this.buttonStyleOffice2010Black.CommandParameter = "Office2010Black";
-            this.buttonStyleOffice2010Black.Name = "buttonStyleOffice2010Black";
-            this.buttonStyleOffice2010Black.OptionGroup = "style";
-            this.buttonStyleOffice2010Black.Text = "Office 2010 Black";
-            // 
-            // buttonStyleVS2010
-            // 
-            this.buttonStyleVS2010.CommandParameter = "VisualStudio2010Blue";
-            this.buttonStyleVS2010.Name = "buttonStyleVS2010";
-            this.buttonStyleVS2010.OptionGroup = "style";
-            this.buttonStyleVS2010.Text = "Visual Studio 2010";
-            // 
-            // buttonItem62
-            // 
-            this.buttonItem62.CommandParameter = "Windows7Blue";
-            this.buttonItem62.Name = "buttonItem62";
-            this.buttonItem62.OptionGroup = "style";
-            this.buttonItem62.Text = "Windows 7";
-            // 
-            // buttonStyleOffice2007Blue
-            // 
-            this.buttonStyleOffice2007Blue.CommandParameter = "Office2007Blue";
-            this.buttonStyleOffice2007Blue.Name = "buttonStyleOffice2007Blue";
-            this.buttonStyleOffice2007Blue.OptionGroup = "style";
-            this.buttonStyleOffice2007Blue.Text = "Office 2007 <font color=\"Blue\"><b>Blue</b></font>";
-            // 
-            // buttonStyleOffice2007Black
-            // 
-            this.buttonStyleOffice2007Black.CommandParameter = "Office2007Black";
-            this.buttonStyleOffice2007Black.Name = "buttonStyleOffice2007Black";
-            this.buttonStyleOffice2007Black.OptionGroup = "style";
-            this.buttonStyleOffice2007Black.Text = "Office 2007 <font color=\"black\"><b>Black</b></font>";
-            // 
-            // buttonStyleOffice2007Silver
-            // 
-            this.buttonStyleOffice2007Silver.CommandParameter = "Office2007Silver";
-            this.buttonStyleOffice2007Silver.Name = "buttonStyleOffice2007Silver";
-            this.buttonStyleOffice2007Silver.OptionGroup = "style";
-            this.buttonStyleOffice2007Silver.Text = "Office 2007 <font color=\"Silver\"><b>Silver</b></font>";
-            // 
-            // buttonItem60
-            // 
-            this.buttonItem60.CommandParameter = "Office2007VistaGlass";
-            this.buttonItem60.Name = "buttonItem60";
-            this.buttonItem60.OptionGroup = "style";
-            this.buttonItem60.Text = "Vista Glass";
-            // 
-            // buttonItem16
-            // 
-            this.buttonItem16.CommandParameter = "VisualStudio2012Light";
-            this.buttonItem16.Name = "buttonItem16";
-            this.buttonItem16.OptionGroup = "style";
-            this.buttonItem16.Text = "Visual Studio 2012 Light";
-            // 
-            // buttonStyleCustom
-            // 
-            this.buttonStyleCustom.BeginGroup = true;
-            this.buttonStyleCustom.Name = "buttonStyleCustom";
-            this.buttonStyleCustom.Text = "Custom scheme";
-            this.buttonStyleCustom.Tooltip = "Custom color scheme is created based on currently selected color table. Try selec" +
-    "ting Silver or Blue color table and then creating custom color scheme.";
-            // 
             // BarStatus
             // 
-            this.BarStatus.AccessibleDescription = "DotNetBar Bar (bar1)";
+            this.BarStatus.AccessibleDescription = "DotNetBar Bar (BarStatus)";
             this.BarStatus.AccessibleName = "DotNetBar Bar";
             this.BarStatus.AccessibleRole = System.Windows.Forms.AccessibleRole.StatusBar;
             this.BarStatus.AntiAlias = true;
@@ -516,12 +387,6 @@
             this.SuperTabControlNavi.TabIndex = 11;
             this.SuperTabControlNavi.Text = "superTabControl1";
             // 
-            // buttonItem14
-            // 
-            this.buttonItem14.Name = "buttonItem14";
-            this.buttonItem14.SubItemsExpandWidth = 14;
-            this.buttonItem14.Text = "数据迁移";
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -551,20 +416,6 @@
 
         private DevComponents.DotNetBar.RibbonControl RibbonControlMain;
         private DevComponents.DotNetBar.StyleManager StyleManagerMain;
-        private DevComponents.DotNetBar.ButtonItem buttonChangeStyle;
-        private DevComponents.DotNetBar.ButtonItem buttonItem17;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleMetro;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleOffice2010Blue;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleOffice2010Silver;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleOffice2010Black;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleVS2010;
-        private DevComponents.DotNetBar.ButtonItem buttonItem62;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleOffice2007Blue;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleOffice2007Black;
-        private DevComponents.DotNetBar.ButtonItem buttonStyleOffice2007Silver;
-        private DevComponents.DotNetBar.ButtonItem buttonItem60;
-        private DevComponents.DotNetBar.ButtonItem buttonItem16;
-        private DevComponents.DotNetBar.ColorPickerDropDown buttonStyleCustom;
         private DevComponents.DotNetBar.ButtonItem ButtonItemTheme;
         private DevComponents.DotNetBar.ButtonItem ButtonItemThemeOffice2016;
         private DevComponents.DotNetBar.ButtonItem ButtonItemThemeMetro;
@@ -581,14 +432,12 @@
         private DevComponents.DotNetBar.ColorPickerDropDown ColorPickerDropDownMoreStyle;
         private DevComponents.DotNetBar.Command CommandTheme;
         private DevComponents.DotNetBar.Bar BarStatus;
-        //private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private DevComponents.DotNetBar.SuperTabControl SuperTabControlNavi;
         private DevComponents.DotNetBar.RibbonPanel RibbonPanelDS9209;
         private DevComponents.DotNetBar.RibbonTabItem RibbonTabItemDataUpgrad;
         private DevComponents.DotNetBar.RibbonBar RibbonBarMain;
         private DevComponents.DotNetBar.ButtonItem ButtonItemDataComp;
         private DevComponents.DotNetBar.ButtonItem ButtonItemDataUpgard;
-        private DevComponents.DotNetBar.ButtonItem buttonItem14;
         private DevComponents.DotNetBar.SwitchButtonItem SwitchButtonItemRibbonState;
         private DevComponents.DotNetBar.Command CommandRibbonState;
     }
