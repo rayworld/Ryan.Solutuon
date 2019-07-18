@@ -1,5 +1,6 @@
 ﻿using Ryan.Framework.DotNetFx40.AutoUpdate;
 using Ryan.Framework.DotNetFx40.Common;
+using Ryan.Framework.DotNetFx40.Config;
 using System;
 using System.Net;
 using System.Windows.Forms;
@@ -18,30 +19,38 @@ namespace Aohua
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            AutoUpdater au = new AutoUpdater();
-            try
+
+            //读取自动更新设置
+            bool NeedAutoUpdate = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "NeedAutoUpdate") == "True" ? true : false;
+
+            //执行自动更新
+            if (NeedAutoUpdate)
             {
-                au.Update();
-            }
-            catch (WebException exp)
-            {
-                CustomDesktopAlert.H4(String.Format("无法找到指定资源\n\n{0}", exp.Message));
-            }
-            catch (XmlException exp)
-            {
-                CustomDesktopAlert.H4(String.Format("下载的升级文件有错误\n\n{0}", exp.Message));
-            }
-            catch (NotSupportedException exp)
-            {
-                CustomDesktopAlert.H4(String.Format("升级地址配置错误\n\n{0}", exp.Message));
-            }
-            catch (ArgumentException exp)
-            {
-                CustomDesktopAlert.H4(String.Format("下载的升级文件有错误\n\n{0}", exp.Message));
-            }
-            catch (Exception exp)
-            {
-                CustomDesktopAlert.H4(String.Format("升级过程中发生错误\n\n{0}", exp.Message));
+                AutoUpdater au = new AutoUpdater();
+                try
+                {
+                    au.Update();
+                }
+                catch (WebException exp)
+                {
+                    CustomDesktopAlert.H4(String.Format("无法找到指定资源\n\n{0}", exp.Message));
+                }
+                catch (XmlException exp)
+                {
+                    CustomDesktopAlert.H4(String.Format("下载的升级文件有错误\n\n{0}", exp.Message));
+                }
+                catch (NotSupportedException exp)
+                {
+                    CustomDesktopAlert.H4(String.Format("升级地址配置错误\n\n{0}", exp.Message));
+                }
+                catch (ArgumentException exp)
+                {
+                    CustomDesktopAlert.H4(String.Format("下载的升级文件有错误\n\n{0}", exp.Message));
+                }
+                catch (Exception exp)
+                {
+                    CustomDesktopAlert.H4(String.Format("升级过程中发生错误\n\n{0}", exp.Message));
+                }
             }
 
             Application.Run(new FrmMain());

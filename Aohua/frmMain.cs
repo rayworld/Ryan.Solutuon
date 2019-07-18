@@ -31,7 +31,7 @@ namespace Aohua
         private void Form_Main_Load(object sender, EventArgs e)
         {
             //得到应用标题
-            this.ribbonControl1.TitleText = EncryptHelper.Decrypt(ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "AppName"));
+            this.RibbonControlMain.TitleText = EncryptHelper.Decrypt(ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "AppName"));
             ////获取窗口样式
             GetStyleSetting();
             //LoadModule();
@@ -74,7 +74,7 @@ namespace Aohua
 
                     //buttonFile.BackstageTabEnabled = true; // Use Backstage for Metro
 
-                    ribbonControl1.RibbonStripFont = new System.Drawing.Font("Segoe UI", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    RibbonControlMain.RibbonStripFont = new System.Drawing.Font("Segoe UI", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                     if (style == eStyle.Metro)
                         StyleManager.MetroColorGeneratorParameters = DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters.DarkBlue;
 
@@ -183,11 +183,11 @@ namespace Aohua
             bool IsOpened = false;
 
             //遍历现有的Tab页面，如果存在，那么设置为选中即可
-            foreach (SuperTabItem tabitem in NavTabControl.Tabs)
+            foreach (SuperTabItem tabitem in SuperTabControlNavi.Tabs)
             {
                 if (tabitem.Name == caption)
                 {
-                    NavTabControl.SelectedTab = tabitem;
+                    SuperTabControlNavi.SelectedTab = tabitem;
                     IsOpened = true;
                     break;
                 }
@@ -201,7 +201,7 @@ namespace Aohua
                 DevComponents.DotNetBar.Office2007Form form = ChildWinManagement.LoadMdiForm(this, formType)
                     as DevComponents.DotNetBar.Office2007Form;
 
-                SuperTabItem tabItem = NavTabControl.CreateTab(caption);
+                SuperTabItem tabItem = SuperTabControlNavi.CreateTab(caption);
                 tabItem.Name = caption;
                 tabItem.Text = caption;
 
@@ -212,7 +212,7 @@ namespace Aohua
                 //tabItem.Icon = form.Icon;
                 tabItem.AttachedControl.Controls.Add(form);
 
-                NavTabControl.SelectedTab = tabItem;
+                SuperTabControlNavi.SelectedTab = tabItem;
             }
         }
 
@@ -221,13 +221,13 @@ namespace Aohua
         /// </summary>
         private void GetStyleSetting()
         {
-            this.styleManager1.ManagerStyle = (eStyle)Enum.Parse(typeof(eStyle), ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "FormStyle"));
-            string managerStyle = this.styleManager1.ManagerStyle.ToString();
-            for (int i = 0; i < buttonItem1.SubItems.Count - 1; i++)
+            this.StyleManagerMain.ManagerStyle = (eStyle)Enum.Parse(typeof(eStyle), ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "FormStyle"));
+            string managerStyle = this.StyleManagerMain.ManagerStyle.ToString();
+            for (int i = 0; i < ButtonItemTheme.SubItems.Count - 1; i++)
             {
-                if (managerStyle is string && managerStyle == buttonItem1.SubItems[i].CommandParameter.ToString())
+                if (managerStyle is string && managerStyle == ButtonItemTheme.SubItems[i].CommandParameter.ToString())
                 {
-                    ButtonItem bi = (ButtonItem)buttonItem1.SubItems[i];
+                    ButtonItem bi = (ButtonItem)ButtonItemTheme.SubItems[i];
                     bi.Checked = true;
                 }
             }
@@ -259,9 +259,8 @@ namespace Aohua
         /// <param name="e"></param>
         private void CmdRibbonState_Executed(object sender, EventArgs e)
         {
-            ribbonControl1.Expanded = cmdRibbonState.Checked;
-            cmdRibbonState.Checked = !cmdRibbonState.Checked;
+            RibbonControlMain.Expanded = CommandRibbonState.Checked;
+            CommandRibbonState.Checked = !CommandRibbonState.Checked;
         }
     }
-
 }
