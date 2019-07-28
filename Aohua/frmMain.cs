@@ -35,16 +35,9 @@ namespace Aohua
             ////获取窗口样式
             GetStyleSetting();
             //LoadModule();
-
-            //用户登录
-            FrmLogin login = new FrmLogin();
-            if (login.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-            }
-            else
-            {
-                this.Close();
-            }
+            UserLogin();
+            ButtonItem1_Click(sender, e);
+            CmdRibbonState_Executed(sender, e);
         }
 
         /// <summary>
@@ -79,35 +72,35 @@ namespace Aohua
                         StyleManager.MetroColorGeneratorParameters = DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters.DarkBlue;
 
                     // Adjust size of switch button to match Metro styling
-                    //switchButtonItem1.SwitchWidth = 16;
-                    //switchButtonItem1.ButtonWidth = 48;
-                    //switchButtonItem1.ButtonHeight = 19;
+                    SwitchButtonItemRibbonState.SwitchWidth = 16;
+                    SwitchButtonItemRibbonState.ButtonWidth = 48;
+                    SwitchButtonItemRibbonState.ButtonHeight = 19;
 
                     // Adjust tab strip style
-                    //tabStrip1.Style = eTabStripStyle.Metro;
+                    //TabStrip1.Style = eTabStripStyle.Metro;
 
                     StyleManager.Style = style; // BOOM
                 }
                 else
                 {
                     // If previous style was Metro we need to update other properties as well
-                    //if (StyleManager.IsMetro(StyleManager.Style))
-                    //{
-                    //    ribbonControl1.RibbonStripFont = null;
-                    //    // Fix capitalization App Button and tab
-                    //    //buttonFile.Text = ToTitleCase(buttonFile.Text);
-                    //foreach (BaseItem item in RibbonControl.Items)
-                    //{
-                    //    // Ribbon Control may contain items other than tabs so that needs to be taken in account
-                    //    RibbonTabItem tab = item as RibbonTabItem;
-                    //    if (tab != null)
-                    //        tab.Text = ToTitleCase(tab.Text);
-                    //}
-                    //    // Adjust size of switch button to match Office styling
-                    //    switchButtonItem1.SwitchWidth = 28;
-                    //    switchButtonItem1.ButtonWidth = 62;
-                    //    switchButtonItem1.ButtonHeight = 20;
-                    //}
+                    if (StyleManager.IsMetro(StyleManager.Style))
+                    {
+                        RibbonControlMain.RibbonStripFont = null;
+                        // Fix capitalization App Button and tab
+                        //buttonFile.Text = ToTitleCase(buttonFile.Text);
+                    foreach (BaseItem item in RibbonControl.Items)
+                    {
+                        // Ribbon Control may contain items other than tabs so that needs to be taken in account
+                        //RibbonTabItem tab = item as RibbonTabItem;
+                        //if (tab != null)
+                        //    tab.Text = ToTitleCase(tab.Text);
+                    }
+                        // Adjust size of switch button to match Office styling
+                        SwitchButtonItemRibbonState.SwitchWidth = 28;
+                        SwitchButtonItemRibbonState.ButtonWidth = 62;
+                        SwitchButtonItemRibbonState.ButtonHeight = 20;
+                    }
                     // Adjust tab strip style
                     //tabStrip1.Style = eTabStripStyle.Office2007Document;
                     StyleManager.ChangeStyle(style, Color.Empty);
@@ -261,6 +254,27 @@ namespace Aohua
         {
             RibbonControlMain.Expanded = CommandRibbonState.Checked;
             CommandRibbonState.Checked = !CommandRibbonState.Checked;
+        }
+
+        private void ButtonItem1_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("凭证迁移", typeof(FormVoucher));
+        }
+
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        public void UserLogin()
+        {
+            //用户登录
+            FrmLogin login = new FrmLogin();
+            if (login.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+            }
+            else
+            {
+                this.Close();
+            }
         }
     }
 }

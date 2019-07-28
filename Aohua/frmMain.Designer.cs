@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.RibbonControlMain = new DevComponents.DotNetBar.RibbonControl();
             this.RibbonPanelDS9209 = new DevComponents.DotNetBar.RibbonPanel();
+            this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
+            this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
             this.RibbonBarMain = new DevComponents.DotNetBar.RibbonBar();
             this.ButtonItemDataComp = new DevComponents.DotNetBar.ButtonItem();
             this.ButtonItemDataUpgard = new DevComponents.DotNetBar.ButtonItem();
@@ -103,6 +105,7 @@
             // RibbonPanelDS9209
             // 
             this.RibbonPanelDS9209.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.RibbonPanelDS9209.Controls.Add(this.ribbonBar1);
             this.RibbonPanelDS9209.Controls.Add(this.RibbonBarMain);
             this.RibbonPanelDS9209.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RibbonPanelDS9209.Location = new System.Drawing.Point(0, 53);
@@ -122,6 +125,45 @@
             // 
             this.RibbonPanelDS9209.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.RibbonPanelDS9209.TabIndex = 4;
+            // 
+            // ribbonBar1
+            // 
+            this.ribbonBar1.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar1.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar1.ContainerControlProcessDialogKey = true;
+            this.ribbonBar1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar1.DragDropSupport = true;
+            this.ribbonBar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.buttonItem1});
+            this.ribbonBar1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
+            this.ribbonBar1.Location = new System.Drawing.Point(125, 0);
+            this.ribbonBar1.Name = "ribbonBar1";
+            this.ribbonBar1.Size = new System.Drawing.Size(64, 99);
+            this.ribbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar1.TabIndex = 1;
+            this.ribbonBar1.Text = "ribbonBar1";
+            // 
+            // 
+            // 
+            this.ribbonBar1.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar1.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // buttonItem1
+            // 
+            this.buttonItem1.Name = "buttonItem1";
+            this.buttonItem1.SubItemsExpandWidth = 14;
+            this.buttonItem1.Text = "凭证迁移";
+            this.buttonItem1.Click += new System.EventHandler(this.ButtonItem1_Click);
             // 
             // RibbonBarMain
             // 
@@ -144,7 +186,7 @@
             this.RibbonBarMain.Location = new System.Drawing.Point(3, 0);
             this.RibbonBarMain.Margin = new System.Windows.Forms.Padding(2);
             this.RibbonBarMain.Name = "RibbonBarMain";
-            this.RibbonBarMain.Size = new System.Drawing.Size(127, 99);
+            this.RibbonBarMain.Size = new System.Drawing.Size(122, 99);
             this.RibbonBarMain.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.RibbonBarMain.TabIndex = 0;
             this.RibbonBarMain.Text = "客户信息迁移";
@@ -440,5 +482,7 @@
         private DevComponents.DotNetBar.ButtonItem ButtonItemDataUpgard;
         private DevComponents.DotNetBar.SwitchButtonItem SwitchButtonItemRibbonState;
         private DevComponents.DotNetBar.Command CommandRibbonState;
+        private DevComponents.DotNetBar.RibbonBar ribbonBar1;
+        private DevComponents.DotNetBar.ButtonItem buttonItem1;
     }
 }

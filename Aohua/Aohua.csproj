@@ -55,12 +55,26 @@
     <Compile Include="DAL\Common.cs" />
     <Compile Include="DAL\Organization.cs" />
     <Compile Include="DAL\ICStockBills.cs" />
+    <Compile Include="DAL\Voucher.cs" />
+    <Compile Include="DAL\VoucherEntry.cs" />
+    <Compile Include="DAL\VoucherGroup.cs" />
+    <Compile Include="FormVoucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVoucher.Designer.cs">
+      <DependentUpon>FormVoucher.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDataQuery.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmDataQuery.Designer.cs">
       <DependentUpon>FrmDataQuery.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Attributes.cs" />
+    <Compile Include="Models\ItemDetail.cs" />
+    <Compile Include="Models\ItemDetailV.cs" />
+    <Compile Include="Models\VoucherEntry.cs" />
+    <Compile Include="Models\Voucher.cs" />
     <Compile Include="Models\ICStockBillEntry.cs" />
     <Compile Include="Models\MeasureUnit.cs" />
     <Compile Include="Models\ICStockBill.cs" />
@@ -92,6 +106,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormVoucher.resx">
+      <DependentUpon>FormVoucher.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDataCompare.resx">
       <DependentUpon>FrmDataCompare.cs</DependentUpon>
     </EmbeddedResource>
