@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\BaseDAL.cs" />
+    <Compile Include="DAL\ItemDetails.cs" />
+    <Compile Include="DAL\Items.cs" />
     <Compile Include="DAL\ICStockBillEntrys.cs" />
     <Compile Include="DAL\MeasureUnits.cs" />
     <Compile Include="DAL\Common.cs" />
@@ -58,10 +60,16 @@
     <Compile Include="DAL\Voucher.cs" />
     <Compile Include="DAL\VoucherEntry.cs" />
     <Compile Include="DAL\VoucherGroup.cs" />
-    <Compile Include="FormVoucher.cs">
+    <Compile Include="Voucher\FormCustomNumberSelecter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormVoucher.Designer.cs">
+    <Compile Include="Voucher\FormCustomNumberSelecter.Designer.cs">
+      <DependentUpon>FormCustomNumberSelecter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Voucher\FormVoucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Voucher\FormVoucher.Designer.cs">
       <DependentUpon>FormVoucher.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmDataQuery.cs">
@@ -106,7 +114,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormVoucher.resx">
+    <EmbeddedResource Include="Voucher\FormCustomNumberSelecter.resx">
+      <DependentUpon>FormCustomNumberSelecter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Voucher\FormVoucher.resx">
       <DependentUpon>FormVoucher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDataCompare.resx">

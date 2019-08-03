@@ -1,6 +1,7 @@
-﻿using System.Data;
-using System.Text;
+﻿using Ryan.Framework.DotNetFx40.Common;
 using Ryan.Framework.DotNetFx40.DBUtility;
+using System.Data;
+using System.Text;
 
 namespace Aohua.DAL
 {
@@ -45,14 +46,18 @@ namespace Aohua.DAL
         /// <returns></returns>
         public static int GetNewFNumber(int year, int period,int groupid)
         {
-            int NewFNumber = 0;
+            int NewFNumber = 1;
             sql = string.Format("select max(FNumber) from t_voucher where fyear = {0} and FPeriod = {1} AND FGroupID = {2}",year.ToString(),period.ToString(),groupid.ToString());
             object obj = SqlHelper.ExecuteScalar(conn, sql);
             if (obj != null && obj.ToString() != "")
             {
                 NewFNumber = int.Parse(obj.ToString()) + 1;
             }
-            return NewFNumber > 1 ? NewFNumber : -1;
+            else
+            {
+                NewFNumber = 1;
+            }
+            return NewFNumber >= 1 ? NewFNumber : -1;
         }
 
         public static int GetNewSerialNum()
@@ -64,6 +69,7 @@ namespace Aohua.DAL
             {
                 NewSerialNum = int.Parse(obj.ToString()) + 1;
             }
+
             return NewSerialNum > 1 ? NewSerialNum : -1;
         }
 
@@ -130,6 +136,7 @@ namespace Aohua.DAL
         }
 
 
+
         /// <summary>
         /// 过滤凭证
         /// </summary>
@@ -140,8 +147,8 @@ namespace Aohua.DAL
             StringBuilder sb = new StringBuilder();
             //
             sb.Append(" Select v.*,FMgBudVchHook = IsNull(H.FVoucherID, 0) ");
-            sb.Append(" from(SELECT v.FVoucherID, v.FDate, v.FTransDate, v.Fexplanation FexplanationHead, ");
-            sb.Append("  v.FYear, v.FPeriod, v.FGroupID, v.FNumber, IsNull(v.FReference, '') as FReference, ");
+            sb.Append(" from(SELECT v.FVoucherID, Cast(v.FYear as varchar(4)) +'.'+ Cast(v.FPeriod as varchar(2)) as 会计期间, v.FDate, v.FTransDate, v.Fexplanation FexplanationHead, ");
+            sb.Append("  v.FGroupID, v.FNumber, IsNull(v.FReference, '') as FReference, ");
             sb.Append("  FAttachments =case when v.FAttachments = 0 then '' else v.FAttachments end, ");
             sb.Append("  v.FEntryCount, v.FDebitTotal, v.FCreditTotal, v.FInternalInd, v.FPosted, v.FChecked, ");
             sb.Append("  v.FPreparerID, FPreparer = IsNull(u1.FName, ''), ");
@@ -207,5 +214,18 @@ namespace Aohua.DAL
             return "";
         }
 
+        public  static int GetDetailIDByVoucherIDEntryID(int VoucherID, int EntryID)
+        {
+            sql = string.Format("select FDetailID from t_VoucherEntry where FVoucherID = {0} and FEntryID = {1}", VoucherID, EntryID);
+            object obj = SqlHelper.ExecuteScalar(conn, sql);
+            if(obj != null && obj.ToString() != "")
+            {
+                return int.Parse(obj.ToString());
+            }
+            else
+            {
+                return -1;
+            }
+        }
     }
 }

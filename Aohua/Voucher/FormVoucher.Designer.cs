@@ -1,4 +1,4 @@
-﻿namespace Aohua
+﻿namespace Aohua.VoucherApp
 {
     partial class FormVoucher
     {
@@ -213,6 +213,7 @@
             this.TextBoxVoucherFNumber.PreventEnterBeep = true;
             this.TextBoxVoucherFNumber.Size = new System.Drawing.Size(162, 26);
             this.TextBoxVoucherFNumber.TabIndex = 8;
+            this.TextBoxVoucherFNumber.Text = "36";
             // 
             // ButtonXCreateVoucher
             // 

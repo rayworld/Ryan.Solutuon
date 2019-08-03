@@ -1,4 +1,5 @@
 ﻿using Ryan.Framework.DotNetFx40.DBUtility;
+using System.Data;
 
 namespace Aohua.DAL
 {
@@ -41,6 +42,11 @@ namespace Aohua.DAL
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="OriginalAccountID"></param>
+        /// <returns></returns>
         public static int ReplaceAccountID(int OriginalAccountID)
         {
             sql = string.Format("select FAccountID from t_Account where FName = ( Select CASE WHEN fname like '18%' then replace((fname + '11%'),'内部客户','客户') else replace((fname + '10%'),'内部客户','客户') end From t_Account WHERE FAccountID = {0})", OriginalAccountID);
@@ -53,6 +59,71 @@ namespace Aohua.DAL
             {
                 return -1;
             }
+        }
+
+        /// <summary>
+        /// 得到原凭证客户编号
+        /// </summary>
+        /// <param name="VoucherID"></param>
+        /// <param name="EntryID"></param>
+        /// <returns></returns>
+        public static string GetOriginCustomFNumber(int VoucherID,int EntryID)
+        {
+            sql = string.Format("select FNumber from t_Item where FItemID = (select FItemID from t_ItemDetailV where FDetailID = (select FDetailID from t_VoucherEntry where FVoucherID = {0} and FEntryID ={1}) and FItemClassID =(select FItemClassID from t_itemclass where fname = '20' +(select FName from t_account where FAccountID =(select FAccountID from t_VoucherEntry where FVoucherID = {0} and FEntryID ={1}))))", VoucherID, EntryID);
+            object obj = SqlHelper.ExecuteScalar(conn, sql);
+            if(obj != null && obj.ToString() != "")
+            {
+                return obj.ToString();
+            }
+            else
+            {
+                return "-1";
+            }
+        }
+
+        /// <summary>
+        /// 得到新科目下的最大客户编号
+        /// </summary>
+        /// <param name="NewAccountID"></param>
+        /// <returns></returns>
+        public static string GetNewAccountMaxFNumber(int NewAccountID)
+        {
+            sql = string.Format("select Max(FNumber) from t_item where fItemClassid = (select FItemClassID from t_ItemClass where FName = '20' + (select FName from t_account where FAccountID ={0}))",NewAccountID);
+            object obj = SqlHelper.ExecuteScalar(conn, sql);
+            if (obj != null && obj.ToString() != "")
+            {
+                return obj.ToString();
+            }
+            else
+            {
+                return "-1";
+            }
+        }
+
+        public static bool FNumberExists(int NewAccountID,string FNumber)
+        {
+            sql = string.Format("select FNumber from t_item where fItemClassid = (select FItemClassID from t_ItemClass where FName = '20' + (select FName from t_account where FAccountID ={0})) and FNumber ='{1}'", NewAccountID,FNumber);
+            object obj = SqlHelper.ExecuteScalar(conn, sql);
+            if (obj != null && obj.ToString() != "")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="NewItemClassID"></param>
+        /// <returns></returns>
+        public static DataTable GetNewItemClassIDLast20Item(int NewItemClassID)
+        {
+            sql = string.Format("select Top 20 FItemID as 客户编号,FNumber as 客户代码,FName as 客户名称 from t_item where fItemClassid ={0} Order By FNumber Desc", NewItemClassID);
+            DataTable retDT = SqlHelper.ExecuteDataTable(conn, sql);
+            return retDT;
         }
     }
 }
