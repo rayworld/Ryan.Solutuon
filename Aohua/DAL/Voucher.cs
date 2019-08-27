@@ -1,5 +1,6 @@
 ﻿using Ryan.Framework.DotNetFx40.Common;
 using Ryan.Framework.DotNetFx40.DBUtility;
+using System;
 using System.Data;
 using System.Text;
 
@@ -9,6 +10,12 @@ namespace Aohua.DAL
     {
         private static readonly string conn = SqlHelper.GetConnectionString("FinSrc");
         private static string sql = "";
+
+        public static DateTime GetServerTime()
+        {
+            sql = "select convert(varchar(10),getdate(),120) as serverTime";
+            return DateTime.Parse(BaseDAL.Sql2NotNullString(conn, sql));   
+        }
 
         /// <summary>
         /// 
@@ -58,6 +65,12 @@ namespace Aohua.DAL
                 NewFNumber = 1;
             }
             return NewFNumber >= 1 ? NewFNumber : -1;
+        }
+
+        public static int GetOwnerGroupIDByPreparerID(int PreparerID)
+        {
+            sql = string.Format("select top 1 FOwnerGroupID from t_voucher where FPreparerID = {0}",PreparerID);
+            return BaseDAL.Sql2Int(conn, sql);
         }
 
         public static int GetNewSerialNum()
@@ -227,5 +240,14 @@ namespace Aohua.DAL
                 return -1;
             }
         }
+
+        #region 2.0
+        public static int UpdateEntryCount(int EntryCount,int VoucherID)
+        {
+            sql = string.Format("Update t_voucher set fentrycount = {0} where fvoucherID = {1}", EntryCount, VoucherID);
+            return SqlHelper.ExecuteNonQuery(conn, sql);
+        }
+        #endregion
+
     }
 }

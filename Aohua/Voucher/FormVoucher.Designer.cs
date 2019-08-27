@@ -125,7 +125,7 @@
             this.TextBoxPeriod.PreventEnterBeep = true;
             this.TextBoxPeriod.Size = new System.Drawing.Size(162, 26);
             this.TextBoxPeriod.TabIndex = 14;
-            this.TextBoxPeriod.Text = "5";
+            this.TextBoxPeriod.Text = "3";
             // 
             // labelX3
             // 
@@ -153,7 +153,7 @@
             this.TextBoxYear.PreventEnterBeep = true;
             this.TextBoxYear.Size = new System.Drawing.Size(205, 26);
             this.TextBoxYear.TabIndex = 12;
-            this.TextBoxYear.Text = "2018";
+            this.TextBoxYear.Text = "2019";
             // 
             // ComboBoxVoucherGroup
             // 
@@ -213,7 +213,7 @@
             this.TextBoxVoucherFNumber.PreventEnterBeep = true;
             this.TextBoxVoucherFNumber.Size = new System.Drawing.Size(162, 26);
             this.TextBoxVoucherFNumber.TabIndex = 8;
-            this.TextBoxVoucherFNumber.Text = "36";
+            this.TextBoxVoucherFNumber.Text = "20";
             // 
             // ButtonXCreateVoucher
             // 

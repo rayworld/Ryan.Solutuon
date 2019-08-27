@@ -37,7 +37,8 @@ namespace Aohua
             GetStyleSetting();
             //LoadModule();
             UserLogin();
-            ButtonItem1_Click(sender, e);
+            ButtonItemVoucherImport_Click(sender, e);
+            //ButtonItem1_Click(sender, e);
             CmdRibbonState_Executed(sender, e);
         }
 
@@ -276,6 +277,11 @@ namespace Aohua
             {
                 this.Close();
             }
+        }
+
+        private void ButtonItemVoucherImport_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("凭证导入", typeof(FormVoucherImport));
         }
     }
 }

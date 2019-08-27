@@ -60,7 +60,7 @@ namespace Ryan.Framework.DotNetFx40.Converter
         /// <param name="sheetName">工作簿名</param>
         /// <param name="columnNames"></param>
         /// <returns></returns>
-        public DataTable Excel2DataTable(string excelFileName, string sheetName, string columnNames, string orderBy)
+        public static DataTable Excel2DataTable(string excelFileName, string sheetName, string columnNames, string orderBy)
         {
             if (excelFileName.ToLower().EndsWith(".xls") || excelFileName.ToLower().EndsWith(".xlsx"))
             {
@@ -69,16 +69,17 @@ namespace Ryan.Framework.DotNetFx40.Converter
                 DataTable dt = (DataTable)null;
                 OleDbDataAdapter myCommand = null;
 
-                if (excelFileName.ToLower().EndsWith(".xlsx") || excelFileName.ToLower().EndsWith(".xls"))
+                if (excelFileName.ToLower().EndsWith(".xlsx"))
                 {
                     //Excel 2007
-                    strConn = "Provider=Microsoft.Ace.OleDb.12.0;" + "data source=" + excelFileName + ";Extended Properties='Excel 12.0; HDR=Yes; IMEX=1'";
+                    strConn = string.Format("Provider=Microsoft.Ace.OleDb.12.0;data source={0};Extended Properties='Excel 12.0;HDR=yes;IMEX=1'", excelFileName);
                 }
                 else
                 {
                     //Excel 2003
                     strConn = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + excelFileName + ";Extended Properties='Excel 8.0;HDR=YES;IMEX=1'";
                 }
+
 
                 OleDbConnection conn = new OleDbConnection(strConn);
                 conn.Open();

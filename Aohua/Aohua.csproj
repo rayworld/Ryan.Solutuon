@@ -60,6 +60,18 @@
     <Compile Include="DAL\Voucher.cs" />
     <Compile Include="DAL\VoucherEntry.cs" />
     <Compile Include="DAL\VoucherGroup.cs" />
+    <Compile Include="VoucherImport\FormCustomNumberSelecterV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherImport\FormCustomNumberSelecterV2.Designer.cs">
+      <DependentUpon>FormCustomNumberSelecterV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VoucherImport\FormVoucheImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VoucherImport\FormVoucheImport.Designer.cs">
+      <DependentUpon>FormVoucheImport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Voucher\FormCustomNumberSelecter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +126,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="VoucherImport\FormCustomNumberSelecterV2.resx">
+      <DependentUpon>FormCustomNumberSelecterV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VoucherImport\FormVoucheImport.resx">
+      <DependentUpon>FormVoucheImport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Voucher\FormCustomNumberSelecter.resx">
       <DependentUpon>FormCustomNumberSelecter.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +181,14 @@
     <Folder Include="BLL\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx20.Common\Ryan.Framework.DotNetFx20.Common.csproj">
+      <Project>{808E93A6-F591-4537-849B-17C7F24D4BC1}</Project>
+      <Name>Ryan.Framework.DotNetFx20.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx20.Converter\Ryan.Framework.DotNetFx20.Converter.csproj">
+      <Project>{975AB94A-0782-47B4-9449-8CAD660727D0}</Project>
+      <Name>Ryan.Framework.DotNetFx20.Converter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ryan.Framework.DotNetFx40.AutoUpdate\Ryan.Framework.DotNetFx40.AutoUpdate.csproj">
       <Project>{49395616-4933-48db-8b33-1466da710585}</Project>
       <Name>Ryan.Framework.DotNetFx40.AutoUpdate</Name>

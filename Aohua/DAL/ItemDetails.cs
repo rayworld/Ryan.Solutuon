@@ -114,5 +114,23 @@ namespace Aohua.DAL
             retVal = SqlHelper.ExecuteNonQuery(conn, sql);
             return retVal > 0 ? retVal : -1;
         }
+
+        #region 2.0
+        public static int GetDetailIDByItemClassIDItemID(int ItemClassID, int ItemID)
+        {
+            sql = string.Format("select FDetailID from t_itemdetail where F{0} = {1} and FDetailCount = 1 ",ItemClassID,ItemID);
+            return BaseDAL.Sql2Int(conn, sql);
+        }
+
+
+        /// <returns></returns>
+        internal static int InsertItemDetailV2(int NewDetailID, int ItemClassID, int ItemID)
+        {
+            int retVal = 0;
+            sql = string.Format("INSERT INTO [t_ItemDetail]([FDetailID],[FDetailCount],[F{1}])VALUES({0},1,{2})", NewDetailID, ItemClassID, ItemID);
+            retVal = SqlHelper.ExecuteNonQuery(conn, sql);
+            return retVal > 0 ? retVal : -1;
+        }
+        #endregion
     }
 }
