@@ -61,6 +61,8 @@ namespace Aohua.VoucherApp
         private static string AreaFilter, 
             TaxRateFilter;
 
+        private static string CustArea;
+
         #region 窗体事件
 
 
@@ -223,7 +225,8 @@ namespace Aohua.VoucherApp
                             t3 = t.Field<string>("ItemClassID"),
                             t4 = t.Field<string>("CustomID"),
                             t5 = t.Field<string>("购方企业名称"),
-                            t6 = t.Field<string>("地址电话")
+                            t6 = t.Field<string>("地址电话"),
+                            t7 = t.Field<string>("分公司")
                         } into m
                         select new
                         {
@@ -233,6 +236,7 @@ namespace Aohua.VoucherApp
                             客户号 = m.Key.t4,
                             购方企业名称 = m.Key.t5,
                             地址电话 = m.Key.t6,
+                            分公司 = m.Key.t7,
                             开票金额 = m.Sum(n => n.Field<decimal>("开票金额1"))
                         };
             query = query.OrderBy(x => x.科目号).ThenBy(x => x.客户类型号).ThenBy(x => x.客户号);
@@ -265,7 +269,7 @@ namespace Aohua.VoucherApp
             //Insert VoucherEntries
             InsertVoucherEntries(dt1);
 
-            InsertVoucherEntriesV2(dtInvoiceDetail);
+            InsertVoucherEntriesV2(dtFilter);
 
         }
 
@@ -332,7 +336,7 @@ namespace Aohua.VoucherApp
             {
                 for (int i = 0; i < dt333.Rows.Count; i++)
                 {
-                    retVal += dt333.Rows[i]["发票号码"].ToString() + ";";
+                    retVal += "#" + dt333.Rows[i]["发票号码"].ToString() + ";";
                 }
             }
 
@@ -445,63 +449,73 @@ namespace Aohua.VoucherApp
         private void ShowInvoiceDetail()
         {
             //处理发票明细表
-            dtInvoiceDetail = ToDataTable.Excel2DataTable(ExcelFileName, SheetName, "*", "购方企业名称");
-            for (int i = 0; i < dtInvoiceDetail.Rows.Count; i++)
+            dtInvoiceDetail = ToDataTable.Excel2DataTable(ExcelFileName, SheetName, "*", "");
+            if (dtInvoiceDetail.Rows.Count > 0)
             {
+                for (int i = 0; i < dtInvoiceDetail.Rows.Count; i++)
+                {
+                    if (dtInvoiceDetail.Rows[i]["商品名称"].ToString() != "*建筑服务*装修" && dtInvoiceDetail.Rows[i]["商品名称"].ToString() != "*设计服务*设计费")
+                    {
+                        dtInvoiceDetail.Rows[i].Delete();
+                    }
+                }
+                dtInvoiceDetail.AcceptChanges();
                 //填充空行信息
-                if (dtInvoiceDetail.Rows[i]["发票代码"].ToString() == "")
+                for (int j = 0; j < dtInvoiceDetail.Rows.Count; j++)
                 {
-                    dtInvoiceDetail.Rows[i]["发票号码"] = dtInvoiceDetail.Rows[i - 1]["发票号码"].ToString();
-                    dtInvoiceDetail.Rows[i]["购方企业名称"] = dtInvoiceDetail.Rows[i - 1]["购方企业名称"].ToString();
-                    dtInvoiceDetail.Rows[i]["地址电话"] = dtInvoiceDetail.Rows[i - 1]["地址电话"].ToString();
-                    dtInvoiceDetail.Rows[i]["商品名称"] = dtInvoiceDetail.Rows[i - 1]["商品名称"].ToString();
-                    dtInvoiceDetail.Rows[i]["税率"] = dtInvoiceDetail.Rows[i - 1]["税率"].ToString();
+                    if (dtInvoiceDetail.Rows[j]["发票代码"].ToString() == "")
+                    {
+                        dtInvoiceDetail.Rows[j]["发票号码"] = dtInvoiceDetail.Rows[j - 1]["发票号码"].ToString();
+                        dtInvoiceDetail.Rows[j]["购方企业名称"] = dtInvoiceDetail.Rows[j - 1]["购方企业名称"].ToString();
+                        dtInvoiceDetail.Rows[j]["地址电话"] = dtInvoiceDetail.Rows[j - 1]["地址电话"].ToString();
+                        //dtInvoiceDetail.Rows[j]["商品名称"] = dtInvoiceDetail.Rows[j - 1]["商品名称"].ToString();
+                        //dtInvoiceDetail.Rows[j]["税率"] = dtInvoiceDetail.Rows[j - 1]["税率"].ToString();
+                    }
                 }
-                //删除小计行
-                if (dtInvoiceDetail.Rows[i]["商品名称"].ToString() != "*建筑服务*装修" && dtInvoiceDetail.Rows[i]["商品名称"].ToString() != "*设计服务*设计费")
+            
+                //数据列类型转换
+                dtInvoiceDetail.Columns.Add(new DataColumn("金额1", System.Type.GetType("System.Decimal")));
+                dtInvoiceDetail.Columns.Add(new DataColumn("税额1", System.Type.GetType("System.Decimal")));
+                dtInvoiceDetail.Columns.Add(new DataColumn("开票金额", System.Type.GetType("System.Decimal")));
+                dtInvoiceDetail.Columns.Add(new DataColumn("分公司", System.Type.GetType("System.String")));
+                DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn
                 {
-                    dtInvoiceDetail.Rows[i].Delete();
+                    Name = "chkSelect",
+                    HeaderText = "选择"
+                };
+                this.DataGridViewXDetail.Columns.Insert(0, checkBoxColumn);
+
+                foreach (DataRow dr in dtInvoiceDetail.Rows)
+                {
+                    dr["金额1"] = Decimal.Parse(dr["金额"].ToString());
+                    dr["税额1"] = Decimal.Parse(dr["税额"].ToString());
+                    dr["开票金额"] = Decimal.Parse(dr["金额"].ToString()) + Decimal.Parse(dr["税额"].ToString());
+                    dr["分公司"] = dr["地址电话"].ToString().EndsWith("H") ? "汉口" : dr["地址电话"].ToString().EndsWith("Y") ? "汉阳" : dr["地址电话"].ToString().EndsWith("W") ? "武昌" : "工装";
+                    dr["地址电话"] = dr["地址电话"].ToString().Replace("******** H", "").Replace("****** H", "").Replace("******** W", "").Replace("****** W", "").Replace("******** Y", "").Replace("****** Y", "").Trim();
                 }
+                dtInvoiceDetail = dtInvoiceDetail.DefaultView.ToTable(false, new string[] { "发票号码", "购方企业名称", "地址电话", "商品名称", "金额1", "税额1", "开票金额", "税率", "分公司" });
+                DataGridViewXDetail.DataSource = dtInvoiceDetail;
+
+                DataGridViewXDetail.Columns["购方企业名称"].Width = 400;
+                DataGridViewXDetail.Columns["商品名称"].Width = 200;
+                DataGridViewXDetail.Columns["地址电话"].Width = 600;
+                DataGridViewXDetail.Columns["金额1"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                DataGridViewXDetail.Columns["税额1"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                DataGridViewXDetail.Columns["开票金额"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+                for (int i = 0; i < dtInvoiceDetail.Rows.Count; i++)
+                {
+                    DebitTotal += decimal.Parse(dtInvoiceDetail.Rows[i]["开票金额"].ToString());
+                    CreditTotal += decimal.Parse(dtInvoiceDetail.Rows[i]["金额1"].ToString()) + decimal.Parse(dtInvoiceDetail.Rows[i]["税额1"].ToString());
+                }
+
+                dtFilter = BindDetailData();
             }
-            dtInvoiceDetail.AcceptChanges();
-
-            //数据列类型转换
-            dtInvoiceDetail.Columns.Add(new DataColumn("金额1", System.Type.GetType("System.Decimal")));
-            dtInvoiceDetail.Columns.Add(new DataColumn("税额1", System.Type.GetType("System.Decimal")));
-            dtInvoiceDetail.Columns.Add(new DataColumn("开票金额", System.Type.GetType("System.Decimal")));
-            dtInvoiceDetail.Columns.Add(new DataColumn("分公司", System.Type.GetType("System.String")));
-            DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn
+            else
             {
-                Name = "chkSelect",
-                HeaderText = "选择"
-            };
-            this.DataGridViewXDetail.Columns.Insert(0, checkBoxColumn);
-
-            foreach (DataRow dr in dtInvoiceDetail.Rows)
-            {
-                dr["金额1"] = Decimal.Parse(dr["金额"].ToString());
-                dr["税额1"] = Decimal.Parse(dr["税额"].ToString());
-                dr["开票金额"] = Decimal.Parse(dr["金额"].ToString()) + Decimal.Parse(dr["税额"].ToString());
-                dr["分公司"] = dr["地址电话"].ToString().EndsWith("H") ? "汉口" : dr["地址电话"].ToString().EndsWith("Y") ? "汉阳" : dr["地址电话"].ToString().EndsWith("W") ? "武昌" : "工装";
-                dr["地址电话"] = dr["地址电话"].ToString().Replace("******** H", "").Replace("****** H", "").Replace("******** W", "").Replace("****** W", "").Replace("******** Y", "").Replace("****** Y", "").Trim();
-            }
-            dtInvoiceDetail = dtInvoiceDetail.DefaultView.ToTable(false, new string[] {"发票号码", "购方企业名称", "地址电话", "商品名称", "金额1", "税额1", "开票金额", "税率", "分公司" });
-            DataGridViewXDetail.DataSource = dtInvoiceDetail;
-
-            DataGridViewXDetail.Columns["购方企业名称"].Width = 400;
-            DataGridViewXDetail.Columns["商品名称"].Width = 200;
-            DataGridViewXDetail.Columns["地址电话"].Width = 600;
-            DataGridViewXDetail.Columns["金额1"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            DataGridViewXDetail.Columns["税额1"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            DataGridViewXDetail.Columns["开票金额"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-            for (int i = 0;i< dtInvoiceDetail.Rows.Count;i++)
-            {
-                DebitTotal += decimal.Parse(dtInvoiceDetail.Rows[i]["开票金额"].ToString());
-                CreditTotal += decimal.Parse(dtInvoiceDetail.Rows[i]["金额1"].ToString()) + decimal.Parse(dtInvoiceDetail.Rows[i]["税额1"].ToString());
+                Ryan.Framework.DotNetFx40.Common.CustomDesktopAlert.H2("加载Excel数据失败！");
             }
 
-            dtFilter = BindDetailData();
         }
 
 
@@ -562,7 +576,8 @@ namespace Aohua.VoucherApp
                 int ItemClassID = int.Parse(dt1.Rows[i]["客户类型号"].ToString());
                 int CustomID = int.Parse(dt1.Rows[i]["客户号"].ToString());
                 int DetailID = GetDetailID(ItemClassID, CustomID);
-                string Explanation = "汉口公司预收账转收入" + dt1.Rows[i]["发票号"].ToString();
+                CustArea = dt1.Rows[i]["分公司"].ToString();
+                string Explanation = CustArea + "公司预收账转收入" + dt1.Rows[i]["发票号"].ToString();
 
                 VoucherEntry voucherEntry = new VoucherEntry()
                 {
@@ -649,6 +664,8 @@ namespace Aohua.VoucherApp
                     dtRetVal.Rows.Add(dr);
                 }
             }
+            dtRetVal.DefaultView.Sort = "[购方企业名称]";//按Id倒序和Name倒序
+            dtRetVal = dtRetVal.DefaultView.ToTable();//返回一个新的DataTable
             DataGridViewXDetail.DataSource = dtRetVal;
             return dtRetVal;
         }
@@ -683,7 +700,7 @@ namespace Aohua.VoucherApp
         /// <param name="Amount"></param>
         /// <param name="EntryID"></param>
         /// <param name="Explanation"></param>
-        private static void InsertV2(int AccountID,int AccountID2, string SumColumn, DataTable dt000)
+        private static void InsertV2(int AccountID,int AccountID2, string SumColumn, DataTable dt000, string CustArea)
         {
             decimal Amount = decimal.Parse(dt000.Compute("sum(" + SumColumn + ")", "true").ToString());
             int EntryID = VoucherEntries.GetMaxEntryID(VoucherID);
@@ -701,7 +718,7 @@ namespace Aohua.VoucherApp
                 FDetailID = 0,
                 FEntryID = EntryID,
                 FExchangeRate = 1,
-                FExplanation = "汉口公司预收账转收入",
+                FExplanation = CustArea + "公司预收账转收入",
                 FInternalInd = "",
                 FMeasureUnitID = 0,
                 FQuantity = 0,
@@ -740,106 +757,106 @@ namespace Aohua.VoucherApp
         /// </summary>
         /// <param name="dtVoucherties"></param>
         /// <returns></returns>
-        private void InsertVoucherEntriesV2(DataTable dtInvoiceDetail)
+        private void InsertVoucherEntriesV2(DataTable dtFilted)
         {
             //收入 "税率 = '3%'"
-            DataTable dt0 = FilterData(dtFilter, "税率 = '3%'");
+            DataTable dt0 = FilterData(dtFilted, "税率 = '3%'");
             if (dt0.Rows.Count > 0)
             {
                 string custName = dt0.Rows[0]["购方企业名称"].ToString();
                 string custAddress = dt0.Rows[0]["地址电话"].ToString();
                 int accountID2 = GetAccountID2ByCustNameCustAddress(custName,custAddress);
-                InsertV2(4396, accountID2, "金额1", dt0);
+                InsertV2(4396, accountID2, "金额1", dt0, CustArea);
             }
 
             //收入 "税率 = '6%'"
-            DataTable dt1 = FilterData(dtFilter, "税率 = '6%'");
+            DataTable dt1 = FilterData(dtFilted, "税率 = '6%'");
             if (dt1.Rows.Count > 0)
             {
                 string custName = dt1.Rows[0]["购方企业名称"].ToString();
                 string custAddress = dt1.Rows[0]["地址电话"].ToString();
                 int accountID2 = GetAccountID2ByCustNameCustAddress(custName, custAddress);
-                InsertV2(27190, accountID2, "金额1",dt1);
+                InsertV2(27190, accountID2, "金额1",dt1, CustArea);
             }
 
             //收入 "税率 = '9%'"
-            DataTable dt2 = FilterData(dtFilter, "税率 = '9%'");
+            DataTable dt2 = FilterData(dtFilted, "税率 = '9%'");
             if (dt2.Rows.Count > 0)
             {
                 string custName = dt2.Rows[0]["购方企业名称"].ToString();
                 string custAddress = dt2.Rows[0]["地址电话"].ToString();
                 int accountID2 = GetAccountID2ByCustNameCustAddress(custName, custAddress);
-                InsertV2(27412, accountID2, "金额1",dt2);
+                InsertV2(27412, accountID2, "金额1",dt2, CustArea);
             }
 
             //收入 "税率 = '10%'"
-            DataTable dt3 = FilterData(dtFilter, "税率 = '10%'");
+            DataTable dt3 = FilterData(dtFilted, "税率 = '10%'");
             if(dt3.Rows.Count > 0)
             {
                 string custName = dt3.Rows[0]["购方企业名称"].ToString();
                 string custAddress = dt3.Rows[0]["地址电话"].ToString();
                 int accountID2 = GetAccountID2ByCustNameCustAddress(custName, custAddress);
-                InsertV2(27357, accountID2, "金额1",dt3);
+                InsertV2(27357, accountID2, "金额1",dt3, CustArea);
             }
 
             //收入 "税率 = '11%'"
-            DataTable dt8 = FilterData(dtFilter, "税率 = '11%'");
+            DataTable dt8 = FilterData(dtFilted, "税率 = '11%'");
             if (dt8.Rows.Count > 0)
             {
                 string custName = dt8.Rows[0]["购方企业名称"].ToString();
                 string custAddress = dt8.Rows[0]["地址电话"].ToString();
                 int accountID2 = GetAccountID2ByCustNameCustAddress(custName, custAddress);
-                InsertV2(27206, accountID2, "金额1",dt8);
+                InsertV2(27206, accountID2, "金额1",dt8, CustArea);
             }
 
             //税额 "税率 = '3%'"
-            DataTable dt4 = FilterData(dtFilter, "税率 = '3%'");
+            DataTable dt4 = FilterData(dtFilted, "税率 = '3%'");
             if (dt4.Rows.Count > 0)
             {
                 string custName = dt4.Rows[0]["购方企业名称"].ToString();
                 string custAddress = dt4.Rows[0]["地址电话"].ToString();
                 int accountID2 = GetAccountID2ByCustNameCustAddress(custName, custAddress);
-                InsertV2(27195, accountID2, "税额1", dt4);
+                InsertV2(27195, accountID2, "税额1", dt4, CustArea);
             }
 
             //税额 "税率 = '6%'"
-            DataTable dt5 = FilterData(dtFilter, "税率 = '6%'");
+            DataTable dt5 = FilterData(dtFilted, "税率 = '6%'");
             if (dt5.Rows.Count > 0)
             {
                 string custName = dt5.Rows[0]["购方企业名称"].ToString();
                 string custAddress = dt5.Rows[0]["地址电话"].ToString();
                 int accountID2 = GetAccountID2ByCustNameCustAddress(custName, custAddress);
-                InsertV2(27197, accountID2, "税额1", dt5);
+                InsertV2(27197, accountID2, "税额1", dt5, CustArea);
             }
 
             //税额 "税率 = '9%'"
-            DataTable dt6 = FilterData(dtFilter, "税率 = '9%'");
+            DataTable dt6 = FilterData(dtFilted, "税率 = '9%'");
             if (dt6.Rows.Count > 0)
             {
                 string custName = dt6.Rows[0]["购方企业名称"].ToString();
                 string custAddress = dt6.Rows[0]["地址电话"].ToString();
                 int accountID2 = GetAccountID2ByCustNameCustAddress(custName, custAddress);
-                InsertV2(27411, accountID2, "税额1", dt6);
+                InsertV2(27411, accountID2, "税额1", dt6, CustArea);
             }
 
             //税额 "税率 = '10%'
-            DataTable dt7 = FilterData(dtFilter, "税率 = '10%'");
+            DataTable dt7 = FilterData(dtFilted, "税率 = '10%'");
             if (dt7.Rows.Count > 0)
             {
                 string custName = dt7.Rows[0]["购方企业名称"].ToString();
                 string custAddress = dt7.Rows[0]["地址电话"].ToString();
                 int accountID2 = GetAccountID2ByCustNameCustAddress(custName, custAddress);
-                InsertV2(27352, accountID2, "税额1", dt7);
+                InsertV2(27352, accountID2, "税额1", dt7, CustArea);
             }
 
             //税额 "税率 = '11%'
-            DataTable dt9 = FilterData(dtFilter, "税率 = '10%'");
+            DataTable dt9 = FilterData(dtFilted, "税率 = '11%'");
             if (dt9.Rows.Count > 0)
             {
                 string custName = dt9.Rows[0]["购方企业名称"].ToString();
                 string custAddress = dt9.Rows[0]["地址电话"].ToString();
                 int accountID2 = GetAccountID2ByCustNameCustAddress(custName, custAddress);
-                InsertV2(27196, accountID2, "税额1", dt9);
+                InsertV2(27196, accountID2, "税额1", dt9, CustArea);
             }
 
             //更新主表EntryCount
