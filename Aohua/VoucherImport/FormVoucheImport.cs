@@ -118,7 +118,7 @@ namespace Aohua.VoucherApp
         private void FormVoucheImport_Load(object sender, EventArgs e)
         {
             DateTime ServerTime = Vouchers.GetServerTime();
-            if(ServerTime > DateTime.Parse("2019-10-01"))
+            if(ServerTime > DateTime.Parse("2024-10-01"))
             {
                 this.ButtonXImportExcelNew.Enabled = false;
                 this.ButtonXStatistics.Enabled = false;
