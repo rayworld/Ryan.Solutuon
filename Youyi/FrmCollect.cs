@@ -80,7 +80,7 @@ namespace Youyi
             }
 
             //执行统计
-            dt = SqlHelper.ExecuteDataTable(BuildSqlV3(TopOption, WhereOption));
+            dt = SqlHelper.ExecuteDataTable(BuildSqlV4(TopOption, WhereOption));
             this.dataGridViewX1.DataSource = dt;
             dataGridViewX1.Columns[0].Width = 340;
             dataGridViewX1.Columns[1].Width = 440;
@@ -224,6 +224,98 @@ namespace Youyi
 
             return string.Format(sb.ToString(), top, where);
         }
+
+        /// <summary>
+        /// 加成本显示t_icitem fOrderPrice
+        /// </summary>
+        /// <param name="top"></param>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        private string BuildSqlV4(string top, string where)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            //sb.Append(" --ver 1.3 ");
+            sb.Append(" select ");
+            sb.Append(" CASE ");
+            sb.Append(" WHEN grouping(g.大类名称) = '1' THEN '总计' ");
+            sb.Append(" WHEN grouping(g.大类名称) = '0' AND grouping(g.商品名称) = '1' THEN g.大类名称 + ' 小计' ");
+            sb.Append(" ELSE g.大类名称 ");
+            sb.Append(" END 大类, ");
+            sb.Append(" CASE ");
+            sb.Append(" WHEN grouping(g.商品名称) = '1' THEN '' ");
+            sb.Append(" WHEN grouping(g.商品名称) = '0' AND grouping(g.客户名称) = '1' THEN g.商品名称 + ' 小计' ");
+            sb.Append(" ELSE g.商品名称 ");
+            sb.Append(" END 商品名称, ");
+            sb.Append(" CASE ");
+            sb.Append(" WHEN grouping(g.客户名称) = '1' THEN '' ");
+            sb.Append(" WHEN grouping(g.客户名称) = '0' AND grouping(g.发票号) = '1'  THEN g.客户名称 + ' 小计' ");
+            sb.Append(" ELSE g.客户名称 ");
+            sb.Append(" END 客户名称,   ");
+            sb.Append(" CASE ");
+            sb.Append(" WHEN grouping(g.发票号) = '1' THEN '' ");
+            sb.Append(" WHEN grouping(g.发票号) = '0' AND grouping(g.成本) = '1'  THEN g.发票号 + ' 小计' ");
+            sb.Append(" ELSE 发票号 ");
+            sb.Append(" END 发票号, ");
+            sb.Append(" CASE ");
+            sb.Append(" WHEN grouping(g.成本) = '1' THEN '' ");
+            sb.Append(" ELSE 成本 ");
+            sb.Append(" END 成本, ");
+            sb.Append(" SUM(g.数量) as 数量, ");
+            sb.Append(" SUM(g.金额) as 金额 ");
+            sb.Append(" from( ");
+            sb.Append(" select ");
+            sb.Append(" a.FDate AS 发票日期, ");
+            sb.Append(" a.FBillNo AS 发票号, ");
+            sb.Append(" a.数量 AS 数量, ");
+            sb.Append(" a.FStdAmount AS 金额, ");
+            sb.Append(" a.FName AS 商品名称, ");
+            sb.Append(" a.FOrderPrice AS 成本, ");
+            sb.Append(" a.FFullNumber AS 商品全代码, ");
+            sb.Append(" a.cata AS 大类编号, ");
+            sb.Append(" a.custName AS 客户名称, ");
+            sb.Append(" tt1.FName  AS 大类名称 ");
+            sb.Append(" from( ");
+            sb.Append(" select {0} ");
+            sb.Append(" s.FDate, ");
+            sb.Append(" s.FBillNo, ");
+            sb.Append(" e.fqty as 数量, ");
+            sb.Append(" e.FStdAmount, ");
+            sb.Append(" CAST(c.FOrderPrice / 1.13 AS nvarchar(20)) as Forderprice, ");
+            sb.Append(" o.fname as custName, ");
+            sb.Append(" i.FName, ");
+            sb.Append(" i.FFullNumber, ");
+            sb.Append(" CASE LEN(i.FFullNumber) - LEN(REPLACE(i.FFullNumber, '.', '')) ");
+            sb.Append(" WHEN 2 THEN substring(i.FFullNumber, 0, LEN(i.FFullNumber) - 3) ");
+            sb.Append(" ELSE i.FFullNumber ");
+            sb.Append(" END AS cata ");
+            sb.Append(" from ");
+            sb.Append(" ICSale s ");
+            sb.Append(" Inner join ICSaleEntry e on s.FInterID = e.FInterID ");
+            sb.Append(" left join t_Organization o on s.FCustID = o.FItemID ");
+            sb.Append(" left join t_icitem c on e.FItemID = c.FItemID ");
+            sb.Append(" left join t_Item i on e.FItemID = i.FItemID  {1} ");
+            sb.Append(" ) as a ");
+            sb.Append(" left join(SELECT * FROM t_Item where fitemclassid = 4) as tt1 on a.cata = tt1.FFullNumber ");
+            sb.Append(" ) as g ");
+            sb.Append(" GROUP BY ");
+            sb.Append(" g.大类名称, ");
+            sb.Append(" g.商品名称, ");
+            sb.Append(" g.客户名称, ");
+            sb.Append(" g.发票号, ");
+            sb.Append(" g.成本 ");
+            sb.Append(" WITH ROLLUP ");
+            sb.Append(" ORDER BY ");
+            sb.Append(" g.大类名称 DESC, ");
+            sb.Append(" g.商品名称 DESC, ");
+            sb.Append(" g.客户名称 DESC, ");
+            sb.Append(" g.发票号 DESC, ");
+            sb.Append(" g.成本 DESC ");
+
+            return string.Format(sb.ToString(), top, where);
+
+        }
+
 
         /// <summary>
         /// 生成计数信息
