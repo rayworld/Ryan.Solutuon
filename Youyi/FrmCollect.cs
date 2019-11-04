@@ -85,145 +85,12 @@ namespace Youyi
             dataGridViewX1.Columns[0].Width = 340;
             dataGridViewX1.Columns[1].Width = 440;
             dataGridViewX1.Columns[2].Width = 200;
-            dataGridViewX1.Columns[5].Width = 200;
+            //dataGridViewX1.Columns[5].Width = 200;
             dataGridViewX1.Columns[4].DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleRight };
-            dataGridViewX1.Columns[5].DefaultCellStyle = new DataGridViewCellStyle {Alignment = DataGridViewContentAlignment.MiddleRight };
+            dataGridViewX1.Columns[5].DefaultCellStyle = new DataGridViewCellStyle { Alignment = DataGridViewContentAlignment.MiddleRight };
+            dataGridViewX1.Columns[6].DefaultCellStyle = new DataGridViewCellStyle {Alignment = DataGridViewContentAlignment.MiddleRight };
         }
 
-        private string BuildSqlV2(string top ,string where)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(" SELECT ");
-            sb.Append(" CASE WHEN grouping(e.大类名称) = '1' THEN '总计' ");
-            sb.Append(" WHEN grouping(e.大类名称) = '0' AND grouping(e.商品名称) = '1' THEN e.大类名称 + ' 小计' ");
-            sb.Append(" ELSE e.大类名称 ");
-            sb.Append(" END 大类, ");
-            sb.Append(" CASE WHEN grouping(e.商品名称) = '1' THEN '' ");
-            sb.Append(" WHEN grouping(e.商品名称) = '0' AND grouping(e.客户名称) = '1'  THEN e.商品名称 + ' 小计' ");
-            sb.Append(" ELSE e.商品名称 ");
-            sb.Append(" END 商品名称, ");
-            sb.Append(" CASE WHEN grouping(e.客户名称) = '1' THEN '' ");
-            sb.Append(" WHEN grouping(e.客户名称) = '0' AND grouping(e.发票号) = '1'  THEN e.客户名称 + ' 小计' ");
-            sb.Append(" ELSE e.客户名称 ");
-            sb.Append(" END 客户名称, ");
-            sb.Append(" CASE WHEN grouping(e.发票号) = '1' THEN '' ");
-            sb.Append(" ELSE 发票号 ");
-            sb.Append(" END 单号, ");
-            sb.Append(" COUNT(数量) AS 数量, ");
-            sb.Append(" SUM(金额) AS 金额 ");
-            sb.Append(" FROM( ");
-            sb.Append(" SELECT a.FDate AS 发票日期, a.FBillNo AS 发票号, a.FQty AS 数量, a.FStdAmount AS 金额, a.FName1 AS 商品名称, a.FFullNumber AS 商品全代码, a.FNumber1 AS 大类编号, t_Item_1.FName AS 大类名称, a.custName AS 客户名称 ");
-            sb.Append(" FROM( ");
-            sb.Append(" SELECT {0} ICSale.FDate, ICSale.FBillNo, ICSaleEntry.FQty, ICSaleEntry.FStdAmount, t_Item.fname AS FName1, t_Item.FFullNumber, CASE LEN(t_Item.FFullNumber) - LEN(REPLACE(t_Item.FFullNumber, '.', '')) WHEN 2 THEN substring(t_Item.FFullNumber, 0, LEN(t_Item.FFullNumber) - 3) ELSE t_Item.FFullNumber END AS FNumber1, t_OrganizatiON.fname AS custName ");
-            sb.Append(" FROM ICSale INNER JOIN ");
-            sb.Append(" ICSaleEntry ON ICSale.FInterID = ICSaleEntry.FInterID INNER JOIN ");
-            sb.Append(" t_Item ON ICSaleEntry.FItemID = t_Item.FItemID INNER JOIN ");
-            sb.Append(" t_OrganizatiON ON ICSale.FCustID = t_OrganizatiON.FItemID {1}) AS a INNER JOIN ");
-            sb.Append(" dbo.t_Item AS t_Item_1 ON a.FNumber1 = t_Item_1.FFullNumber) e ");
-            sb.Append(" GROUP BY ");
-            sb.Append(" e.大类名称, ");
-            sb.Append(" e.商品名称, ");
-            sb.Append(" e.客户名称, ");
-            sb.Append(" e.发票号 ");
-            sb.Append(" WITH ROLLUP ");
-            sb.Append(" ORDER BY ");
-            sb.Append(" e.大类名称 DESC, ");
-            sb.Append(" e.商品名称 DESC, ");
-            sb.Append(" e.客户名称 DESC, ");
-            sb.Append(" e.发票号 DESC ");
-            return string.Format(sb.ToString(), top, where);
-        }
-
-        /// <summary>
-        /// 版本1.0
-        /// </summary>
-        /// <param name="top"></param>
-        /// <param name="where"></param>
-        /// <returns></returns>
-        private string BuildSql(string top, string where)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(" SELECT  ");
-            sb.Append(" CASE WHEN grouping(e.大类名称) = '1' THEN '总计' ");
-            sb.Append("    WHEN grouping(e.大类名称) = '0' AND grouping(e.商品名称) = '1' THEN e.大类名称 + ' 小计' ");
-            sb.Append("    ELSE e.大类名称 ");
-            sb.Append(" END 大类, ");
-            sb.Append(" CASE WHEN grouping(e.商品名称) = '1' THEN '' ");
-            sb.Append("    WHEN grouping(e.商品名称) = '0' AND grouping(e.发票号) = '1' THEN e.商品名称 + ' 小计' ");
-            sb.Append("    ELSE e.商品名称 ");
-            sb.Append(" END 名称, ");
-            sb.Append(" CASE WHEN grouping(e.发票号) = '1' THEN '' ");
-            sb.Append(" ELSE 发票号 ");
-            sb.Append(" END 单号, ");
-            sb.Append(" Count(数量) AS 数量, ");
-            sb.Append(" sum(金额) AS 金额 ");
-            sb.Append(" FROM(SELECT   a.FDate AS 发票日期, a.FBillNo AS 发票号, a.FQty AS 数量, a.FStdAmount AS 金额, a.FName1 AS 商品名称, a.FFullNumber AS 商品全代码, a.FNumber1 AS 大类编号, t_Item_1.FName AS 大类名称, a.custName AS 客户名称 ");
-            sb.Append(" FROM(SELECT {0} ICSale.FDate, ICSale.FBillNo, ICSaleEntry.FQty, ICSaleEntry.FStdAmount, t_Item.fname AS FName1, t_Item.FFullNumber, ");
-            sb.Append("    CASE len(t_Item.FFullNumber) - len(replace(t_Item.FFullNumber, '.', '')) WHEN 2 THEN substring(t_Item.FFullNumber, 0, ");
-            sb.Append("    len(t_Item.FFullNumber) - 3) ELSE t_Item.FFullNumber END AS FNumber1, t_OrganizatiON.fname AS custName ");
-            sb.Append(" FROM      ICSale INNER JOIN ");
-            sb.Append("    ICSaleEntry ON ICSale.FInterID = ICSaleEntry.FInterID LEFT JOIN ");
-            sb.Append("    t_Item ON ICSaleEntry.FItemID = t_Item.FItemID LEFT JOIN ");
-            sb.Append("    t_OrganizatiON ON ICSale.FCustID = t_OrganizatiON.FItemID {1}) AS a INNER JOIN ");
-            sb.Append("    dbo.t_Item AS t_Item_1 ON a.FNumber1 = t_Item_1.FFullNumber) e ");
-            sb.Append(" group by ");
-            sb.Append("    e.大类名称, ");
-            sb.Append("    e.商品名称, ");
-            sb.Append("    e.发票号 ");
-            sb.Append("    with rollup ");
-            sb.Append(" order by ");
-            sb.Append("    e.大类名称 desc, ");
-            sb.Append("    e.商品名称 desc, ");
-            sb.Append("    e.发票号 desc ");
-
-            return string.Format(sb.ToString(),top, where);
-        }
-
-        private string BuildSqlV3(string top, string where)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(" select  ");
-            sb.Append(" CASE WHEN grouping(e.大类名称) = '1' THEN '总计' ");
-            sb.Append(" WHEN grouping(e.大类名称) = '0' AND grouping(e.商品名称) = '1' THEN e.大类名称 + ' 小计' ");
-            sb.Append(" ELSE e.大类名称 ");
-            sb.Append(" END 大类, ");
-            sb.Append(" CASE WHEN grouping(e.商品名称) = '1' THEN '' ");
-            sb.Append(" WHEN grouping(e.商品名称) = '0' AND grouping(e.客户名称) = '1'  THEN e.商品名称 + ' 小计' ");
-            sb.Append(" ELSE e.商品名称 ");
-            sb.Append(" END 商品名称, ");
-            sb.Append(" CASE WHEN grouping(e.客户名称) = '1' THEN '' ");
-            sb.Append(" WHEN grouping(e.客户名称) = '0' AND grouping(e.发票号) = '1'  THEN e.客户名称 + ' 小计' ");
-            sb.Append(" ELSE e.客户名称 ");
-            sb.Append(" END 客户名称, ");
-            sb.Append(" CASE WHEN grouping(e.发票号) = '1' THEN '' ");
-            sb.Append(" ELSE 发票号 ");
-            sb.Append(" END 单号, ");
-            sb.Append(" COUNT(数量) as 数量, ");
-            sb.Append(" SUM(金额) as 金额 ");
-            sb.Append(" from(select a.FDate AS 发票日期, a.FBillNo AS 发票号, a.FQty AS 数量, a.FStdAmount AS 金额, a.FName AS 商品名称, a.FFullNumber AS 商品全代码, a.cata AS 大类编号, a.custName AS 客户名称, tt1.FName  AS 大类名称 ");
-            sb.Append(" from(select {0} s.FDate, s.FBillNo, fqty, FStdAmount, o.fname as custName, i.FName, i.FFullNumber, CASE LEN(i.FFullNumber) - LEN(REPLACE(i.FFullNumber, '.', '')) WHEN 2 THEN substring(i.FFullNumber, 0, LEN(i.FFullNumber) - 3) ELSE i.FFullNumber END AS cata ");
-            sb.Append(" from ICSale s ");
-            sb.Append(" Inner ");
-            sb.Append(" join ICSaleEntry e on s.FInterID = e.FInterID ");
-            sb.Append(" left ");
-            sb.Append(" join t_Organization o on s.FCustID = o.FItemID ");
-            sb.Append(" left ");
-            sb.Append(" join t_Item i on e.FItemID = i.FItemID ");
-            sb.Append(" {1} ) as a left join(SELECT * FROM t_Item where fitemclassid = 4) as tt1 on a.cata = tt1.FFullNumber) as e ");
-            sb.Append(" GROUP BY ");
-            sb.Append(" e.大类名称, ");
-            sb.Append(" e.商品名称, ");
-            sb.Append(" e.客户名称, ");
-            sb.Append(" e.发票号 ");
-            sb.Append(" WITH ROLLUP ");
-            sb.Append(" ORDER BY ");
-            sb.Append(" e.大类名称 DESC, ");
-            sb.Append(" e.商品名称 DESC, ");
-            sb.Append(" e.客户名称 DESC, ");
-            sb.Append(" e.发票号 DESC ");
-
-            return string.Format(sb.ToString(), top, where);
-        }
 
         /// <summary>
         /// 加成本显示t_icitem fOrderPrice
@@ -279,9 +146,9 @@ namespace Youyi
             sb.Append(" select {0} ");
             sb.Append(" s.FDate, ");
             sb.Append(" s.FBillNo, ");
-            sb.Append(" e.fqty as 数量, ");
-            sb.Append(" e.FStdAmount, ");
-            sb.Append(" CAST(c.FOrderPrice / 1.13 AS nvarchar(20)) as Forderprice, ");
+            sb.Append(" Convert(decimal(18,0),e.fqty) as 数量, ");
+            sb.Append(" Convert(decimal(18,2),e.FStdAmount) as FStdAmount , ");
+            sb.Append(" CAST(Convert(decimal(18,2),c.FOrderPrice * e.fqty / 1.13) AS nvarchar(20)) as Forderprice, ");
             sb.Append(" o.fname as custName, ");
             sb.Append(" i.FName, ");
             sb.Append(" i.FFullNumber, ");
@@ -315,6 +182,148 @@ namespace Youyi
             return string.Format(sb.ToString(), top, where);
 
         }
+
+        #region 不用的代码
+
+
+        private string BuildSqlV2(string top, string where)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(" SELECT ");
+            sb.Append(" CASE WHEN grouping(e.大类名称) = '1' THEN '总计' ");
+            sb.Append(" WHEN grouping(e.大类名称) = '0' AND grouping(e.商品名称) = '1' THEN e.大类名称 + ' 小计' ");
+            sb.Append(" ELSE e.大类名称 ");
+            sb.Append(" END 大类, ");
+            sb.Append(" CASE WHEN grouping(e.商品名称) = '1' THEN '' ");
+            sb.Append(" WHEN grouping(e.商品名称) = '0' AND grouping(e.客户名称) = '1'  THEN e.商品名称 + ' 小计' ");
+            sb.Append(" ELSE e.商品名称 ");
+            sb.Append(" END 商品名称, ");
+            sb.Append(" CASE WHEN grouping(e.客户名称) = '1' THEN '' ");
+            sb.Append(" WHEN grouping(e.客户名称) = '0' AND grouping(e.发票号) = '1'  THEN e.客户名称 + ' 小计' ");
+            sb.Append(" ELSE e.客户名称 ");
+            sb.Append(" END 客户名称, ");
+            sb.Append(" CASE WHEN grouping(e.发票号) = '1' THEN '' ");
+            sb.Append(" ELSE 发票号 ");
+            sb.Append(" END 单号, ");
+            sb.Append(" COUNT(数量) AS 数量, ");
+            sb.Append(" SUM(金额) AS 金额 ");
+            sb.Append(" FROM( ");
+            sb.Append(" SELECT a.FDate AS 发票日期, a.FBillNo AS 发票号, a.FQty AS 数量, a.FStdAmount AS 金额, a.FName1 AS 商品名称, a.FFullNumber AS 商品全代码, a.FNumber1 AS 大类编号, t_Item_1.FName AS 大类名称, a.custName AS 客户名称 ");
+            sb.Append(" FROM( ");
+            sb.Append(" SELECT {0} ICSale.FDate, ICSale.FBillNo, ICSaleEntry.FQty, ICSaleEntry.FStdAmount, t_Item.fname AS FName1, t_Item.FFullNumber, CASE LEN(t_Item.FFullNumber) - LEN(REPLACE(t_Item.FFullNumber, '.', '')) WHEN 2 THEN substring(t_Item.FFullNumber, 0, LEN(t_Item.FFullNumber) - 3) ELSE t_Item.FFullNumber END AS FNumber1, t_OrganizatiON.fname AS custName ");
+            sb.Append(" FROM ICSale INNER JOIN ");
+            sb.Append(" ICSaleEntry ON ICSale.FInterID = ICSaleEntry.FInterID INNER JOIN ");
+            sb.Append(" t_Item ON ICSaleEntry.FItemID = t_Item.FItemID INNER JOIN ");
+            sb.Append(" t_OrganizatiON ON ICSale.FCustID = t_OrganizatiON.FItemID {1}) AS a INNER JOIN ");
+            sb.Append(" dbo.t_Item AS t_Item_1 ON a.FNumber1 = t_Item_1.FFullNumber) e ");
+            sb.Append(" GROUP BY ");
+            sb.Append(" e.大类名称, ");
+            sb.Append(" e.商品名称, ");
+            sb.Append(" e.客户名称, ");
+            sb.Append(" e.发票号 ");
+            sb.Append(" WITH ROLLUP ");
+            sb.Append(" ORDER BY ");
+            sb.Append(" e.大类名称 DESC, ");
+            sb.Append(" e.商品名称 DESC, ");
+            sb.Append(" e.客户名称 DESC, ");
+            sb.Append(" e.发票号 DESC ");
+            return string.Format(sb.ToString(), top, where);
+        }
+
+
+        /// <summary>
+        /// 版本1.0
+        /// </summary>
+        /// <param name="top"></param>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        private string BuildSql(string top, string where)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(" SELECT  ");
+            sb.Append(" CASE WHEN grouping(e.大类名称) = '1' THEN '总计' ");
+            sb.Append("    WHEN grouping(e.大类名称) = '0' AND grouping(e.商品名称) = '1' THEN e.大类名称 + ' 小计' ");
+            sb.Append("    ELSE e.大类名称 ");
+            sb.Append(" END 大类, ");
+            sb.Append(" CASE WHEN grouping(e.商品名称) = '1' THEN '' ");
+            sb.Append("    WHEN grouping(e.商品名称) = '0' AND grouping(e.发票号) = '1' THEN e.商品名称 + ' 小计' ");
+            sb.Append("    ELSE e.商品名称 ");
+            sb.Append(" END 名称, ");
+            sb.Append(" CASE WHEN grouping(e.发票号) = '1' THEN '' ");
+            sb.Append(" ELSE 发票号 ");
+            sb.Append(" END 单号, ");
+            sb.Append(" Count(数量) AS 数量, ");
+            sb.Append(" sum(金额) AS 金额 ");
+            sb.Append(" FROM(SELECT   a.FDate AS 发票日期, a.FBillNo AS 发票号, a.FQty AS 数量, a.FStdAmount AS 金额, a.FName1 AS 商品名称, a.FFullNumber AS 商品全代码, a.FNumber1 AS 大类编号, t_Item_1.FName AS 大类名称, a.custName AS 客户名称 ");
+            sb.Append(" FROM(SELECT {0} ICSale.FDate, ICSale.FBillNo, ICSaleEntry.FQty, ICSaleEntry.FStdAmount, t_Item.fname AS FName1, t_Item.FFullNumber, ");
+            sb.Append("    CASE len(t_Item.FFullNumber) - len(replace(t_Item.FFullNumber, '.', '')) WHEN 2 THEN substring(t_Item.FFullNumber, 0, ");
+            sb.Append("    len(t_Item.FFullNumber) - 3) ELSE t_Item.FFullNumber END AS FNumber1, t_OrganizatiON.fname AS custName ");
+            sb.Append(" FROM      ICSale INNER JOIN ");
+            sb.Append("    ICSaleEntry ON ICSale.FInterID = ICSaleEntry.FInterID LEFT JOIN ");
+            sb.Append("    t_Item ON ICSaleEntry.FItemID = t_Item.FItemID LEFT JOIN ");
+            sb.Append("    t_OrganizatiON ON ICSale.FCustID = t_OrganizatiON.FItemID {1}) AS a INNER JOIN ");
+            sb.Append("    dbo.t_Item AS t_Item_1 ON a.FNumber1 = t_Item_1.FFullNumber) e ");
+            sb.Append(" group by ");
+            sb.Append("    e.大类名称, ");
+            sb.Append("    e.商品名称, ");
+            sb.Append("    e.发票号 ");
+            sb.Append("    with rollup ");
+            sb.Append(" order by ");
+            sb.Append("    e.大类名称 desc, ");
+            sb.Append("    e.商品名称 desc, ");
+            sb.Append("    e.发票号 desc ");
+
+            return string.Format(sb.ToString(), top, where);
+        }
+
+
+        private string BuildSqlV3(string top, string where)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(" select  ");
+            sb.Append(" CASE WHEN grouping(e.大类名称) = '1' THEN '总计' ");
+            sb.Append(" WHEN grouping(e.大类名称) = '0' AND grouping(e.商品名称) = '1' THEN e.大类名称 + ' 小计' ");
+            sb.Append(" ELSE e.大类名称 ");
+            sb.Append(" END 大类, ");
+            sb.Append(" CASE WHEN grouping(e.商品名称) = '1' THEN '' ");
+            sb.Append(" WHEN grouping(e.商品名称) = '0' AND grouping(e.客户名称) = '1'  THEN e.商品名称 + ' 小计' ");
+            sb.Append(" ELSE e.商品名称 ");
+            sb.Append(" END 商品名称, ");
+            sb.Append(" CASE WHEN grouping(e.客户名称) = '1' THEN '' ");
+            sb.Append(" WHEN grouping(e.客户名称) = '0' AND grouping(e.发票号) = '1'  THEN e.客户名称 + ' 小计' ");
+            sb.Append(" ELSE e.客户名称 ");
+            sb.Append(" END 客户名称, ");
+            sb.Append(" CASE WHEN grouping(e.发票号) = '1' THEN '' ");
+            sb.Append(" ELSE 发票号 ");
+            sb.Append(" END 单号, ");
+            sb.Append(" COUNT(数量) as 数量, ");
+            sb.Append(" SUM(金额) as 金额 ");
+            sb.Append(" from(select a.FDate AS 发票日期, a.FBillNo AS 发票号, a.FQty AS 数量, a.FStdAmount AS 金额, a.FName AS 商品名称, a.FFullNumber AS 商品全代码, a.cata AS 大类编号, a.custName AS 客户名称, tt1.FName  AS 大类名称 ");
+            sb.Append(" from(select {0} s.FDate, s.FBillNo, fqty, FStdAmount, o.fname as custName, i.FName, i.FFullNumber, CASE LEN(i.FFullNumber) - LEN(REPLACE(i.FFullNumber, '.', '')) WHEN 2 THEN substring(i.FFullNumber, 0, LEN(i.FFullNumber) - 3) ELSE i.FFullNumber END AS cata ");
+            sb.Append(" from ICSale s ");
+            sb.Append(" Inner ");
+            sb.Append(" join ICSaleEntry e on s.FInterID = e.FInterID ");
+            sb.Append(" left ");
+            sb.Append(" join t_Organization o on s.FCustID = o.FItemID ");
+            sb.Append(" left ");
+            sb.Append(" join t_Item i on e.FItemID = i.FItemID ");
+            sb.Append(" {1} ) as a left join(SELECT * FROM t_Item where fitemclassid = 4) as tt1 on a.cata = tt1.FFullNumber) as e ");
+            sb.Append(" GROUP BY ");
+            sb.Append(" e.大类名称, ");
+            sb.Append(" e.商品名称, ");
+            sb.Append(" e.客户名称, ");
+            sb.Append(" e.发票号 ");
+            sb.Append(" WITH ROLLUP ");
+            sb.Append(" ORDER BY ");
+            sb.Append(" e.大类名称 DESC, ");
+            sb.Append(" e.商品名称 DESC, ");
+            sb.Append(" e.客户名称 DESC, ");
+            sb.Append(" e.发票号 DESC ");
+
+            return string.Format(sb.ToString(), top, where);
+        }
+
+        #endregion
 
 
         /// <summary>
