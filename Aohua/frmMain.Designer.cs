@@ -34,7 +34,7 @@
             this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
             this.ButtonItemVoucherImport = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
-            this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
+            this.buttonItemVoucherUpdate = new DevComponents.DotNetBar.ButtonItem();
             this.RibbonBarMain = new DevComponents.DotNetBar.RibbonBar();
             this.ButtonItemDataComp = new DevComponents.DotNetBar.ButtonItem();
             this.ButtonItemDataUpgard = new DevComponents.DotNetBar.ButtonItem();
@@ -82,9 +82,9 @@
             this.SwitchButtonItemRibbonState});
             this.RibbonControlMain.KeyTipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RibbonControlMain.Location = new System.Drawing.Point(0, 0);
-            this.RibbonControlMain.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.RibbonControlMain.Margin = new System.Windows.Forms.Padding(6);
             this.RibbonControlMain.Name = "RibbonControlMain";
-            this.RibbonControlMain.Size = new System.Drawing.Size(1946, 308);
+            this.RibbonControlMain.Size = new System.Drawing.Size(1460, 308);
             this.RibbonControlMain.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.RibbonControlMain.SystemText.MaximizeRibbonText = "&Maximize the Ribbon";
             this.RibbonControlMain.SystemText.MinimizeRibbonText = "Mi&nimize the Ribbon";
@@ -112,11 +112,11 @@
             this.RibbonPanelDS9209.Controls.Add(this.ribbonBar1);
             this.RibbonPanelDS9209.Controls.Add(this.RibbonBarMain);
             this.RibbonPanelDS9209.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RibbonPanelDS9209.Location = new System.Drawing.Point(0, 115);
-            this.RibbonPanelDS9209.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.RibbonPanelDS9209.Location = new System.Drawing.Point(0, 68);
+            this.RibbonPanelDS9209.Margin = new System.Windows.Forms.Padding(6);
             this.RibbonPanelDS9209.Name = "RibbonPanelDS9209";
-            this.RibbonPanelDS9209.Padding = new System.Windows.Forms.Padding(6, 0, 6, 4);
-            this.RibbonPanelDS9209.Size = new System.Drawing.Size(1946, 193);
+            this.RibbonPanelDS9209.Padding = new System.Windows.Forms.Padding(6, 0, 6, 2);
+            this.RibbonPanelDS9209.Size = new System.Drawing.Size(1460, 240);
             // 
             // 
             // 
@@ -148,10 +148,10 @@
             this.ribbonBar2.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.ButtonItemVoucherImport});
             this.ribbonBar2.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
-            this.ribbonBar2.Location = new System.Drawing.Point(392, 0);
-            this.ribbonBar2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ribbonBar2.Location = new System.Drawing.Point(358, 0);
+            this.ribbonBar2.Margin = new System.Windows.Forms.Padding(6);
             this.ribbonBar2.Name = "ribbonBar2";
-            this.ribbonBar2.Size = new System.Drawing.Size(132, 189);
+            this.ribbonBar2.Size = new System.Drawing.Size(119, 238);
             this.ribbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar2.TabIndex = 2;
             this.ribbonBar2.Text = "导入";
@@ -163,6 +163,7 @@
             // 
             // 
             this.ribbonBar2.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar2.Visible = false;
             // 
             // ButtonItemVoucherImport
             // 
@@ -186,12 +187,12 @@
             this.ribbonBar1.Dock = System.Windows.Forms.DockStyle.Left;
             this.ribbonBar1.DragDropSupport = true;
             this.ribbonBar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.buttonItem1});
+            this.buttonItemVoucherUpdate});
             this.ribbonBar1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
-            this.ribbonBar1.Location = new System.Drawing.Point(260, 0);
-            this.ribbonBar1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ribbonBar1.Location = new System.Drawing.Point(239, 0);
+            this.ribbonBar1.Margin = new System.Windows.Forms.Padding(6);
             this.ribbonBar1.Name = "ribbonBar1";
-            this.ribbonBar1.Size = new System.Drawing.Size(132, 189);
+            this.ribbonBar1.Size = new System.Drawing.Size(119, 238);
             this.ribbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar1.TabIndex = 1;
             this.ribbonBar1.Text = "迁移";
@@ -203,13 +204,14 @@
             // 
             // 
             this.ribbonBar1.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar1.Visible = false;
             // 
-            // buttonItem1
+            // buttonItemVoucherUpdate
             // 
-            this.buttonItem1.Name = "buttonItem1";
-            this.buttonItem1.SubItemsExpandWidth = 14;
-            this.buttonItem1.Text = "凭证迁移";
-            this.buttonItem1.Click += new System.EventHandler(this.ButtonItem1_Click);
+            this.buttonItemVoucherUpdate.Name = "buttonItemVoucherUpdate";
+            this.buttonItemVoucherUpdate.SubItemsExpandWidth = 14;
+            this.buttonItemVoucherUpdate.Text = "凭证迁移";
+            this.buttonItemVoucherUpdate.Click += new System.EventHandler(this.ButtonItem1_Click);
             // 
             // RibbonBarMain
             // 
@@ -230,9 +232,9 @@
             this.ButtonItemDataUpgard});
             this.RibbonBarMain.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
             this.RibbonBarMain.Location = new System.Drawing.Point(6, 0);
-            this.RibbonBarMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RibbonBarMain.Margin = new System.Windows.Forms.Padding(4);
             this.RibbonBarMain.Name = "RibbonBarMain";
-            this.RibbonBarMain.Size = new System.Drawing.Size(254, 189);
+            this.RibbonBarMain.Size = new System.Drawing.Size(233, 238);
             this.RibbonBarMain.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.RibbonBarMain.TabIndex = 0;
             this.RibbonBarMain.Text = "客户信息迁移";
@@ -244,6 +246,7 @@
             // 
             // 
             this.RibbonBarMain.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.RibbonBarMain.Visible = false;
             // 
             // ButtonItemDataComp
             // 
@@ -418,8 +421,8 @@
             // 
             // StyleManagerMain
             // 
-            this.StyleManagerMain.ManagerStyle = DevComponents.DotNetBar.eStyle.VisualStudio2012Light;
-            this.StyleManagerMain.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(242))))), System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204))))));
+            this.StyleManagerMain.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2016;
+            this.StyleManagerMain.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
             // 
             // BarStatus
             // 
@@ -433,12 +436,12 @@
             this.BarStatus.GrabHandleStyle = DevComponents.DotNetBar.eGrabHandleStyle.ResizeHandle;
             this.BarStatus.IsMaximized = false;
             this.BarStatus.ItemSpacing = 2;
-            this.BarStatus.Location = new System.Drawing.Point(0, 1198);
-            this.BarStatus.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.BarStatus.Location = new System.Drawing.Point(0, 894);
+            this.BarStatus.Margin = new System.Windows.Forms.Padding(6);
             this.BarStatus.Name = "BarStatus";
             this.BarStatus.PaddingBottom = 0;
             this.BarStatus.PaddingTop = 0;
-            this.BarStatus.Size = new System.Drawing.Size(1946, 28);
+            this.BarStatus.Size = new System.Drawing.Size(1460, 26);
             this.BarStatus.Stretch = true;
             this.BarStatus.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.BarStatus.TabIndex = 8;
@@ -467,12 +470,12 @@
             this.SuperTabControlNavi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SuperTabControlNavi.ForeColor = System.Drawing.Color.Black;
             this.SuperTabControlNavi.Location = new System.Drawing.Point(0, 308);
-            this.SuperTabControlNavi.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.SuperTabControlNavi.Margin = new System.Windows.Forms.Padding(6);
             this.SuperTabControlNavi.Name = "SuperTabControlNavi";
             this.SuperTabControlNavi.ReorderTabsEnabled = true;
             this.SuperTabControlNavi.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.SuperTabControlNavi.SelectedTabIndex = -1;
-            this.SuperTabControlNavi.Size = new System.Drawing.Size(1946, 890);
+            this.SuperTabControlNavi.Size = new System.Drawing.Size(1460, 586);
             this.SuperTabControlNavi.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.SuperTabControlNavi.TabIndex = 11;
             this.SuperTabControlNavi.Text = "superTabControl1";
@@ -481,7 +484,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1946, 1226);
+            this.ClientSize = new System.Drawing.Size(1460, 920);
             this.Controls.Add(this.SuperTabControlNavi);
             this.Controls.Add(this.BarStatus);
             this.Controls.Add(this.RibbonControlMain);
@@ -489,7 +492,7 @@
             this.EnableGlass = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -532,7 +535,7 @@
         private DevComponents.DotNetBar.SwitchButtonItem SwitchButtonItemRibbonState;
         private DevComponents.DotNetBar.Command CommandRibbonState;
         private DevComponents.DotNetBar.RibbonBar ribbonBar1;
-        private DevComponents.DotNetBar.ButtonItem buttonItem1;
+        private DevComponents.DotNetBar.ButtonItem buttonItemVoucherUpdate;
         private DevComponents.DotNetBar.RibbonBar ribbonBar2;
         private DevComponents.DotNetBar.ButtonItem ButtonItemVoucherImport;
     }

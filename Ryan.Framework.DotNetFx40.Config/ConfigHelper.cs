@@ -303,5 +303,46 @@ namespace Ryan.Framework.DotNetFx40.Config
             }
             return isSuccess;
         }
+
+        /// <summary>
+        /// 读取所有连接名称列表
+        /// </summary>
+        /// <param name="configurationFile">配置文件类型</param>
+        /// <returns>连接名称列表</returns>
+        public static string GetConnectionNameList(ConfigurationFile configurationFile)
+        {
+            string retVal = "";
+            string connectionString = string.Empty;
+            string filename = string.Empty;
+            if (configurationFile.ToString() == ConfigurationFile.AppConfig.ToString())
+            {
+                filename = System.Windows.Forms.Application.ExecutablePath + ".config";
+            }
+            else
+            {
+                filename = System.AppDomain.CurrentDomain.BaseDirectory + "web.config";
+            }
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(filename); //加载配置文件
+
+            XmlNode node = doc.SelectSingleNode("//connectionStrings");   //得到[appSettings]节点
+
+            if (node.HasChildNodes)
+            {
+                ////得到[connectionString]节点中关于name的子节点
+                foreach (XmlNode nd in node.ChildNodes)
+                {
+                    //Console.WriteLine(nd.Attributes["name"].Value.ToString());
+                    retVal += nd.Attributes["name"].Value.ToString() + ",";
+                }
+
+                return retVal.Substring(0, retVal.Length - 1);
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
     }
 }

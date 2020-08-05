@@ -2,7 +2,7 @@
 using System.Data;
 using System.Text;
 using System.Data.SqlClient;
-using Ryan.Framework.DBUtility;
+using Ryan.Framework.DotNetFx40.DBUtility;
 
 namespace Huali.EDI2.DAL
 {

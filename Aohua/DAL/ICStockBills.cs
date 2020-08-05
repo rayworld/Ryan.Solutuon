@@ -9,11 +9,11 @@ namespace Aohua.DAL
 {
     public partial class ICStockBills
     {
-        private static string connK3Desc = SqlHelper.GetConnectionString("K3Desc");
+        //private static string connK3Desc = SqlHelper.GetConnectionString("K3Desc");
         /// <summary>
         /// 增加一条数据
         /// </summary>
-        public static int Insert(ICStockBill iCStockBill,int FInterID)
+        public static int Insert(string conn,ICStockBill iCStockBill)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into ICStockBill(");
@@ -162,7 +162,7 @@ namespace Aohua.DAL
             parameters[23].Value = Common.SqlNull(iCStockBill.FBillerID);
             parameters[24].Value = Common.SqlNull(iCStockBill.FReturnBillInterID);
             parameters[25].Value = Common.SqlNull(iCStockBill.FSCBillNo);
-            parameters[26].Value = FInterID;
+            parameters[26].Value = iCStockBill.FInterID;
             parameters[27].Value = iCStockBill.FHookInterID;
             parameters[28].Value = iCStockBill.FVchInterID;
             parameters[29].Value = iCStockBill.FPosted;
@@ -248,11 +248,36 @@ namespace Aohua.DAL
             parameters[108].Value = Common.SqlNull(iCStockBill.FCOMHFreeItem12);
             parameters[109].Value = Common.SqlNull(iCStockBill.FCOMHFreeItem13);
             //DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
-            int ret = SqlHelper.ExecuteNonQuery(connK3Desc,strSql.ToString(), parameters);
+            int ret = SqlHelper.ExecuteNonQuery(conn,strSql.ToString(), parameters);
             return ret;
         }
 
-        public static ICStockBill GetModel(DataRow dr)
+        /// <summary>
+        /// 得到一个对象实体
+        /// </summary>
+        public static ICStockBill GetModel(string conn, string FBillNo)
+        {
+
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select  top 1 FBrNo,FInterID,FTranType,FDate,FBillNo,FUse,FNote,FDCStockID,FSCStockID,FDeptID,FEmpID,FSupplyID,FPosterID,FCheckerID,FFManagerID,FSManagerID,FBillerID,FReturnBillInterID,FSCBillNo,FHookInterID,FVchInterID,FPosted,FCheckSelect,FCurrencyID,FSaleStyle,FAcctID,FROB,FRSCBillNo,FStatus,FUpStockWhenSave,FCancellation,FOrgBillInterID,FBillTypeID,FPOStyle,FMultiCheckLevel1,FMultiCheckLevel2,FMultiCheckLevel3,FMultiCheckLevel4,FMultiCheckLevel5,FMultiCheckLevel6,FMultiCheckDate1,FMultiCheckDate2,FMultiCheckDate3,FMultiCheckDate4,FMultiCheckDate5,FMultiCheckDate6,FCurCheckLevel,FTaskID,FResourceID,FBackFlushed,FWBInterID,FTranStatus,FZPBillInterID,FRelateBrID,FPurposeID,FUUID,FRelateInvoiceID,FOperDate,FImport,FSystemType,FMarketingStyle,FPayBillID,FCheckDate,FExplanation,FFetchAdd,FFetchDate,FManagerID,FRefType,FSelTranType,FChildren,FHookStatus,FActPriceVchTplID,FPlanPriceVchTplID,FProcID,FActualVchTplID,FPlanVchTplID,FBrID,FVIPCardID,FVIPScore,FHolisticDiscountRate,FPOSName,FWorkShiftId,FCussentAcctID,FZanGuCount,FCOMHFreeItem1,FCOMHFreeItem2,FCOMHFreeItem3,FCOMHFreeItem4,FCOMHFreeItem5,FCOMHFreeItem6,FCOMHFreeItem7,FCOMHFreeItem8,FCOMHFreeItem9,FCOMHFreeItem10,FCOMHFreeItem11,FCOMHFreeItem12,FCOMHFreeItem13,FCOMHFreeItem15,FCOMHFreeItem18,FCOMHFreeItem19,FCOMHFreeItem20,FPOOrdBillNo,FLSSrcInterID,FSettleDate,FManageType,FOrderAffirm,FAutoCreType,FConsignee,FDrpRelateTranType,FPrintCount,FCOMHFreeItem17,FHeadSelfB0154 from ICStockBill ");
+            strSql.Append(" where FBillNo=@FBillNo ");
+            SqlParameter[] parameters = {
+                    new SqlParameter("@FBillNo", SqlDbType.NVarChar,255)           };
+            parameters[0].Value = FBillNo;
+
+            ICStockBill model = new ICStockBill();
+            DataTable dt = SqlHelper.ExecuteDataTable(conn,strSql.ToString(), parameters);
+            if (dt.Rows.Count > 0)
+            {
+                return DataRowToModel(dt.Rows[0]);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static ICStockBill DataRowToModel(DataRow dr)
         {
             ICStockBill iCStockBill = new ICStockBill();
 
@@ -691,14 +716,90 @@ namespace Aohua.DAL
         /// </summary>
         /// <param name="ItemId"></param>
         /// <returns></returns>
-        public static bool Exist(string billNo)
+        public static bool Exist(string conn,string billNo)
         {
             bool retVal = false;
             string sql = string.Format("Select Count(*) From [ICStockBill] Where FBillNo = '{0}' and FTranType = 21", billNo);
-            object obj = SqlHelper.ExecuteScalar(connK3Desc, sql);
+            object obj = SqlHelper.ExecuteScalar(conn, sql);
             if (obj != null && int.Parse(obj.ToString()) > 0)
             {
                 retVal = true;
+            }
+            return retVal;
+        }
+
+        /// <summary>
+        /// 更新一条数据
+        /// </summary>
+        public static bool UpdateSupplyID(string conn, ICStockBill stockBill)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" update ICStockBill set ");
+            strSql.Append(" FSupplyID=@FSupplyID");
+            strSql.Append(" where FBillNo=@FBillNo ");
+            SqlParameter[] parameters = {
+                    new SqlParameter("@FSupplyID", SqlDbType.Int,4),
+                    new SqlParameter("@FBillNo", SqlDbType.NVarChar,255)};
+
+            parameters[0].Value = stockBill.FSupplyID;
+            parameters[1].Value = stockBill.FBillNo;
+
+
+            int rows = SqlHelper.ExecuteNonQuery(conn, strSql.ToString(), parameters);
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 替换客户编号
+        /// </summary>
+        /// <param name="SupplyID"></param>
+        /// <param name="SourceConn"></param>
+        /// <param name="DescConn"></param>
+        /// <returns></returns>
+        public static int GetNewSupplyIDByOriSupplyID(int OriginSupplyID,string SourceConn, string DescConn)
+        {
+            string sql = string.Format("select fname from t_Organization where fitemid = {0}", OriginSupplyID);
+            string SupplyName = Common.GetStringByExecuteScalar(SourceConn, sql);
+            if (SupplyName != "")
+            {
+                sql = string.Format("select fitemid from t_Organization where fname = '{0}'", SupplyName);
+                string NewSupplyID = Common.GetStringByExecuteScalar(DescConn, sql);
+                if(NewSupplyID != "")
+                {
+                    return int.Parse(NewSupplyID.ToString());
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="billNo"></param>
+        /// <returns></returns>
+        public static int GetInterIDByBillNo(string conn, string billNo)
+        {
+            int retVal = -1;
+            string sql = string.Format("Select FInterID From [ICStockBill] Where FBillNo = '{0}' and FTranType = 21", billNo);
+            object obj = SqlHelper.ExecuteScalar(conn, sql);
+            if (obj != null && int.Parse(obj.ToString()) > 0)
+            {
+                retVal = int.Parse(obj.ToString());
             }
             return retVal;
         }

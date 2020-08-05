@@ -1,7 +1,7 @@
 using DevComponents.DotNetBar;
 using Huali.Common;
-using Ryan.Framework.Common;
-using Ryan.Framework.DBUtility;
+using Ryan.Framework.DotNetFx20.Common;
+using Ryan.Framework.DotNetFx20.DBUtility;
 using System;
 using System.Data;
 using System.Windows.Forms;

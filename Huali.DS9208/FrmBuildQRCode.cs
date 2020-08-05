@@ -1,8 +1,8 @@
 ﻿using DevComponents.DotNetBar;
-using Ryan.Framework.Config;
-using Ryan.Framework.Converter;
-using Ryan.Framework.Common;
-using Ryan.Framework.Encrypt;
+using Ryan.Framework.DotNetFx20.Config;
+using Ryan.Framework.DotNetFx20.Converter;
+using Ryan.Framework.DotNetFx20.Common;
+using Ryan.Framework.DotNetFx20.Encrypt;
 using System;
 using System.Data;
 using System.Windows.Forms;

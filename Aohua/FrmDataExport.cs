@@ -1,8 +1,13 @@
-﻿using DevComponents.DotNetBar;
+﻿using Aohua.DAL;
+using Aohua.Models;
+using DevComponents.DotNetBar;
+using Ryan.Framework.DotNetFx40.Common;
 using Ryan.Framework.DotNetFx40.DBUtility;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text;
 
 namespace Aohua
 {
@@ -283,5 +288,292 @@ namespace Aohua
             SqlParameter[] para = new SqlParameter[] { new SqlParameter("@FEMail", DBNull.Value) };
             return SqlHelper.ExecuteNonQuery(connK3Src, sql, para);
         }
+
+        private void BExpData_Click(object sender, EventArgs e)
+        {
+            //查询源数据库，得到需要升迁客户ID的列表
+            string ids = GetCustIdList2020();
+            Console.WriteLine("ids:" + ids);
+
+            string StartDate = dtiStartDate.Value.ToString("yyyy-MM-dd") + " 00:00:00";
+            string EndDate = dtiEndDate.Value.ToString("yyyy-MM-dd") + " 23:59:59";
+
+            //查询源数据库，得到升迁单据数据列表，
+            string BillList = GetBillList(ids,StartDate,EndDate);
+            if (BillList == "")
+            {
+                CustomDesktopAlert.H2("没有可导入的记录。");
+            }
+            else
+            {
+                Console.WriteLine("BillNos:" + BillList);
+                string[] BillNos = BillList.Split(',');
+                //注意Entry表一定要包括物料长代码和客户全名
+                int ret = InsertOrUpdateBillInfo2020(BillNos);
+                CustomDesktopAlert.H2(string.Format("总共{0}条,成功完成{1}条", BillNos.Length, ret.ToString()));
+            }
+        }
+        #region 2020
+
+        private string GetCustIdList2020()
+        {
+            string ret = "";
+            sql = "Select [FK3ID] from Ryan_CustCompare";
+            dt = SqlHelper.ExecuteDataTable(connFin, sql);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ret += dr[0].ToString() + ",";
+                }
+                return ret.Substring(0, ret.Length - 1);
+            }
+            else
+            {
+                //messagebox 
+                return "";
+            }
+        }
+
+        /// <summary>
+        /// 根据客户编号列表查询相关出库单编号列表
+        /// </summary>
+        /// <param name="ids">客户编号列表</param>
+        /// <returns>出库单编号列表</returns>
+        private string GetBillList(string ids,string StartDate, string EndDate)
+        {
+            string ret = "";
+            StringBuilder sb = new StringBuilder();
+            sb.Append(" SELECT DISTINCT FBillNo");
+            sb.Append(" FROM ICStockBill");
+            sb.Append(" WHERE(FTranType = 21) ");
+            sb.Append(" AND FSupplyID IN({0})");
+            sb.Append(" AND FDate > '" + StartDate + "'");
+            sb.Append(" AND FDate < '" + EndDate + "'");
+            sql = string.Format(sb.ToString(), ids);
+            dt = SqlHelper.ExecuteDataTable(connK3Src, sql);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ret += dr[0].ToString() + ",";
+                }
+                return ret.Substring(0, ret.Length - 1);
+            }
+            else
+            {
+                //messagebox 
+                return "";
+            }
+        }
+
+        private int InsertOrUpdateBillInfo2020(string[] BillNos)
+        {
+
+            if (BillNos.Length > 0)
+            {
+                int isUpdate = 0;
+                int isInsert = 0;
+ 
+                Console.WriteLine("bill count :" + BillNos.Length);
+
+                foreach (string BillNo in BillNos)
+                {
+                    //查询得到源数据主表信息
+                    ICStockBill iCStockBill = ICStockBills.GetModel(connK3Src, BillNo);
+
+                    //替换客户编号
+                    iCStockBill = ReplaceSupplyID(iCStockBill);
+
+                    //查询得到源数据明细表信息
+                    List<ICStockBillEntry> EntryList = ICStockBillEntrys.GetModelList(connK3Src, iCStockBill.FInterID);
+
+                    //替换各明细行的物料编码
+                    EntryList = ReplaceItemUnitID(EntryList);
+
+                    //记录存在就更新
+                    if (ICStockBills.Exist(connK3Desc, iCStockBill.FBillNo) == true)
+                    {
+                        //取得目标数据表某单号的单据内码
+                        int InterID = ICStockBills.GetInterIDByBillNo(connK3Desc, iCStockBill.FBillNo);
+
+                        //更新主表内码
+                        iCStockBill.FInterID = InterID;
+
+                        //更新明细表内码
+                        foreach (ICStockBillEntry Entry in EntryList)
+                        {
+                            Entry.FInterID = InterID;
+                        }
+
+                        //更新数据库主表
+                        if (ICStockBills.UpdateSupplyID(connK3Desc, iCStockBill) == true)
+                        {
+                            int succEntry = 0;
+                            foreach(ICStockBillEntry Entry in EntryList)
+                            {
+                                //更新数据库明细表
+                                if (ICStockBillEntrys.UpdateItemUnitID(connK3Desc, Entry) == true)
+                                {
+                                    succEntry++;
+                                }
+                            }
+
+                            //判断是否全部完成成功
+                            if (succEntry == EntryList.Count)
+                            {
+                                isUpdate++;
+                            }
+                            else
+                            {
+                                //报错：写明细表失败
+                                CustomDesktopAlert.H4(string.Format("单号【{0}】写明细表失败!", iCStockBill.FBillNo));
+                            }
+                        }
+                        else
+                        {
+                            //报错：写主表失败
+                            CustomDesktopAlert.H4(string.Format("单号【{0}】写主表失败!", iCStockBill.FBillNo));
+                        }
+                    }
+                    else //否则，追加
+                    {
+                        //取种子函数
+                        int InterID = int.Parse(GetMaxFInterID());
+
+                        //更新主表内码
+                        iCStockBill.FInterID = InterID;
+
+                        //更新明细表内码
+                        foreach (ICStockBillEntry Entry in EntryList)
+                        {
+                            Entry.FInterID = InterID;
+                        }
+
+                        //插入数据库主表
+                        if (ICStockBills.Insert(connK3Desc, iCStockBill) > 0)
+                        {
+                            int succEntry = 0;
+                            foreach (ICStockBillEntry Entry in EntryList)
+                            {
+                                //插入各明细表
+                                if (ICStockBillEntrys.Insert(connK3Desc, Entry) > 0)
+                                {
+                                    succEntry++;
+                                }
+                            }
+                            //判断是否全部完成成功
+                            if (succEntry == EntryList.Count)
+                            {
+                                isInsert++;
+                            }
+                            else
+                            {
+                                //报错：写明细表失败
+                                CustomDesktopAlert.H4(string.Format("单号【{0}】写明细表失败!", iCStockBill.FBillNo));
+                            }
+                        }
+                        else
+                        {
+                            //报错：写主表失败
+                            CustomDesktopAlert.H4(string.Format("单号【{0}】写主表失败!", iCStockBill.FBillNo));
+                        }
+
+                    }
+                    
+                }
+                Console.WriteLine("isUpdate:" + isUpdate + ", isInsert" + isInsert);
+                return isInsert + isUpdate;
+            }
+            else
+            {
+                //messagebox;
+                CustomDesktopAlert.H4("未查询到相关单据，请检查设置条件！");
+                return -1;
+            }
+        }
+
+        /// <summary>
+        /// 更新单据内码ID
+        /// </summary>
+        /// <returns></returns>
+        public string GetMaxFInterID()
+        {
+            sql = "UPDATE ICMaxNum SET FMaxNum = FMaxNum + 1 WHERE FTableName = 'ICStockBill'";
+            int retVal = SqlHelper.ExecuteNonQuery(connK3Desc, sql);
+            if (retVal > 0)
+            {
+                sql = "SELECT FMaxNum FROM ICMaxNum WHERE FTableName = 'ICStockBill'";
+                object obj = SqlHelper.ExecuteScalar(connK3Desc, sql);
+
+                return obj != null ? obj.ToString() : "";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        /// <summary>
+        /// 替换客户编号
+        /// </summary>
+        /// <param name="iCStockBill"></param>
+        /// <returns></returns>
+        private ICStockBill ReplaceSupplyID(ICStockBill iCStockBill)
+        {
+            //替换成新客户ID
+            int OriginSupplyId = iCStockBill.FSupplyID;
+            int NewSupplyId = ICStockBills.GetNewSupplyIDByOriSupplyID(iCStockBill.FSupplyID, connK3Src, connK3Desc);
+
+            //For Test
+            if (NewSupplyId != OriginSupplyId)
+            {
+                Console.WriteLine("NewSupplyId:" + NewSupplyId + "; OriginSupplyId:" + OriginSupplyId);
+            }
+            iCStockBill.FSupplyID = NewSupplyId;
+
+            return iCStockBill;
+        }
+
+        /// <summary>
+        /// 更新明细表中的物料编号
+        /// </summary>
+        /// <param name="EntryList"></param>
+        /// <returns></returns>
+        private List<ICStockBillEntry> ReplaceItemUnitID(List<ICStockBillEntry> EntryList)
+        {
+            foreach (ICStockBillEntry Entry in EntryList)
+            {
+                //替换物料编号
+                int OriginItemID = Entry.FItemID;
+                int NewItemID = ICStockBillEntrys.GetNewItemIDByOriginItemID(OriginItemID, connK3Src, connK3Desc);
+
+                //For Test
+                if (NewItemID == -1)
+                {
+                    Console.WriteLine("OriginItemID:" + OriginItemID + "; NewItemID:" + NewItemID);
+                }
+                //For Test
+
+                Entry.FItemID = NewItemID;
+
+                //替换单位编号
+                int OriginUnitID = Entry.FUnitID;
+                int NewUnitID = ICStockBillEntrys.GetNewUnitIDByOriginUnitID(OriginUnitID, connK3Src, connK3Desc);
+
+                //For Test
+                if (NewUnitID == -1)
+                {
+                    Console.WriteLine("OriginItemID:" + OriginUnitID + "; NewItemID:" + NewUnitID);
+                }
+                //For Test
+
+                Entry.FUnitID = NewUnitID;
+            }
+            return EntryList;
+        }
+        #endregion
+
+
     }
 }

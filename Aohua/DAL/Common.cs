@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ryan.Framework.DotNetFx40.DBUtility;
+using System;
 
 namespace Aohua.DAL
 {
@@ -13,6 +14,19 @@ namespace Aohua.DAL
             else
             {
                 return obj;
+            }
+        }
+
+        public static string GetStringByExecuteScalar(string conn, string sql)
+        {
+            object obj = SqlHelper.ExecuteScalar(conn, sql);
+            if (obj != null && obj.ToString() != "")
+            {
+                return obj.ToString();
+            }
+            else
+            {
+                return "";
             }
         }
     }

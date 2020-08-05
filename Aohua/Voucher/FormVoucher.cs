@@ -33,7 +33,7 @@ namespace Aohua.VoucherApp
         //新ItemDetail 客户号
         private static int NewItemID = 0;
         //蓝字数据写入成功
-        private static bool BlueSuccess = false;
+        bool BlueSuccess = false;
         #endregion
 
         #region 私有过程
@@ -44,7 +44,6 @@ namespace Aohua.VoucherApp
         /// <param name="voucherEntries"></param>
         private static void Modify4Blue(Voucher voucherBlue, List<VoucherEntry> voucherEntryBlues, string AccountList)
         {
-            
             //保留原凭证字ID
             OriginVoucherGroupID = voucherBlue.FGroupID;
             //保留源凭证内码
@@ -72,10 +71,11 @@ namespace Aohua.VoucherApp
             //uuid
             voucherBlue.UUID = Guid.NewGuid();
             //FDate
-            voucherBlue.FDate = DateTime.Now;
+            voucherBlue.FDate = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
             //FTransDate
-            voucherBlue.FTransDate = DateTime.Now;
-
+            voucherBlue.FTransDate = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
+            //FFootNote 标记
+            voucherBlue.FFootNote = ".";
             //FAccountID
             foreach (VoucherEntry voucherEntryBlue in voucherEntryBlues)
             {
@@ -83,17 +83,21 @@ namespace Aohua.VoucherApp
                 //string accountID = voucherEntryBlue.FAccountID.ToString();
                 //string accountID2 = voucherEntryBlue.FAccountID2.ToString();
                 int OriginAccountID = voucherEntryBlue.FAccountID;
-
+                
+                //如果科目ID属于“4018”，“4019”，“4020”下面的
                 if (AccountList.IndexOf(OriginAccountID.ToString()) > -1)
                 {
+                    //科目ID更新到“4118”，“4119”，“4120”下面的
                     int NewAccountID = VoucherEntries.ReplaceAccountID(OriginAccountID);
                     voucherEntryBlue.FAccountID = NewAccountID;
+
+                    //应客户要求处理ItemID_开始
                     string OriginCustomFNumber = VoucherEntries.GetOriginCustomFNumber(OriginVoucherID, voucherEntryBlue.FEntryID);
                     string MaxBlueCustomFNumber = VoucherEntries.GetNewAccountMaxFNumber(NewAccountID);
                     bool CustomFNumberExists = VoucherEntries.FNumberExists(NewAccountID, OriginCustomFNumber);
-                    //int detailid = voucherEntryBlue.FDetailID;
+                    
                     //如果OriginCustomFNumber小于MaxBlueCustomFNumber
-                    if ((int.Parse(OriginCustomFNumber) < int.Parse(MaxBlueCustomFNumber)) && CustomFNumberExists == true)
+                    if ((int.Parse(OriginCustomFNumber) <= int.Parse(MaxBlueCustomFNumber)) && CustomFNumberExists == true)
                     {
                         //直接用新科目下的OriginCustomFNumber
                         NewItemID = Aohua.DAL.Items.GetItemIDByAccountIDFNumber(NewAccountID, OriginCustomFNumber);
@@ -111,18 +115,19 @@ namespace Aohua.VoucherApp
                         }
                         //弹出窗口选最大的10个编号中的一个
                     }
-                    //查横表看新客户下有没有同样的商品
-                    //如果有VoucherEnryBlue.FDetailID = 这个ID
-                    //否则在itemDetail和ItemDetailV新建一行
-                    //voucherEntryBlue.FDetailID = 
-                    //VoucherEnryBlue.FDetailID = 新ID
+                    //应客户要求处理ItemID_结束
+
+                    //更新DetailID 
                     voucherEntryBlue.FDetailID = GetNewDetailID(OriginVoucherID, voucherBlue.FVoucherID,voucherEntryBlue.FEntryID, voucherEntryBlue.FAccountID, NewItemID, OriginAccountID);
                 }
             }
         }
 
         /// <summary>
-        /// 
+        /// 查横表看新客户下有没有同样的商品
+        /// 如果有VoucherEnryBlue.FDetailID = 这个ID
+        /// 否则在itemDetail和ItemDetailV新建一行
+        /// VoucherEnryBlue.FDetailID = 新ID
         /// </summary>
         /// <param name="OriginVoucherID"></param>
         /// <param name="BlueVoucherID"></param>
@@ -187,53 +192,24 @@ namespace Aohua.VoucherApp
         /// <param name="voucherEntries"></param>
         private void Insert4Blue(Voucher voucherBlue, List<VoucherEntry> voucherEntryBlues)
         {
-            if (voucherBlue.FSerialNum == -1)
+            //Voucher voucherBlue = vouchers[0];
+            int ret = DAL.BaseDAL.Insert<Voucher>(voucherBlue);
+
+            int retEntryBlue = 0;
+            foreach (VoucherEntry voucherEntryBlue in voucherEntryBlues)
             {
-                CustomDesktopAlert.H2("生成凭证序号出错！");
+                retEntryBlue += DAL.BaseDAL.Insert<VoucherEntry>(voucherEntryBlue);
             }
-            else if (voucherBlue.FVoucherID == -1)
+
+            if (ret > 0 && retEntryBlue > 0)
             {
-                CustomDesktopAlert.H2("生成凭证号内码出错！");
-            }
-            else if(voucherBlue.FNumber == -1)
-            {
-                CustomDesktopAlert.H2("生成凭证号出错！");
-            }
-            else if (voucherBlue.FGroupID == -1)
-            {
-                CustomDesktopAlert.H2("生成凭证字出错！");
+                CustomDesktopAlert.H2(string.Format("蓝字凭证{0}写入完成！", ComboBoxVoucherGroup.Text.Replace("转", "记") + "." + voucherBlue.FNumber));
+                BlueSuccess = true;
             }
             else
             {
-                //Voucher voucherBlue = vouchers[0];
-                int ret = DAL.BaseDAL.Insert<Voucher>(voucherBlue);
-
-                int retEntryBlue = 0;
-                foreach (VoucherEntry voucherEntryBlue in voucherEntryBlues)
-                {
-                    if (voucherEntryBlue.FAccountID == -1)
-                    {
-                        CustomDesktopAlert.H2("查询科目编号出错！");
-                    }
-                    else if (voucherEntryBlue.FDetailID == -1)
-                    {
-                        CustomDesktopAlert.H2("查询明细编号出错！");
-                    }
-                    else
-                    {
-                        retEntryBlue += DAL.BaseDAL.Insert<VoucherEntry>(voucherEntryBlue);
-                    }
-                }
-
-                if (ret > 0 && retEntryBlue > 0)
-                {
-                    CustomDesktopAlert.H2(string.Format("蓝字凭证{0}写入完成！", ComboBoxVoucherGroup.Text.Replace("转", "记") + "." + voucherBlue.FNumber));
-                    BlueSuccess = true;
-                }
-                else
-                {
-                    BlueSuccess = false;
-                }
+                CustomDesktopAlert.H2(string.Format("蓝字凭证{0}写入失败！", ComboBoxVoucherGroup.Text + "." + voucherRed.FNumber));
+                BlueSuccess = false;
             }
         }
 
@@ -257,6 +233,10 @@ namespace Aohua.VoucherApp
                 if (retRed > 0 && retEntryRed > 0)
                 {
                     CustomDesktopAlert.H2(string.Format("红字凭证{0}写入完成！", ComboBoxVoucherGroup.Text + "." + voucherRed.FNumber));
+                }
+                else
+                {
+                    CustomDesktopAlert.H2(string.Format("红字凭证{0}写入失败！", ComboBoxVoucherGroup.Text + "." + voucherRed.FNumber));
                 }
             }
         }
@@ -290,10 +270,13 @@ namespace Aohua.VoucherApp
             voucherRed.UUID = Guid.NewGuid();
 
             //FDate
-            voucherRed.FDate = DateTime.Now;
+            voucherRed.FDate = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
 
             //FTransDate
-            voucherRed.FTransDate = DateTime.Now;
+            voucherRed.FTransDate = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
+
+            //FFootNote 标记
+            voucherRed.FFootNote = ".";
 
             foreach (VoucherEntry voucherEntryRed in voucherEntryReds)
             {
@@ -432,34 +415,83 @@ namespace Aohua.VoucherApp
                 //string[] VoucherIDs = GetDistinctVoucherID(dt,"FVoucherID").Split(';');
                 //foreach(string VoucherID in VoucherIDs)
                 //{
-                //取得凭证
+                //取得“内部工程施工”凭证
                 string VoucherID = DataGridViewX1.Rows.Count > 0 ? DataGridViewX1.Rows[0].Cells["FVoucherID"].Value.ToString() : "-1";
                 voucherOrigin = BaseDAL.GetModel<Voucher>("FVoucherID", VoucherID)[0];
                 voucherEntryOrigins = BaseDAL.GetModel<VoucherEntry>("FVoucherID", VoucherID);
 
+                //复制得到蓝字凭证
                 voucherBlue = voucherOrigin;
                 voucherEntryBlues = voucherEntryOrigins;
 
                 //修改蓝字凭证
                 Modify4Blue(voucherBlue, voucherEntryBlues, AccountList);
 
-                //写入蓝字凭证
-                Insert4Blue(voucherBlue, voucherEntryBlues);
+                if (Check4Blue(voucherBlue,voucherEntryBlues))
+                {
+                    //写入蓝字凭证
+                    Insert4Blue(voucherBlue, voucherEntryBlues);
 
-                
-                voucherRed = voucherBlue;
-                voucherEntryReds = voucherEntryBlues;
+                    //用蓝字凭证复制成红字凭证
+                    voucherRed = voucherBlue;
+                    voucherEntryReds = voucherEntryBlues;
 
-                //修改红字凭证
-                Modify4Red(voucherRed, voucherEntryReds);
+                    //修改红字凭证
+                    Modify4Red(voucherRed, voucherEntryReds);
 
-                //写入红字凭证
-                Insert4Red(voucherRed, voucherEntryReds);
+                    //写入红字凭证
+                    Insert4Red(voucherRed, voucherEntryReds);
+                }
             }
             else
             {
                 // no record
             }
+        }
+
+        private bool Check4Blue(Voucher voucher, List<VoucherEntry> voucherEntries)
+        {
+            bool retVal = true;
+            if (voucher.FSerialNum == -1)
+            {
+                CustomDesktopAlert.H2("生成凭证序号出错！");
+                retVal = false;
+            }
+
+            if (voucher.FVoucherID == -1)
+            {
+                CustomDesktopAlert.H2("生成凭证号内码出错！");
+                retVal = false;
+            }
+
+            if (voucher.FNumber == -1)
+            {
+                CustomDesktopAlert.H2("生成凭证号出错！");
+                retVal = false;
+            }
+
+            if (voucher.FGroupID == -1)
+            {
+                CustomDesktopAlert.H2("生成凭证字出错！");
+                retVal = false;
+            }
+
+            foreach(VoucherEntry voucherEntry in voucherEntries)
+            {
+                if(voucherEntry.FDetailID == -1)
+                {
+                    CustomDesktopAlert.H2("生成明细编号出错！");
+                    retVal = false;
+                }
+
+                if(voucherEntry.FAccountID == -1)
+                {
+                    CustomDesktopAlert.H2("生成科目编号出错！");
+                    retVal = false;
+                }
+            }
+
+            return retVal;
         }
         #endregion
 

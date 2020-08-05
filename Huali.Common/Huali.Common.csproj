@@ -48,13 +48,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ryan.Framework.Config\Ryan.Framework.Config.csproj">
-      <Project>{87a3a7af-c820-4063-95c0-5fedc4dee228}</Project>
-      <Name>Ryan.Framework.Config</Name>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx20.ConfigHelper\Ryan.Framework.DotNetFx20.Config.csproj">
+      <Project>{271e9d3b-0f8f-4674-855a-92b1465b650d}</Project>
+      <Name>Ryan.Framework.DotNetFx20.Config</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ryan.Framework.DBUtility\Ryan.Framework.DBUtility.csproj">
-      <Project>{f06eb8bf-c60e-4c29-834a-238afeb70f3d}</Project>
-      <Name>Ryan.Framework.DBUtility</Name>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx20.DBUtility\Ryan.Framework.DotNetFx20.DBUtility.csproj">
+      <Project>{a079f29f-536b-4498-8c81-ee338dbc45cb}</Project>
+      <Name>Ryan.Framework.DotNetFx20.DBUtility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

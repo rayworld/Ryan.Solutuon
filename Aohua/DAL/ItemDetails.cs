@@ -32,7 +32,8 @@ namespace Aohua.DAL
         }
 
         /// <summary>
-        /// 
+        /// 通过科目ID得到ItemClassID
+        /// 注意：“2020”还是“2020年”
         /// </summary>
         /// <param name="AccountID"></param>
         /// <returns></returns>

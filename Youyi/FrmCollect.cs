@@ -148,7 +148,7 @@ namespace Youyi
             sb.Append(" s.FBillNo, ");
             sb.Append(" Convert(decimal(18,0),e.fqty) as 数量, ");
             sb.Append(" Convert(decimal(18,2),e.FStdAmount) as FStdAmount , ");
-            sb.Append(" CAST(Convert(decimal(18,2),c.FOrderPrice * e.fqty / 1.13) AS nvarchar(20)) as Forderprice, ");
+            sb.Append(" CAST(Convert(decimal(18,2),c.FOrderPrice * e.fqty) AS nvarchar(20)) as Forderprice, ");
             sb.Append(" o.fname as custName, ");
             sb.Append(" i.FName, ");
             sb.Append(" i.FFullNumber, ");

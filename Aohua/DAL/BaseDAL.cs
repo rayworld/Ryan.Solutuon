@@ -346,12 +346,14 @@ namespace Aohua.DAL
         #region Sql2Int
         public static int Sql2Int(string con, string sql)
         {
-            return Sql2Object(con, sql).ToString() != "" ? int.Parse(Sql2Object(con, sql).ToString()) : -1;
+            object obj = Sql2Object(con, sql);
+            return obj != null ? int.Parse(obj.ToString()) : -1;
         }
 
         public static int Sql2Int(string sql)
         {
-            return Sql2Object(sql).ToString() != "" ? int.Parse(Sql2Object(sql).ToString()) : -1;
+            object obj = Sql2Object(sql);
+            return obj != null ? int.Parse(obj.ToString()) : -1;
         }
         #endregion
 

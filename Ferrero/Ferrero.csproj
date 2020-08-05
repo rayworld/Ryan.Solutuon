@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4F1BDB38-FC55-4670-B7E8-8C231962350C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Ferrero</RootNamespace>
+    <AssemblyName>Ferrero</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=12.8.0.6, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL\AccountRepository.cs" />
+    <Compile Include="DAL\ICInventoryRepository.cs" />
+    <Compile Include="DAL\ICStockBillEntryRepository.cs" />
+    <Compile Include="DAL\ICStockBillRepository.cs" />
+    <Compile Include="FormCompare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCompare.Designer.cs">
+      <DependentUpon>FormCompare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDeleteConform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDeleteConform.Designer.cs">
+      <DependentUpon>FormDeleteConform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStockIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStockIn.Designer.cs">
+      <DependentUpon>FormStockIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStockOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStockOut.Designer.cs">
+      <DependentUpon>FormStockOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BASE_ICItemEntrance.cs" />
+    <Compile Include="Model\Identity.cs" />
+    <Compile Include="Model\ICItemCore.cs" />
+    <Compile Include="Model\ICItemBase.cs" />
+    <Compile Include="Model\ICItemCustom.cs" />
+    <Compile Include="Model\ICItemMaterial.cs" />
+    <Compile Include="Model\ICItemDesign.cs" />
+    <Compile Include="Model\ICItemPlan.cs" />
+    <Compile Include="Model\ICItemQuality.cs" />
+    <Compile Include="Model\ICItemStandard.cs" />
+    <Compile Include="Model\ICInventory.cs" />
+    <Compile Include="Model\ICStockBill.cs" />
+    <Compile Include="Model\ICStockBillEntry.cs" />
+    <Compile Include="Model\t_User.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCompare.resx">
+      <DependentUpon>FormCompare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDeleteConform.resx">
+      <DependentUpon>FormDeleteConform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStockIn.resx">
+      <DependentUpon>FormStockIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStockOut.resx">
+      <DependentUpon>FormStockOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.Common\Ryan.Framework.DotNetFx40.Common.csproj">
+      <Project>{8441a6a8-5d42-4054-aed6-00a2d4d873f6}</Project>
+      <Name>Ryan.Framework.DotNetFx40.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.Config\Ryan.Framework.DotNetFx40.Config.csproj">
+      <Project>{05373a5c-3a26-4947-bd8d-583f1e9928eb}</Project>
+      <Name>Ryan.Framework.DotNetFx40.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.DBUtility\Ryan.Framework.DotNetFx40.DBUtility.csproj">
+      <Project>{b8f57721-b57e-4c8a-82e0-47811482b68f}</Project>
+      <Name>Ryan.Framework.DotNetFx40.DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.Encrypt\Ryan.Framework.DotNetFx40.Encrypt.csproj">
+      <Project>{042cbec5-1d6d-4ae8-87b9-6347b67d250e}</Project>
+      <Name>Ryan.Framework.DotNetFx40.Encrypt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.ORM\Ryan.Framework.DotNetFx40.ORM.csproj">
+      <Project>{0610ae9e-7c5b-48b4-9f44-ec7fe332dae9}</Project>
+      <Name>Ryan.Framework.DotNetFx40.ORM</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

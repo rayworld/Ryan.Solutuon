@@ -35,11 +35,13 @@ namespace Aohua
             this.RibbonControlMain.TitleText = EncryptHelper.Decrypt(ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "AppName"));
             ////获取窗口样式
             GetStyleSetting();
-            //LoadModule();
+            LoadModule();
             UserLogin();
-            ButtonItemVoucherImport_Click(sender, e);
+            //xia
             //ButtonItem1_Click(sender, e);
-            CmdRibbonState_Executed(sender, e);
+            //xu
+            //ButtonItemVoucherImport_Click(sender, e);
+            //suai
         }
 
         /// <summary>
@@ -126,46 +128,46 @@ namespace Aohua
 
         #region 私有过程
 
-        //private void LoadModule()
-        //{
-        //    string myModules = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "Modules");
-        //    if (!string.IsNullOrWhiteSpace(myModules))
-        //    {
-        //        string[] myModule = myModules.Split(';');
-        //        foreach (string module in myModule)
-        //        {
-        //            if (module.ToLower() == ModuleName.EDI.ToString().ToLower())
-        //            {
-        //                rtiEDI.Visible = true;
-        //                rtiEDI.Select();
-        //            }
-        //            else if (module.ToLower() == ModuleName.EDI2.ToString().ToLower())
-        //            {
-        //                rtiEDI2.Visible = true;
-        //                rtiEDI2.Select();
-        //            }
-        //            else if (module.ToLower() == ModuleName.DS9208.ToString().ToLower())
-        //            {
-        //                rti9208.Visible = true;
-        //                rti9208.Select();
-        //            }
-        //            else if (module.ToLower() == ModuleName.DS9209.ToString().ToLower())
-        //            {
-        //                rti9209.Visible = true;
-        //                rti9209.Select();
-        //            }
-        //            else
-        //            {
-        //                CustomDesktopAlert.H4(module.ToLower() + "不能识别的应用模块！");
-        //            }
-        //        }
+        private void LoadModule()
+        {
+            string myModules = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "Modules");
+            if (!string.IsNullOrWhiteSpace(myModules))
+            {
+                string[] myModule = myModules.Split(';');
+                foreach (string module in myModule)
+                {
+                    if (module.ToLower() == "客户信息迁移")
+                    {
+                        RibbonBarMain.Visible = true;
+                        ButtonItemDataUpgard.FixedSize = new Size(120, 180);
+                        ButtonItemDataComp.FixedSize = new Size(120, 180);
+                        //rtiEDI.Select();
+                    }
+                    else if (module.ToLower() == "凭证迁移")
+                    {
+                        ribbonBar1.Visible = true;
+                        buttonItemVoucherUpdate.FixedSize = new Size(120, 180);
+                        //rtiEDI2.Select();
+                    }
+                    else if (module.ToLower() == "导入凭证")
+                    {
+                        ribbonBar2.Visible = true;
+                        ButtonItemVoucherImport.FixedSize = new Size(120, 180);
+                        //rti9208.Select();
+                        
+                    }
+                    else
+                    {
+                        CustomDesktopAlert.H4(module.ToLower() + "不能识别的应用模块！");
+                    }
+                }
 
-        //    }
-        //    else
-        //    {
-        //        CustomDesktopAlert.H4("应用程序加载模块出错！");
-        //    }
-        //}
+            }
+            else
+            {
+                CustomDesktopAlert.H4("应用程序加载模块出错！");
+            }
+        }
 
 
         /// <summary>
@@ -239,11 +241,13 @@ namespace Aohua
         private void BiDateComp_Click(object sender, EventArgs e)
         {
             SetMdiForm("数据对比", typeof(FrmDataCompare));
+            CmdRibbonState_Executed(sender, e);
         }
 
         private void ButtonItem15_Click(object sender, EventArgs e)
         {
             SetMdiForm("数据迁移", typeof(FrmDataExport));
+            CmdRibbonState_Executed(sender, e);
         }
 
 
@@ -261,6 +265,7 @@ namespace Aohua
         private void ButtonItem1_Click(object sender, EventArgs e)
         {
             SetMdiForm("凭证迁移", typeof(FormVoucher));
+            CmdRibbonState_Executed(sender, e);
         }
 
         /// <summary>
@@ -282,6 +287,7 @@ namespace Aohua
         private void ButtonItemVoucherImport_Click(object sender, EventArgs e)
         {
             SetMdiForm("凭证导入", typeof(FormVoucherImport));
+            CmdRibbonState_Executed(sender, e);
         }
     }
 }

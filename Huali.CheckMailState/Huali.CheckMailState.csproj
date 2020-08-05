@@ -67,17 +67,29 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ryan.Framework.Common\Ryan.Framework.Common.csproj">
-      <Project>{46d98007-de2e-4c89-aa01-030741c85a5f}</Project>
-      <Name>Ryan.Framework.Common</Name>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFX20.AutoUpdate\Ryan.Framework.DotNetFx20.AutoUpdate.csproj">
+      <Project>{9eaa3aee-a8eb-4a44-9761-8040396952d3}</Project>
+      <Name>Ryan.Framework.DotNetFx20.AutoUpdate</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ryan.Framework.DBUtility\Ryan.Framework.DBUtility.csproj">
-      <Project>{f06eb8bf-c60e-4c29-834a-238afeb70f3d}</Project>
-      <Name>Ryan.Framework.DBUtility</Name>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx20.Common\Ryan.Framework.DotNetFx20.Common.csproj">
+      <Project>{808e93a6-f591-4537-849b-17c7f24d4bc1}</Project>
+      <Name>Ryan.Framework.DotNetFx20.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ryan.Framework.Encrypt\Ryan.Framework.Encrypt.csproj">
-      <Project>{b89488a3-8231-48cf-8416-4f46d9d156c0}</Project>
-      <Name>Ryan.Framework.Encrypt</Name>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx20.ConfigHelper\Ryan.Framework.DotNetFx20.Config.csproj">
+      <Project>{271e9d3b-0f8f-4674-855a-92b1465b650d}</Project>
+      <Name>Ryan.Framework.DotNetFx20.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx20.Converter\Ryan.Framework.DotNetFx20.Converter.csproj">
+      <Project>{975ab94a-0782-47b4-9449-8cad660727d0}</Project>
+      <Name>Ryan.Framework.DotNetFx20.Converter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx20.DBUtility\Ryan.Framework.DotNetFx20.DBUtility.csproj">
+      <Project>{a079f29f-536b-4498-8c81-ee338dbc45cb}</Project>
+      <Name>Ryan.Framework.DotNetFx20.DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx20.Encrypt\Ryan.Framework.DotNetFx20.Encrypt.csproj">
+      <Project>{ac84a324-bd81-4eac-a7d4-699fbdfca9a6}</Project>
+      <Name>Ryan.Framework.DotNetFx20.Encrypt</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

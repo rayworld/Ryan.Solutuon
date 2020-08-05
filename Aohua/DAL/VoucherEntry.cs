@@ -6,10 +6,15 @@ namespace Aohua.DAL
     public partial class VoucherEntries
     {
         private static readonly string conn = SqlHelper.GetConnectionString("FinSrc");
-        private static string sql = ""; 
+        private static string sql = "";
 
         /// <summary>
-        /// 
+        /// 由于税率不同18年是11%，19年以后是10%
+        /// 将“18汉口内部客户”科目ID替换成“18汉口客户11%”的科目ID
+        /// 将“19汉口内部客户”科目ID替换成“19汉口客户10%”的科目ID
+        /// 将“20汉口内部客户”科目ID替换成“20汉口客户10%”的科目ID
+        /// 。。。。。。
+        /// update by ray 2020-04-25
         /// </summary>
         /// <param name="OriginalAccountID"></param>
         /// <returns></returns>
@@ -36,7 +41,7 @@ namespace Aohua.DAL
         /// <returns></returns>
         public static string GetOriginCustomFNumber(int VoucherID,int EntryID)
         {
-            sql = string.Format("select FNumber from t_Item where FItemID = (select FItemID from t_ItemDetailV where FDetailID = (select FDetailID from t_VoucherEntry where FVoucherID = {0} and FEntryID ={1}) and FItemClassID =(select FItemClassID from t_itemclass where fname = '20' +(select FName from t_account where FAccountID =(select FAccountID from t_VoucherEntry where FVoucherID = {0} and FEntryID ={1}))))", VoucherID, EntryID);
+            sql = string.Format("select FNumber from t_Item where FItemID = (select FItemID from t_ItemDetailV where FDetailID = (select FDetailID from t_VoucherEntry where FVoucherID = {0} and FEntryID ={1}) and FItemClassID =(select FItemClassID from t_itemclass where fname = '20' + (select FName from t_account where FAccountID =(select FAccountID from t_VoucherEntry where FVoucherID = {0} and FEntryID ={1}))))", VoucherID, EntryID);
             return BaseDAL.GetNotNullStringBySql(sql);
             //object obj = SqlHelper.ExecuteScalar(conn, sql);
             //if(obj != null && obj.ToString() != "")
@@ -106,7 +111,7 @@ namespace Aohua.DAL
 
         public static DataTable GetCustomListByCustomNameQueryStringCustomArea(string QueryString,string CustomArea)
         {
-            sql = string.Format("select FName as 客户名称, cast(fitemid as varchar) as 客户编号, cast(FItemClassID as varchar) as 客户类型号 from t_Item where FItemClassID in (select FItemClassID from t_ItemClass where replace(FName,'年','') in (select replace(FName,'年','') from t_Account where FParentID in (27225,27320,27385) and fname not like '%内部%'and fname like '%{1}%')) and fname like '%{0}%'", QueryString, CustomArea);
+            sql = string.Format("select FName as 客户名称, cast(fitemid as varchar) as 客户编号, cast(FItemClassID as varchar) as 客户类型号 from t_Item where FItemClassID in (select FItemClassID from t_ItemClass where replace(FName,'年','') in (select replace(FName,'年','') from t_Account where FParentID in (27225,27320,27385,27438) and fname not like '%内部%'and fname like '%{1}%')) and fname like '%{0}%'", QueryString, CustomArea);
             return BaseDAL.GetDataTableBySql(sql);
         }
 
@@ -119,7 +124,7 @@ namespace Aohua.DAL
         /// <returns></returns>
         public static string GetItemIDItemClassIDByCustomNameCustomAddressCustomArea(string custName, string custaddress,string area)
         {
-            sql = string.Format("select cast(fitemid as varchar)  + ',' + cast(FItemClassID as varchar) from t_Item where FItemClassID in (select FItemClassID from t_ItemClass where replace(FName,'年','') in (select replace(FName,'年','') from t_Account where FParentID in (27225,27320,27385) and fname not like '%内部%'and fname like '%{2}%')) and fname like '%{0}%' and fname like '%{1}%'",custName,custaddress,area);
+            sql = string.Format("select cast(fitemid as varchar)  + ',' + cast(FItemClassID as varchar) from t_Item where FItemClassID in (select FItemClassID from t_ItemClass where replace(FName,'年','') in (select replace(FName,'年','') from t_Account where FParentID in (27225,27320,27385,27438) and fname not like '%内部%'and fname like '%{2}%')) and fname like '%{0}%' and fname like '%{1}%'",custName,custaddress,area);
             return BaseDAL.GetNotNullStringBySql(sql);
         }
 

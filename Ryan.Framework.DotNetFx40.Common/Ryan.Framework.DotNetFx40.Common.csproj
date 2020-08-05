@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChildWinManagement.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="CustomDesktopAlert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

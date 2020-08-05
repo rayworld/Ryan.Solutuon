@@ -1,7 +1,7 @@
 using DevComponents.DotNetBar;
 using Huali.EDI2.Models;
-using Ryan.Framework.Common;
-using Ryan.Framework.Converter;
+using Ryan.Framework.DotNetFx40.Common;
+using Ryan.Framework.DotNetFx40.Converter;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -78,10 +78,10 @@ namespace Huali.EDI2
                 this.dataGridViewX1.DataSource = null;
                 string fileName = dialog.FileName;
                 template = SwichTemplateType(fileName);
-                Convert2DataTable c2d = new Convert2DataTable();
+                //ToDataTable c2d = new ToDataTable();
                 //string sheetName = template == TemplateType.日立 ? "门店信息" : "订单明细";
                 string sheetName = template == TemplateType.日立 ? "门店信息" : "Sheet1";
-                dt = c2d.Excel2DataTable(fileName, sheetName, null, null);
+                dt = ToDataTable.Excel2DataTable(fileName, sheetName, null, null);
                 this.dataGridViewX1.DataSource = dt;
                 CustomDesktopAlert.H2("成功打开Excel文件！");
             }

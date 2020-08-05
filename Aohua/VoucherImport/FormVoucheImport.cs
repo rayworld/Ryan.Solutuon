@@ -449,9 +449,12 @@ namespace Aohua.VoucherApp
         private void ShowInvoiceDetail()
         {
             //处理发票明细表
+            //将明细表导入成DataTable
             dtInvoiceDetail = ToDataTable.Excel2DataTable(ExcelFileName, SheetName, "*", "");
+            //如果DataTable不为空
             if (dtInvoiceDetail.Rows.Count > 0)
             {
+                //删除“小计行”，可以只判断是不是“小计”
                 for (int i = 0; i < dtInvoiceDetail.Rows.Count; i++)
                 {
                     if (dtInvoiceDetail.Rows[i]["商品名称"].ToString() != "*建筑服务*装修" && dtInvoiceDetail.Rows[i]["商品名称"].ToString() != "*设计服务*设计费")
@@ -460,6 +463,7 @@ namespace Aohua.VoucherApp
                     }
                 }
                 dtInvoiceDetail.AcceptChanges();
+                
                 //填充空行信息
                 for (int j = 0; j < dtInvoiceDetail.Rows.Count; j++)
                 {
@@ -517,7 +521,6 @@ namespace Aohua.VoucherApp
             }
 
         }
-
 
         /// <summary>
         /// 过滤不同单据类型
@@ -957,18 +960,18 @@ namespace Aohua.VoucherApp
         {
             DataTable dt = new DataTable();
             // 列强制转换
-            for (int count = 0; count < dgv.Columns.Count; count++)
+            for (int colCount = 0; colCount < dgv.Columns.Count; colCount++)
             {
-                DataColumn dc = new DataColumn(dgv.Columns[count].Name.ToString());
+                DataColumn dc = new DataColumn(dgv.Columns[colCount].Name.ToString());
                 dt.Columns.Add(dc);
             }
             // 循环行
-            for (int count = 0; count < dgv.Rows.Count; count++)
+            for (int rowCount = 0; rowCount < dgv.Rows.Count; rowCount++)
             {
                 DataRow dr = dt.NewRow();
                 for (int countsub = 0; countsub < dgv.Columns.Count; countsub++)
                 {
-                    dr[countsub] = Convert.ToString(dgv.Rows[count].Cells[countsub].Value);
+                    dr[countsub] = Convert.ToString(dgv.Rows[rowCount].Cells[countsub].Value);
                 }
                 dt.Rows.Add(dr);
             }

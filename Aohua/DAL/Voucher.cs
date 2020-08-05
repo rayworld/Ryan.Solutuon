@@ -11,12 +11,7 @@ namespace Aohua.DAL
         private static readonly string conn = SqlHelper.GetConnectionString("FinSrc");
         private static string sql = "";
 
-        public static DateTime GetServerTime()
-        {
-            sql = "select convert(varchar(10),getdate(),120) as serverTime";
-            return DateTime.Parse(BaseDAL.Sql2NotNullString(conn, sql));   
-        }
-
+        #region 夏会计
         /// <summary>
         /// 
         /// </summary>
@@ -45,7 +40,7 @@ namespace Aohua.DAL
         }
 
         /// <summary>
-        /// 
+        /// 得到当期该凭证组下最大编号加1
         /// </summary>
         /// <param name="conn"></param>
         /// <param name="year"></param>
@@ -73,6 +68,10 @@ namespace Aohua.DAL
             return BaseDAL.Sql2Int(conn, sql);
         }
 
+        /// <summary>
+        /// 得到最大序列号加1
+        /// </summary>
+        /// <returns></returns>
         public static int GetNewSerialNum()
         {
             int NewSerialNum = 0;
@@ -122,13 +121,13 @@ namespace Aohua.DAL
         }
 
         /// <summary>
-        /// 
+        /// 把“记”字凭证转成“转”字凭证字
         /// </summary>
         /// <param name="OrgionalGroupID"></param>
         /// <returns></returns>
         public static int ReplaceGroupID(int OrgionalGroupID)
         {
-            //去掉“记”，“转”凭证字
+            //
             if (OrgionalGroupID > 2)
             {
                 sql = string.Format("SELECT FGroupID FROM t_VoucherGroup WHERE FName = (SELECT replace(FName,'转','记') FROM t_VoucherGroup WHERE FGroupID = {0})", OrgionalGroupID);
@@ -211,11 +210,28 @@ namespace Aohua.DAL
         }
 
 
+        /// <summary>
+        /// 分别对应2018，2019，2020 非工装科目
+        /// update by ray 2020-04-25
+        /// </summary>
+        /// <returns></returns>
         public static string GetAccountList4Upgrad()
         {
             string retAccountList = "";
-            sql = "SELECT FAccountID FROM t_Account WHERE (FNumber LIKE '4018.%' OR FNumber LIKE '4019.%' OR FNumber LIKE '4020.%') AND FNumber NOT LIKE '%.006'";
-            DataTable dtTemp = SqlHelper.ExecuteDataTable(conn, sql);
+            //sql = "SELECT FAccountID FROM t_Account WHERE (FNumber LIKE '4018.%' OR FNumber LIKE '4019.%' OR FNumber LIKE '4020.%') AND FNumber NOT LIKE '%.006'";
+            StringBuilder sb = new StringBuilder();
+            sb.Append(" SELECT FAccountID FROM t_Account");
+            sb.Append(" WHERE (");
+            sb.Append(" FNumber LIKE '4018.%' OR");
+            sb.Append(" FNumber LIKE '4019.%' OR");
+            sb.Append(" FNumber LIKE '4020.%' OR");
+            sb.Append(" FNumber LIKE '4021.%' OR");
+            sb.Append(" FNumber LIKE '4022.%' OR");
+            sb.Append(" FNumber LIKE '4023.%' OR");
+            sb.Append(" FNumber LIKE '4024.%' OR");
+            sb.Append(" FNumber LIKE '4025.%')" );
+            sb.Append(" AND FName NOT LIKE '%工装%'");
+            DataTable dtTemp = SqlHelper.ExecuteDataTable(conn, sb.ToString());
             if(dtTemp.Rows .Count> 0)
             {
                 foreach(DataRow dr in dtTemp.Rows)
@@ -227,6 +243,12 @@ namespace Aohua.DAL
             return "";
         }
 
+        /// <summary>
+        /// 得到凭证某一行的DetailID
+        /// </summary>
+        /// <param name="VoucherID">凭证ID</param>
+        /// <param name="EntryID">凭证行号</param>
+        /// <returns></returns>
         public  static int GetDetailIDByVoucherIDEntryID(int VoucherID, int EntryID)
         {
             sql = string.Format("select FDetailID from t_VoucherEntry where FVoucherID = {0} and FEntryID = {1}", VoucherID, EntryID);
@@ -240,13 +262,25 @@ namespace Aohua.DAL
                 return -1;
             }
         }
+        #endregion
 
-        #region 2.0
+        #region 徐会计作业
         public static int UpdateEntryCount(int EntryCount,int VoucherID)
         {
             sql = string.Format("Update t_voucher set fentrycount = {0} where fvoucherID = {1}", EntryCount, VoucherID);
             return SqlHelper.ExecuteNonQuery(conn, sql);
         }
+
+        /// <summary>
+        /// 时间限制
+        /// </summary>
+        /// <returns></returns>
+        public static DateTime GetServerTime()
+        {
+            sql = "select convert(varchar(10),getdate(),120) as serverTime";
+            return DateTime.Parse(BaseDAL.Sql2NotNullString(conn, sql));
+        }
+
         #endregion
 
     }

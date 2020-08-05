@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.ButtonXStatistics = new DevComponents.DotNetBar.ButtonX();
             this.ComboBoxExTaxRate = new DevComponents.DotNetBar.Controls.ComboBoxEx();
@@ -60,20 +60,20 @@
             this.ButtonXCreateVoucher = new DevComponents.DotNetBar.ButtonX();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.tabControl1 = new DevComponents.DotNetBar.TabControl();
-            this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
-            this.DataGridViewXDetail = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.TabItemDetail = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel2 = new DevComponents.DotNetBar.TabControlPanel();
             this.DataGridViewXStatic = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.TabItemStatistics = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
+            this.DataGridViewXDetail = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.TabItemDetail = new DevComponents.DotNetBar.TabItem(this.components);
             this.panelEx2.SuspendLayout();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
-            this.tabControlPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewXDetail)).BeginInit();
             this.tabControlPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewXStatic)).BeginInit();
+            this.tabControlPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewXDetail)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx2
@@ -96,7 +96,7 @@
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Margin = new System.Windows.Forms.Padding(2);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(1444, 79);
+            this.panelEx2.Size = new System.Drawing.Size(1444, 130);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -111,7 +111,7 @@
             this.ButtonXStatistics.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.ButtonXStatistics.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.ButtonXStatistics.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ButtonXStatistics.Location = new System.Drawing.Point(1043, 22);
+            this.ButtonXStatistics.Location = new System.Drawing.Point(114, 69);
             this.ButtonXStatistics.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonXStatistics.Name = "ButtonXStatistics";
             this.ButtonXStatistics.Size = new System.Drawing.Size(86, 37);
@@ -299,7 +299,7 @@
             this.ButtonXImportExcelNew.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.ButtonXImportExcelNew.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.ButtonXImportExcelNew.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ButtonXImportExcelNew.Location = new System.Drawing.Point(942, 22);
+            this.ButtonXImportExcelNew.Location = new System.Drawing.Point(13, 69);
             this.ButtonXImportExcelNew.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonXImportExcelNew.Name = "ButtonXImportExcelNew";
             this.ButtonXImportExcelNew.Size = new System.Drawing.Size(86, 37);
@@ -313,7 +313,7 @@
             this.ButtonXCreateVoucher.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.ButtonXCreateVoucher.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.ButtonXCreateVoucher.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ButtonXCreateVoucher.Location = new System.Drawing.Point(1144, 22);
+            this.ButtonXCreateVoucher.Location = new System.Drawing.Point(215, 69);
             this.ButtonXCreateVoucher.Margin = new System.Windows.Forms.Padding(2);
             this.ButtonXCreateVoucher.Name = "ButtonXCreateVoucher";
             this.ButtonXCreateVoucher.Size = new System.Drawing.Size(89, 37);
@@ -329,9 +329,9 @@
             this.panelEx1.Controls.Add(this.tabControl1);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx1.Location = new System.Drawing.Point(0, 79);
+            this.panelEx1.Location = new System.Drawing.Point(0, 130);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1444, 508);
+            this.panelEx1.Size = new System.Drawing.Size(1444, 457);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -346,85 +346,19 @@
             // 
             this.tabControl1.BackColor = System.Drawing.Color.Transparent;
             this.tabControl1.CanReorderTabs = true;
-            this.tabControl1.Controls.Add(this.tabControlPanel2);
             this.tabControl1.Controls.Add(this.tabControlPanel1);
+            this.tabControl1.Controls.Add(this.tabControlPanel2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedTabFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabControl1.SelectedTabIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1444, 508);
+            this.tabControl1.Size = new System.Drawing.Size(1444, 457);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
             this.tabControl1.Tabs.Add(this.TabItemDetail);
             this.tabControl1.Tabs.Add(this.TabItemStatistics);
             this.tabControl1.Text = "tabControl1";
-            // 
-            // tabControlPanel1
-            // 
-            this.tabControlPanel1.Controls.Add(this.DataGridViewXDetail);
-            this.tabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty;
-            this.tabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPanel1.Location = new System.Drawing.Point(0, 34);
-            this.tabControlPanel1.Name = "tabControlPanel1";
-            this.tabControlPanel1.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel1.Size = new System.Drawing.Size(1444, 474);
-            this.tabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
-            this.tabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
-            this.tabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
-            this.tabControlPanel1.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel1.Style.GradientAngle = 90;
-            this.tabControlPanel1.TabIndex = 1;
-            this.tabControlPanel1.TabItem = this.TabItemDetail;
-            // 
-            // DataGridViewXDetail
-            // 
-            this.DataGridViewXDetail.AllowUserToAddRows = false;
-            this.DataGridViewXDetail.AllowUserToDeleteRows = false;
-            this.DataGridViewXDetail.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewXDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.DataGridViewXDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridViewXDetail.DefaultCellStyle = dataGridViewCellStyle11;
-            this.DataGridViewXDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DataGridViewXDetail.EnableHeadersVisualStyles = false;
-            this.DataGridViewXDetail.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.DataGridViewXDetail.Location = new System.Drawing.Point(1, 1);
-            this.DataGridViewXDetail.Name = "DataGridViewXDetail";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewXDetail.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.DataGridViewXDetail.RowTemplate.Height = 23;
-            this.DataGridViewXDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewXDetail.Size = new System.Drawing.Size(1442, 472);
-            this.DataGridViewXDetail.TabIndex = 0;
-            this.DataGridViewXDetail.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DataGridViewXDetail_RowPostPaint);
-            // 
-            // TabItemDetail
-            // 
-            this.TabItemDetail.AttachedControl = this.tabControlPanel1;
-            this.TabItemDetail.Name = "TabItemDetail";
-            this.TabItemDetail.Text = "明细信息";
             // 
             // tabControlPanel2
             // 
@@ -434,7 +368,7 @@
             this.tabControlPanel2.Location = new System.Drawing.Point(0, 34);
             this.tabControlPanel2.Name = "tabControlPanel2";
             this.tabControlPanel2.Padding = new System.Windows.Forms.Padding(1);
-            this.tabControlPanel2.Size = new System.Drawing.Size(1444, 474);
+            this.tabControlPanel2.Size = new System.Drawing.Size(1444, 423);
             this.tabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
             this.tabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
             this.tabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -482,7 +416,7 @@
             this.DataGridViewXStatic.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.DataGridViewXStatic.RowTemplate.Height = 23;
             this.DataGridViewXStatic.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewXStatic.Size = new System.Drawing.Size(1442, 472);
+            this.DataGridViewXStatic.Size = new System.Drawing.Size(1442, 421);
             this.DataGridViewXStatic.TabIndex = 0;
             this.DataGridViewXStatic.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewXStatic_CellDoubleClick);
             this.DataGridViewXStatic.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DataGridViewXStatic_RowPostPaint);
@@ -494,7 +428,73 @@
             this.TabItemStatistics.Text = "汇总信息";
             this.TabItemStatistics.Visible = false;
             // 
-            // FormVoucheImport
+            // tabControlPanel1
+            // 
+            this.tabControlPanel1.Controls.Add(this.DataGridViewXDetail);
+            this.tabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlPanel1.Location = new System.Drawing.Point(0, 34);
+            this.tabControlPanel1.Name = "tabControlPanel1";
+            this.tabControlPanel1.Padding = new System.Windows.Forms.Padding(1);
+            this.tabControlPanel1.Size = new System.Drawing.Size(1444, 423);
+            this.tabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(179)))), ((int)(((byte)(231)))));
+            this.tabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(237)))), ((int)(((byte)(254)))));
+            this.tabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
+            this.tabControlPanel1.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel1.Style.GradientAngle = 90;
+            this.tabControlPanel1.TabIndex = 1;
+            this.tabControlPanel1.TabItem = this.TabItemDetail;
+            // 
+            // DataGridViewXDetail
+            // 
+            this.DataGridViewXDetail.AllowUserToAddRows = false;
+            this.DataGridViewXDetail.AllowUserToDeleteRows = false;
+            this.DataGridViewXDetail.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewXDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.DataGridViewXDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridViewXDetail.DefaultCellStyle = dataGridViewCellStyle11;
+            this.DataGridViewXDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DataGridViewXDetail.EnableHeadersVisualStyles = false;
+            this.DataGridViewXDetail.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.DataGridViewXDetail.Location = new System.Drawing.Point(1, 1);
+            this.DataGridViewXDetail.Name = "DataGridViewXDetail";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewXDetail.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.DataGridViewXDetail.RowTemplate.Height = 23;
+            this.DataGridViewXDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataGridViewXDetail.Size = new System.Drawing.Size(1442, 421);
+            this.DataGridViewXDetail.TabIndex = 0;
+            this.DataGridViewXDetail.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DataGridViewXDetail_RowPostPaint);
+            // 
+            // TabItemDetail
+            // 
+            this.TabItemDetail.AttachedControl = this.tabControlPanel1;
+            this.TabItemDetail.Name = "TabItemDetail";
+            this.TabItemDetail.Text = "明细信息";
+            // 
+            // FormVoucherImport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -502,17 +502,17 @@
             this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.panelEx2);
             this.DoubleBuffered = true;
-            this.Name = "FormVoucheImport";
+            this.Name = "FormVoucherImport";
             this.Text = "FormVoucheImport";
             this.Load += new System.EventHandler(this.FormVoucheImport_Load);
             this.panelEx2.ResumeLayout(false);
             this.panelEx1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).EndInit();
             this.tabControl1.ResumeLayout(false);
-            this.tabControlPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewXDetail)).EndInit();
             this.tabControlPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewXStatic)).EndInit();
+            this.tabControlPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewXDetail)).EndInit();
             this.ResumeLayout(false);
 
         }

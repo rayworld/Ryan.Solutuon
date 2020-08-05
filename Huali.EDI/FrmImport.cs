@@ -1,6 +1,6 @@
 ﻿using DevComponents.DotNetBar;
 using Huali.EDI.DAL;
-using Ryan.Framework.Common;
+using Ryan.Framework.DotNetFx20.Common;
 using System;
 using System.Data;
 using System.Data.OleDb;

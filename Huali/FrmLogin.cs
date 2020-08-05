@@ -1,5 +1,5 @@
 ﻿using DevComponents.DotNetBar;
-using Ryan.Framework.Config;
+using Ryan.Framework.DotNetFx20.Config;
 using System;
 using System.Windows.Forms;
 

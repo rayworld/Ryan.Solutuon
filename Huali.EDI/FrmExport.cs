@@ -1,5 +1,5 @@
 ﻿using DevComponents.DotNetBar;
-using Ryan.Framework.DBUtility;
+using Ryan.Framework.DotNetFx20.DBUtility;
 using System;
 using System.Data;
 using System.IO;

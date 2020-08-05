@@ -1,6 +1,7 @@
 ﻿using Aohua.Models;
 using Ryan.Framework.DotNetFx40.DBUtility;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
@@ -9,12 +10,12 @@ namespace Aohua.DAL
 {
     public partial class ICStockBillEntrys
     {
-        private static string connK3Desc = SqlHelper.GetConnectionString("K3Desc");
+        //private static string connK3Desc = SqlHelper.GetConnectionString("K3Desc");
 
         /// <summary>
         /// 增加一条数据
         /// </summary>
-        public static int Insert(ICStockBillEntry iCStockBillEntry,int InterID)
+        public static int Insert(string conn, ICStockBillEntry iCStockBillEntry)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into iCStockBillEntry(");
@@ -143,7 +144,7 @@ namespace Aohua.DAL
                     new SqlParameter("@FEntrySelfD0148", SqlDbType.Decimal,13),
                     new SqlParameter("@FCOMBFreeItem9", SqlDbType.Decimal,13)};
             parameters[0].Value = iCStockBillEntry.FBrNo;
-            parameters[1].Value = InterID;
+            parameters[1].Value = iCStockBillEntry.FInterID;
             parameters[2].Value = iCStockBillEntry.FEntryID;
             parameters[3].Value = iCStockBillEntry.FItemID;
             parameters[4].Value = iCStockBillEntry.FQtyMust;
@@ -262,12 +263,39 @@ namespace Aohua.DAL
             parameters[117].Value = Common.SqlNull(iCStockBillEntry.FEntrySelfD0148);
             parameters[118].Value = Common.SqlNull(iCStockBillEntry.FCOMBFreeItem9);
 
-            int ret = SqlHelper.ExecuteNonQuery(connK3Desc,strSql.ToString(), parameters);
+            int ret = SqlHelper.ExecuteNonQuery(conn,strSql.ToString(), parameters);
 
             return ret;
         }
 
-        public static ICStockBillEntry GetModel(DataRow dr)
+
+        /// <summary>
+        /// 得到一个对象实体列表
+        /// </summary>
+        public static List<ICStockBillEntry> GetModelList(string conn, int FInterID)
+        {
+
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select FBrNo,FInterID,FEntryID,FItemID,FQtyMust,FQty,FPrice,FBatchNo,FAmount,FNote,FSCBillInterID,FSCBillNo,FUnitID,FAuxPrice,FAuxQty,FAuxQtyMust,FQtyActual,FAuxQtyActual,FPlanPrice,FAuxPlanPrice,FSourceEntryID,FCommitQty,FAuxCommitQty,FKFDate,FKFPeriod,FDCSPID,FSCSPID,FConsignPrice,FConsignAmount,FProcessCost,FMaterialCost,FTaxAmount,FMapNumber,FMapName,FOrgBillEntryID,FOperID,FPlanAmount,FProcessPrice,FTaxRate,FSnListID,FAmtRef,FAuxPropID,FCost,FPriceRef,FAuxPriceRef,FFetchDate,FQtyInvoice,FQtyInvoiceBase,FUnitCost,FSecCoefficient,FSecQty,FSecCommitQty,FSourceTranType,FSourceInterId,FSourceBillNo,FContractInterID,FContractEntryID,FContractBillNo,FICMOBillNo,FICMOInterID,FPPBomEntryID,FOrderInterID,FOrderEntryID,FOrderBillNo,FAllHookQTY,FAllHookAmount,FCurrentHookQTY,FCurrentHookAmount,FStdAllHookAmount,FStdCurrentHookAmount,FSCStockID,FDCStockID,FPeriodDate,FCostObjGroupID,FCostOBJID,FDetailID,FMaterialCostPrice,FReProduceType,FBomInterID,FDiscountRate,FDiscountAmount,FSepcialSaleId,FOutCommitQty,FOutSecCommitQty,FDBCommitQty,FDBSecCommitQty,FAuxQtyInvoice,FOperSN,FCheckStatus,FSplitSecQty,FCOMBFreeItem1,FCOMBFreeItem2,FCOMBFreeItem3,FCOMBFreeItem4,FCOMBFreeItem5,FCOMBFreeItem7,FCOMBFreeItem10,FCOMBFreeItem11,FSaleCommitQty,FSaleSecCommitQty,FSaleAuxCommitQty,FInStockID,FSelectedProcID,FVWInStockQty,FAuxVWInStockQty,FSecVWInStockQty,FSecInvoiceQty,FCostCenterID,FPlanMode,FMTONo,FSecQtyActual,FSecQtyMust,FClientOrderNo,FClientEntryID,FRowClosed,FCostPercentage,FEntrySelfB0168,FEntrySelfB0169,FEntrySelfD0148,FCOMBFreeItem9 from ICStockBillEntry ");
+            strSql.Append(" where FInterID=@FInterID");
+            SqlParameter[] parameters = {
+                    new SqlParameter("@FInterID", SqlDbType.Int,4)
+            };
+            parameters[0].Value = FInterID;
+
+            List<ICStockBillEntry> list = new List<ICStockBillEntry>();
+            DataTable dt = SqlHelper.ExecuteDataTable(conn, strSql.ToString(), parameters);
+            if (dt.Rows.Count > 0)
+            {
+                foreach(DataRow dr in dt.Rows)
+                {
+                    list.Add(DataRowToModel(dr));
+                }
+            }
+            return list;
+        }
+
+        private static ICStockBillEntry DataRowToModel(DataRow dr)
         {
             ICStockBillEntry iCStockBillEntry = new ICStockBillEntry();
             if (dr["FBrNo"] != null)
@@ -754,21 +782,118 @@ namespace Aohua.DAL
             return iCStockBillEntry;
         }
 
+        ///// <summary>
+        ///// 记录是否存在
+        ///// </summary>
+        ///// <param name="ItemId"></param>
+        ///// <returns></returns>
+        //public static bool Exist(int InterID,int entryID)
+        //{
+        //    bool retVal = false;
+        //    string sql = string.Format("Select Count(*) From [ICStockBillEntry] Where FInterID = {0} and FEntryID ={1}", InterID,entryID);
+        //    object obj = SqlHelper.ExecuteScalar(connK3Desc, sql);
+        //    if (obj != null && int.Parse(obj.ToString())>0)
+        //    {
+        //        retVal = true;
+        //    }
+        //    return retVal;
+        //}
+
         /// <summary>
-        /// 记录是否存在
+        /// 替换物料编号,用长编码！
         /// </summary>
-        /// <param name="ItemId"></param>
+        /// <param name="OriginItemID"></param>
+        /// <param name="SourceConnection"></param>
+        /// <param name="DescConnection"></param>
         /// <returns></returns>
-        public static bool Exist(int InterID,int entryID)
+        public static int GetNewItemIDByOriginItemID(int OriginItemID, string SourceConnection, string DescConnection)
         {
-            bool retVal = false;
-            string sql = string.Format("Select Count(*) From [ICStockBillEntry] Where FInterID = {0} and FEntryID ={1}", InterID,entryID);
-            object obj = SqlHelper.ExecuteScalar(connK3Desc, sql);
-            if (obj != null && int.Parse(obj.ToString())>0)
+            string sql = string.Format("select fnumber from t_icitem where FItemID ={0}", OriginItemID);
+            string FFullNumber = Common.GetStringByExecuteScalar(SourceConnection, sql);
+            if(FFullNumber != "")
             {
-                retVal = true;
+                sql = string.Format("select FItemID from t_icitem where fnumber ='{0}'", FFullNumber);
+                string NewItemID = Common.GetStringByExecuteScalar(DescConnection, sql);
+                if(NewItemID != "")
+                {
+                    return int.Parse(NewItemID.ToString());
+                }
+                else
+                {
+                    return -1;
+                }
             }
-            return retVal;
+            else
+            {
+                return -1;
+            }
+        }
+
+        /// <summary>
+        /// 替换单位编号,用长编码！
+        /// </summary>
+        /// <param name="OriginUnitID"></param>
+        /// <param name="SourceConnection"></param>
+        /// <param name="DescConnection"></param>
+        /// <returns></returns>
+        public static int GetNewUnitIDByOriginUnitID(int OriginUnitID, string SourceConnection, string DescConnection)
+        {
+            string sql = string.Format("select FNumber from t_MeasureUnit where FMeasureUnitID ={0}", OriginUnitID);
+            string FNumber = Common.GetStringByExecuteScalar(SourceConnection, sql);
+            if (FNumber != "")
+            {
+                sql = string.Format("select FMeasureUnitID from t_MeasureUnit where FNumber = '{0}'", FNumber);
+                string NewUnitID = Common.GetStringByExecuteScalar(DescConnection, sql);
+                if (NewUnitID != "")
+                {
+                    return int.Parse(NewUnitID.ToString());
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+
+        /// <summary>
+        /// 更新物料编号
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="Entry"></param>
+        /// <returns></returns>
+        public static bool UpdateItemUnitID(string conn,ICStockBillEntry Entry)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" update ICStockBillEntry set ");
+            strSql.Append(" FItemID=@FItemID, FUnitID=@FUnitID ");
+            strSql.Append(" WHERE FInterID=@FInterID ");
+            strSql.Append(" AND FEntryID=@FEntryID ");
+            SqlParameter[] parameters = {
+                    new SqlParameter("@FItemID", SqlDbType.Int,4),
+                    new SqlParameter("@FUnitID", SqlDbType.Int,4),
+                    new SqlParameter("@FInterID", SqlDbType.Int,4),
+                    new SqlParameter("@FEntryID", SqlDbType.Int,4)};
+
+            parameters[0].Value = Entry.FItemID;
+            parameters[1].Value = Entry.FUnitID;
+            parameters[2].Value = Entry.FInterID;
+            parameters[3].Value = Entry.FEntryID;
+
+
+            int rows = SqlHelper.ExecuteNonQuery(conn, strSql.ToString(), parameters);
+            if (rows >= 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

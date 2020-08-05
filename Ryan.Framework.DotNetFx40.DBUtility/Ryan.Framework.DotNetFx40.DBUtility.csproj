@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Ryan.Framework.DotNetFx40.DBUtility</RootNamespace>
     <AssemblyName>Ryan.Framework.DotNetFx40.DBUtility</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -42,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessHelper.cs" />
+    <Compile Include="BaseDAL.cs" />
+    <Compile Include="WhereHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlHelper.cs" />
   </ItemGroup>
@@ -49,6 +54,10 @@
     <ProjectReference Include="..\Ryan.Framework.DotNetFx40.Encrypt\Ryan.Framework.DotNetFx40.Encrypt.csproj">
       <Project>{042cbec5-1d6d-4ae8-87b9-6347b67d250e}</Project>
       <Name>Ryan.Framework.DotNetFx40.Encrypt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.ORM\Ryan.Framework.DotNetFx40.ORM.csproj">
+      <Project>{0610AE9E-7C5B-48B4-9F44-EC7FE332DAE9}</Project>
+      <Name>Ryan.Framework.DotNetFx40.ORM</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

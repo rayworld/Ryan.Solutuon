@@ -72,9 +72,9 @@
             this.panelEx2.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
-            this.panelEx2.Margin = new System.Windows.Forms.Padding(2);
+            this.panelEx2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(1444, 79);
+            this.panelEx2.Size = new System.Drawing.Size(2372, 158);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -91,9 +91,10 @@
             // 
             this.CheckBoxOnlyShowCurrentPeriod.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.CheckBoxOnlyShowCurrentPeriod.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CheckBoxOnlyShowCurrentPeriod.Location = new System.Drawing.Point(12, 29);
+            this.CheckBoxOnlyShowCurrentPeriod.Location = new System.Drawing.Point(24, 58);
+            this.CheckBoxOnlyShowCurrentPeriod.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.CheckBoxOnlyShowCurrentPeriod.Name = "CheckBoxOnlyShowCurrentPeriod";
-            this.CheckBoxOnlyShowCurrentPeriod.Size = new System.Drawing.Size(143, 23);
+            this.CheckBoxOnlyShowCurrentPeriod.Size = new System.Drawing.Size(286, 46);
             this.CheckBoxOnlyShowCurrentPeriod.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.CheckBoxOnlyShowCurrentPeriod.TabIndex = 16;
             this.CheckBoxOnlyShowCurrentPeriod.Text = "只显示当期凭证";
@@ -106,9 +107,10 @@
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX4.Location = new System.Drawing.Point(472, 29);
+            this.labelX4.Location = new System.Drawing.Point(756, 58);
+            this.labelX4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(73, 23);
+            this.labelX4.Size = new System.Drawing.Size(146, 46);
             this.labelX4.TabIndex = 15;
             this.labelX4.Text = "会计期间";
             // 
@@ -120,10 +122,11 @@
             this.TextBoxPeriod.Border.Class = "TextBoxBorder";
             this.TextBoxPeriod.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.TextBoxPeriod.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TextBoxPeriod.Location = new System.Drawing.Point(556, 27);
+            this.TextBoxPeriod.Location = new System.Drawing.Point(924, 60);
+            this.TextBoxPeriod.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.TextBoxPeriod.Name = "TextBoxPeriod";
             this.TextBoxPeriod.PreventEnterBeep = true;
-            this.TextBoxPeriod.Size = new System.Drawing.Size(162, 26);
+            this.TextBoxPeriod.Size = new System.Drawing.Size(224, 44);
             this.TextBoxPeriod.TabIndex = 14;
             this.TextBoxPeriod.Text = "3";
             // 
@@ -134,9 +137,10 @@
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX3.Location = new System.Drawing.Point(174, 29);
+            this.labelX3.Location = new System.Drawing.Point(334, 58);
+            this.labelX3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(74, 23);
+            this.labelX3.Size = new System.Drawing.Size(148, 46);
             this.labelX3.TabIndex = 13;
             this.labelX3.Text = "会计年度";
             // 
@@ -148,10 +152,11 @@
             this.TextBoxYear.Border.Class = "TextBoxBorder";
             this.TextBoxYear.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.TextBoxYear.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TextBoxYear.Location = new System.Drawing.Point(251, 27);
+            this.TextBoxYear.Location = new System.Drawing.Point(506, 60);
+            this.TextBoxYear.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.TextBoxYear.Name = "TextBoxYear";
             this.TextBoxYear.PreventEnterBeep = true;
-            this.TextBoxYear.Size = new System.Drawing.Size(205, 26);
+            this.TextBoxYear.Size = new System.Drawing.Size(224, 44);
             this.TextBoxYear.TabIndex = 12;
             this.TextBoxYear.Text = "2019";
             // 
@@ -164,9 +169,10 @@
             this.ComboBoxVoucherGroup.ItemHeight = 21;
             this.ComboBoxVoucherGroup.Items.AddRange(new object[] {
             this.comboItem1});
-            this.ComboBoxVoucherGroup.Location = new System.Drawing.Point(797, 27);
+            this.ComboBoxVoucherGroup.Location = new System.Drawing.Point(1312, 58);
+            this.ComboBoxVoucherGroup.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.ComboBoxVoucherGroup.Name = "ComboBoxVoucherGroup";
-            this.ComboBoxVoucherGroup.Size = new System.Drawing.Size(162, 27);
+            this.ComboBoxVoucherGroup.Size = new System.Drawing.Size(224, 27);
             this.ComboBoxVoucherGroup.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ComboBoxVoucherGroup.TabIndex = 11;
             // 
@@ -181,9 +187,10 @@
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX2.Location = new System.Drawing.Point(729, 29);
+            this.labelX2.Location = new System.Drawing.Point(1174, 58);
+            this.labelX2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(57, 23);
+            this.labelX2.Size = new System.Drawing.Size(114, 46);
             this.labelX2.TabIndex = 10;
             this.labelX2.Text = "凭证字";
             // 
@@ -194,9 +201,10 @@
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX1.Location = new System.Drawing.Point(974, 29);
+            this.labelX1.Location = new System.Drawing.Point(1560, 58);
+            this.labelX1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(56, 23);
+            this.labelX1.Size = new System.Drawing.Size(112, 46);
             this.labelX1.TabIndex = 9;
             this.labelX1.Text = "凭证号";
             // 
@@ -208,10 +216,11 @@
             this.TextBoxVoucherFNumber.Border.Class = "TextBoxBorder";
             this.TextBoxVoucherFNumber.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.TextBoxVoucherFNumber.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TextBoxVoucherFNumber.Location = new System.Drawing.Point(1036, 27);
+            this.TextBoxVoucherFNumber.Location = new System.Drawing.Point(1696, 60);
+            this.TextBoxVoucherFNumber.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.TextBoxVoucherFNumber.Name = "TextBoxVoucherFNumber";
             this.TextBoxVoucherFNumber.PreventEnterBeep = true;
-            this.TextBoxVoucherFNumber.Size = new System.Drawing.Size(162, 26);
+            this.TextBoxVoucherFNumber.Size = new System.Drawing.Size(224, 44);
             this.TextBoxVoucherFNumber.TabIndex = 8;
             this.TextBoxVoucherFNumber.Text = "20";
             // 
@@ -220,10 +229,10 @@
             this.ButtonXCreateVoucher.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.ButtonXCreateVoucher.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.ButtonXCreateVoucher.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ButtonXCreateVoucher.Location = new System.Drawing.Point(1330, 22);
-            this.ButtonXCreateVoucher.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonXCreateVoucher.Location = new System.Drawing.Point(2162, 44);
+            this.ButtonXCreateVoucher.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ButtonXCreateVoucher.Name = "ButtonXCreateVoucher";
-            this.ButtonXCreateVoucher.Size = new System.Drawing.Size(96, 37);
+            this.ButtonXCreateVoucher.Size = new System.Drawing.Size(192, 74);
             this.ButtonXCreateVoucher.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ButtonXCreateVoucher.TabIndex = 7;
             this.ButtonXCreateVoucher.Text = "生成";
@@ -234,10 +243,10 @@
             this.ButtonXQuery.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.ButtonXQuery.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.ButtonXQuery.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ButtonXQuery.Location = new System.Drawing.Point(1214, 22);
-            this.ButtonXQuery.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonXQuery.Location = new System.Drawing.Point(1946, 44);
+            this.ButtonXQuery.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ButtonXQuery.Name = "ButtonXQuery";
-            this.ButtonXQuery.Size = new System.Drawing.Size(96, 37);
+            this.ButtonXQuery.Size = new System.Drawing.Size(192, 74);
             this.ButtonXQuery.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ButtonXQuery.TabIndex = 4;
             this.ButtonXQuery.Text = "查询";
@@ -252,9 +261,9 @@
             this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx3.Location = new System.Drawing.Point(0, 0);
-            this.panelEx3.Margin = new System.Windows.Forms.Padding(2);
+            this.panelEx3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(1444, 617);
+            this.panelEx3.Size = new System.Drawing.Size(2372, 726);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx3.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -289,8 +298,8 @@
             this.DataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataGridViewX1.EnableHeadersVisualStyles = false;
             this.DataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.DataGridViewX1.Location = new System.Drawing.Point(0, 37);
-            this.DataGridViewX1.Margin = new System.Windows.Forms.Padding(2);
+            this.DataGridViewX1.Location = new System.Drawing.Point(0, 74);
+            this.DataGridViewX1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DataGridViewX1.Name = "DataGridViewX1";
             this.DataGridViewX1.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -304,7 +313,7 @@
             this.DataGridViewX1.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.DataGridViewX1.RowTemplate.Height = 30;
             this.DataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewX1.Size = new System.Drawing.Size(1444, 580);
+            this.DataGridViewX1.Size = new System.Drawing.Size(2372, 652);
             this.DataGridViewX1.TabIndex = 9;
             // 
             // pFailData
@@ -315,9 +324,9 @@
             this.pFailData.Dock = System.Windows.Forms.DockStyle.Top;
             this.pFailData.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.pFailData.Location = new System.Drawing.Point(0, 0);
-            this.pFailData.Margin = new System.Windows.Forms.Padding(2);
+            this.pFailData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pFailData.Name = "pFailData";
-            this.pFailData.Size = new System.Drawing.Size(1444, 37);
+            this.pFailData.Size = new System.Drawing.Size(2372, 74);
             this.pFailData.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.pFailData.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
             this.pFailData.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -334,10 +343,10 @@
             this.panelEx1.Controls.Add(this.panelEx3);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEx1.Location = new System.Drawing.Point(0, 79);
-            this.panelEx1.Margin = new System.Windows.Forms.Padding(2);
+            this.panelEx1.Location = new System.Drawing.Point(0, 158);
+            this.panelEx1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(1444, 617);
+            this.panelEx1.Size = new System.Drawing.Size(2372, 726);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -350,12 +359,13 @@
             // 
             // FormVoucher
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1444, 696);
+            this.ClientSize = new System.Drawing.Size(2372, 884);
             this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.panelEx2);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "FormVoucher";
             this.Text = "FormVoucher";
             this.Load += new System.EventHandler(this.FormVoucher_Load);

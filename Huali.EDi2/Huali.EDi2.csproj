@@ -66,17 +66,29 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ryan.Framework.Common\Ryan.Framework.Common.csproj">
-      <Project>{46d98007-de2e-4c89-aa01-030741c85a5f}</Project>
-      <Name>Ryan.Framework.Common</Name>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.AutoUpdate\Ryan.Framework.DotNetFx40.AutoUpdate.csproj">
+      <Project>{49395616-4933-48db-8b33-1466da710585}</Project>
+      <Name>Ryan.Framework.DotNetFx40.AutoUpdate</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ryan.Framework.Converter\Ryan.Framework.Converter.csproj">
-      <Project>{d8c29016-b835-4eed-beb0-0144be57c494}</Project>
-      <Name>Ryan.Framework.Converter</Name>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.Common\Ryan.Framework.DotNetFx40.Common.csproj">
+      <Project>{8441a6a8-5d42-4054-aed6-00a2d4d873f6}</Project>
+      <Name>Ryan.Framework.DotNetFx40.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ryan.Framework.DBUtility\Ryan.Framework.DBUtility.csproj">
-      <Project>{f06eb8bf-c60e-4c29-834a-238afeb70f3d}</Project>
-      <Name>Ryan.Framework.DBUtility</Name>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.Config\Ryan.Framework.DotNetFx40.Config.csproj">
+      <Project>{05373a5c-3a26-4947-bd8d-583f1e9928eb}</Project>
+      <Name>Ryan.Framework.DotNetFx40.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.Converter\Ryan.Framework.DotNetFx40.Converter.csproj">
+      <Project>{ce6d6bfb-5c54-433a-b8a8-cc635974320f}</Project>
+      <Name>Ryan.Framework.DotNetFx40.Converter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.DBUtility\Ryan.Framework.DotNetFx40.DBUtility.csproj">
+      <Project>{b8f57721-b57e-4c8a-82e0-47811482b68f}</Project>
+      <Name>Ryan.Framework.DotNetFx40.DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.Encrypt\Ryan.Framework.DotNetFx40.Encrypt.csproj">
+      <Project>{042cbec5-1d6d-4ae8-87b9-6347b67d250e}</Project>
+      <Name>Ryan.Framework.DotNetFx40.Encrypt</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

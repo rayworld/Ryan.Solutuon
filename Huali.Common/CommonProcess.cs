@@ -1,5 +1,5 @@
-﻿using Ryan.Framework.Config;
-using Ryan.Framework.DBUtility;
+﻿using Ryan.Framework.DotNetFx20.Config;
+using Ryan.Framework.DotNetFx20.DBUtility;
 using System.Data;
 
 namespace Huali.Common

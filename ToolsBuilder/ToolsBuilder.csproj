@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8AEBD9C6-EF56-4C1D-ADD8-993719735923}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Toolsbuilder</RootNamespace>
+    <AssemblyName>Toolsbuilder</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmCreateConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateConnection.designer.cs">
+      <DependentUpon>frmCreateConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEncryptStringBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEncryptStringBuilder.designer.cs">
+      <DependentUpon>frmEncryptStringBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmModelBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModelBuilder.Designer.cs">
+      <DependentUpon>frmModelBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmCreateConnection.resx">
+      <DependentUpon>frmCreateConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEncryptStringBuilder.resx">
+      <DependentUpon>frmEncryptStringBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModelBuilder.resx">
+      <DependentUpon>frmModelBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.Config\Ryan.Framework.DotNetFx40.Config.csproj">
+      <Project>{05373a5c-3a26-4947-bd8d-583f1e9928eb}</Project>
+      <Name>Ryan.Framework.DotNetFx40.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.DBUtility\Ryan.Framework.DotNetFx40.DBUtility.csproj">
+      <Project>{b8f57721-b57e-4c8a-82e0-47811482b68f}</Project>
+      <Name>Ryan.Framework.DotNetFx40.DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.Encrypt\Ryan.Framework.DotNetFx40.Encrypt.csproj">
+      <Project>{042cbec5-1d6d-4ae8-87b9-6347b67d250e}</Project>
+      <Name>Ryan.Framework.DotNetFx40.Encrypt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ryan.Framework.DotNetFx40.ORM\Ryan.Framework.DotNetFx40.ORM.csproj">
+      <Project>{0610ae9e-7c5b-48b4-9f44-ec7fe332dae9}</Project>
+      <Name>Ryan.Framework.DotNetFx40.ORM</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

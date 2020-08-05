@@ -1,10 +1,10 @@
 using DevComponents.DotNetBar;
-using Ryan.Framework.Common;
+using Ryan.Framework.DotNetFx20.Common;
 using LumiSoft.Net.Mail;
 using LumiSoft.Net.MIME;
 using LumiSoft.Net.POP3.Client;
-using Ryan.Framework.DBUtility;
-using Ryan.Framework.Encrypt;
+using Ryan.Framework.DotNetFx20.DBUtility;
+using Ryan.Framework.DotNetFx20.Encrypt;
 using System;
 using System.Data;
 using System.IO;
